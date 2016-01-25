@@ -106,9 +106,9 @@ section {
 /* =Info Bar
 -------------------------------------------------------------- */
 #info-bar {   /*フッタの色指定*/
-  background-color: #0683c9;
-  background-color:rgba(0,100,255,0.5); }
-  #info-bar a {
+  background-color: #1abc9c;
+  background-color:rgba(26,188,156,0.7); }
+  #info-bar a,ul {
     color: white;
     font-size: 14px;
     text-transform: uppercase;
@@ -118,15 +118,20 @@ section {
     #info-bar a:hover {
       background-color: #0793e2; }
   #info-bar span.all-tutorials,
-  #info-bar span.back-to-tutorial {
-    display: block;
+  #info-bar span.footer-logo {
+    display: inline;
     width: 50%; }
-  #info-bar span.all-tutorials {
+
+    .col-md-3{
+      float: left;
+      margin-left: 10%;
+    }
+  /*#info-bar span.all-tutorials {
     float: left;
     text-align: left; }
-  #info-bar span.back-to-tutorial {
+  #info-bar span.footer-logo {
     float: right;
-    text-align: right; }
+    text-align: right; }*/
 
 /* =Header
 -------------------------------------------------------------- */
@@ -138,8 +143,9 @@ header {
   top: 0;
   left: 0;
   z-index: 999;
-  background-color: #0683c9;
-  background-color:rgba(0,100,255,0.3);
+  /*background-color: #0683c9;*/
+  background-color: #1abc9c;
+  background-color:rgba(26,188,156,0.5);
   -webkit-transition: height 0.3s;
   -moz-transition: height 0.3s;
   -ms-transition: height 0.3s;
