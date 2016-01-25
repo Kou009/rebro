@@ -34,101 +34,82 @@
 
   <body>
 
-	<!-- Menu -->
-<!-- 	<nav class="menu" id="theMenu">
-		<div class="menu-wrap">
-			<h1 class="logo"><a href="index.html#home">LINK</a></h1>
-			<i class="fa fa-arrow-right menu-close"></i>
-			<a href="index.html">Home</a>
-			<a href="services.html">Services</a>
-			<a href="portfolio.html">Portfolio</a>
-			<a href="about.html">About</a>
-			<a href="#contact">Contact</a>
-			<a href="#"><i class="fa fa-facebook"></i></a>
-			<a href="#"><i class="fa fa-twitter"></i></a>
-			<a href="#"><i class="fa fa-dribbble"></i></a>
-			<a href="#"><i class="fa fa-envelope"></i></a>
-		</div> -->
-		
-		<!-- Menu button -->
-	<!-- 	<div id="menuToggle"><i class="fa fa-bars"></i></div>
-	</nav>
-	
- -->	<!-- MAIN IMAGE SECTION -->
-	<div id="aboutwrap">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 col-lg-offset-2">
-					<h2>Live smart<br/>
-						出品してみよう
-					</h2>
-				</div>
-			</div><!-- row -->
-		</div><!-- /container -->
-	</div><!-- /aboutwrap -->
+  
+ <!-- MAIN IMAGE SECTION -->
+  <div id="aboutwrap">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+          <h2>Live smart<br/>
+            出品してみよう
+          </h2>
+        </div>
+      </div><!-- row -->
+    </div><!-- /container -->
+  </div><!-- /aboutwrap -->
 
-	<!-- CHART IMAGE SECTION -->
+  <!-- CHART IMAGE SECTION -->
 
-	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css"/>
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css"/>
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/js/bootstrapValidator.min.js"></script>
+
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+
 <div class="container">
-	<!-- <div class="row"> -->
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-<div class="col-lg-2">
-	広告がはいります
-</div>
-		<div class="col-lg-4">
-		<div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-                <a class="thumbnail fancybox" rel="ligthbox" href="http://placehold.it/300x320.png">
-                    <img class="img-responsive" alt="" src="http://placehold.it/320x320" />
-                    <div class='text-right'>
-                        <small class='text-muted'>Image Title</small>
-                    </div> <!-- text-right / end -->
-                </a>
-        </div> <!-- col-6 / end -->
-         </div>   
+  <div class="row">
+    <div class="col-lg-2">
+      広告がはいります
+    </div>
+    <div class="col-lg-2">
+      
+    </div>
 
-        <div class="col-lg-6">   
-		<form role="form" id="contact-form" class="contact-form">
+        <div class="col-lg-8">
+    <form role="form" id="contact-form" class="contact-form">
                     <div class="row">
-                		<div class="col-md-6">
-                  		<div class="form-group">
-                            <input type="text" class="form-control" name="Name" autocomplete="off" id="Name" placeholder="Name">
-                  		</div>
-                  		</div>
-                    	<div class="col-md-6">
-                  		<div class="form-group">
-                            <input type="email" class="form-control" name="email" autocomplete="off" id="email" placeholder="price">
-                  		</div>
-                  		</div>
-                  	
-                  	<div class="row">
-                  		<div class="col-md-12">
-                  		<div class="form-group">
+                    <!-- <div class="col-md-6"> -->
+                      <div class="form-group">
+                            <input type="text" class="form-control" name="Name" autocomplete="off" id="Name" placeholder="Title">
+                      </div>
+                      <!-- </div> -->
+                  <!--    <div class="col-md-6"> -->
+                      <div class="form-group">
+                            <input type="text" style="ime-mode:disabled;"onkeypress='if(event.keyCode<"0".charCodeAt(0) ||"9".charCodeAt(0)<event.keyCode)return false;' class="form-control" name="email" autocomplete="off" id="email" placeholder="price(半角英数)">
+                    <!--  </div> -->
+                      </div>
+
+
+                      <!-- 
+                      <div class="col-md-12"> -->
+                      <div class="form-group">
                             <textarea class="form-control textarea" rows="3" name="Message" id="Message" placeholder="Detail"></textarea>
-                  		</div>
-                  		</div>
+                      </div>
+                      <input type="file" name="image" size="35" />
+                    <!--  </div> -->
                     </div>
-                    <div class="row">
-                    <div class="col-md-12">
-                  <button type="submit" class="btn main-btn pull-right">しゅっぴーん</button>
-                  	</div>
-                  	</div>
+                      <div class="row">
+                      <div class="col-md-12">
+                       <button type="submit" class="btn main-btn pull-right">出品する</button>
+                      </div>
+                      </div>
         </form>
+      </div>
+    </div>
 
-        <p class="pull-right"><br><button type="button" class="btn btn-green"><a href="ichiran.html">商品一覧に戻る</a></button></p> 
+        <button type="button"><a href="ichiran.html">商品一覧に戻る</a></button>
 </div>
    
-	
+  
+  <!--これ以下は消さないこと!
 
-    <!-- Bootstrap core JavaScript
+     Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
