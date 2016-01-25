@@ -1,0 +1,622 @@
+#headerwrap:before{
+	content:"";
+	display: block;
+	width: 100%;
+	height: 90.50%;
+	background: -moz-linear-gradient(
+		270deg,
+		#1abc9c 100%,
+		#ffffff 0%);
+	background: -webkit-linear-gradient(
+		270deg,
+		#1abc9c 100%,
+		#ffffff 0%);
+	background: -o-linear-gradient(
+		270deg,
+		#1abc9c 100%,
+		#ffffff 0%%);
+	background: -ms-linear-gradient(
+		270deg,
+		#1abc9c 100%,
+		#ffffff 0%);
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0.7;
+}
+
+#aboutwrap:before{
+	content:"";
+	display: block;
+	width: 100%;
+	height: 59.40%;
+	background: -moz-linear-gradient(
+		270deg,
+		#1abc9c 100%,
+		#ffffff 0%);
+	background: -webkit-linear-gradient(
+		270deg,
+		#1abc9c 100%,
+		#ffffff 0%);
+	background: -o-linear-gradient(
+		270deg,
+		#1abc9c 100%,
+		#ffffff 0%%);
+	background: -ms-linear-gradient(
+		270deg,
+		#1abc9c 100%,
+		#ffffff 0%);
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0.4;
+}
+
+#serviceswrap:before{
+	content:"";
+	display: block;
+	width: 100%;
+	height: 62.50%;
+	background: -moz-linear-gradient(
+		270deg,
+		#1abc9c 100%,
+		#ffffff 0%);
+	background: -webkit-linear-gradient(
+		270deg,
+		#1abc9c 100%,
+		#ffffff 0%);
+	background: -o-linear-gradient(
+		270deg,
+		#1abc9c 100%,
+		#ffffff 0%%);
+	background: -ms-linear-gradient(
+		270deg,
+		#1abc9c 100%,
+		#ffffff 0%);
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0.5;
+}
+
+#portwrap:before{
+	content:"";
+	display: block;
+	width: 100%;
+	height: 49.80%;
+	background: -moz-linear-gradient(
+		270deg,
+		#1abc9c 100%,
+		#ffffff 0%);
+	background: -webkit-linear-gradient(
+		270deg,
+		#1abc9c 100%,
+		#ffffff 0%);
+	background: -o-linear-gradient(
+		270deg,
+		#1abc9c 100%,
+		#ffffff 0%%);
+	background: -ms-linear-gradient(
+		270deg,
+		#1abc9c 100%,
+		#ffffff 0%);
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0.3;
+}
+
+#portwrap2:before{
+	content:"";
+	display: block;
+	width: 100%;
+	height: 49.80%;
+	background: -moz-linear-gradient(
+		270deg,
+		#1abc9c 100%,
+		#ffffff 0%);
+	background: -webkit-linear-gradient(
+		270deg,
+		#1abc9c 100%,
+		#ffffff 0%);
+	background: -o-linear-gradient(
+		270deg,
+		#1abc9c 100%,
+		#ffffff 0%%);
+	background: -ms-linear-gradient(
+		270deg,
+		#1abc9c 100%,
+		#ffffff 0%);
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0.3;
+}
+
+/* 共通部分 */
+#imagemap {
+	margin: 0px auto;
+	padding: 0px;
+	background: transparent url(../img/jp.png) top left no-repeat;
+	width: 600px;
+	height: 400px;
+	position: relative;
+}
+#imagemap li {
+	margin: 0px;
+	padding: 0px;
+	position: absolute;
+	list-style: none;
+	font-size: 14px;
+}
+#imagemap a {
+	position: absolute;
+}
+#imagemap a span {
+	display: none;
+}
+
+/* 北海道 */
+#hokkaido {
+	top: 0px;
+	left: 333px;
+}
+#hokkaido a {
+	width: 300px;
+	height: 131px;
+}
+#hokkaido a:hover {
+	background: url(../img/jp.png) -333px -400px no-repeat;
+}
+
+/* 東北 */
+#touhoku {
+	top: 128px;
+	left: 253px;
+}
+#touhoku a {
+	width: 180px;
+	height: 145px;
+}
+#touhoku a:hover {
+	background: transparent url(../img/jp.png) -253px -928px no-repeat;
+}
+
+/* 北陸・甲信越 */
+#hokuriku {
+	top: 208px;
+	left: 202px;
+}
+#hokuriku a {
+	width: 128px;
+	height: 95px;
+}
+#hokuriku a:hover {
+	background: transparent url(../img/jp.png) -202px -1408px no-repeat;
+}
+
+/* 関東 */
+#kanto {
+	top: 252px;
+	left: 280px;
+}
+#kanto a {
+	width: 68px;
+	height: 148px;
+}
+#kanto a:hover {
+	background: transparent url(../img/jp.png) -280px -1852px no-repeat;
+}
+
+/* 東海 */
+#tokai {
+	top: 260px;
+	left: 202px;
+}
+#tokai a {
+	width: 88px;
+	height: 100px;
+}
+#tokai a:hover {
+	background: transparent url(../img/jp.png) -202px -2260px no-repeat;
+}
+
+/* 関西 */
+#kansai {
+	top: 261px;
+	left: 171px;
+}
+#kansai a {
+	width: 62px;
+	height: 87px;
+}
+#kansai a:hover {
+	background: transparent url(../img/jp.png) -171px -2661px no-repeat;
+}
+
+/* 中国 */
+#chugoku {
+	top: 235px;
+	left: 85px;
+}
+#chugoku a {
+	width: 100px;
+	height: 75px;
+}
+#chugoku a:hover {
+	background: transparent url(../img/jp.png) -85px -3035px no-repeat;
+}
+
+/* 四国 */
+#shikoku {
+	top: 300px;
+	left: 107px;
+}
+#shikoku a {
+	width: 75px;
+	height: 50px;
+}
+#shikoku a:hover {
+	background: transparent url(../img/jp.png) -107px -3500px no-repeat;
+}
+
+/* 九州 */
+#kyushu {
+	top: 265px;
+	left: 24px;
+}
+#kyushu a {
+	width: 88px;
+	height: 135px;
+}
+#kyushu a:hover {
+	background: transparent url(../img/jp.png) -24px -3865px no-repeat;
+}
+
+/* 沖縄 */
+#okinawa {
+	top: 0px;
+	left: 0px;
+}
+#okinawa a {
+	width: 298px;
+	height: 155px;
+}
+#okinawa a:hover {
+	background: transparent url(../img/jp.png) 0px -4000px no-repeat;
+}
+
+/* ●日本地図下の地域リスト */
+#area {
+	margin: 20px auto;
+	width: 600px;
+}
+#area li {
+	float:left;
+	text-indent:-5px;
+	font-size: 14px;
+	font-family: sans-serif;
+	padding: 0 30px 0 0;
+}
+#area li a {
+	text-decoration: none;
+	color: #2d67ee;
+}
+#area li a:hover {
+	text-decoration: underline;
+	color: #f1710f;
+}
+
+
+/*body
+{
+    /*background: url('http://farm3.staticflickr.com/2832/12303719364_c25cecdc28_b.jpg') fixed;*/
+    background-size: cover;
+    padding: 0;
+    margin: 0;
+}
+
+.wrap
+{
+
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 99;
+}
+
+p.form-title
+{
+    font-family: 'Open Sans' , sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    color: #000000;
+    margin-top: 5%;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+form
+{
+    width: 250px;
+    margin: 0 auto;
+}
+
+form.login input[type="text"], form.login input[type="password"]
+{
+    width: 100%;
+    margin: 0;
+    padding: 5px 10px;
+    background: 0;
+    border: 0;
+    border-bottom: 1px solid #000000;
+    outline: 0;
+    font-style: italic;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    color: #000000;
+    outline: 0;
+}
+
+form.login input[type="submit"]
+{
+    width: 100%;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-top: 16px;
+    outline: 0;
+    cursor: pointer;
+    letter-spacing: 1px;
+}
+
+form.login input[type="submit"]:hover
+{
+    transition: background-color 0.5s ease;
+}
+
+form.login .remember-forgot
+{
+    float: left;
+    width: 100%;
+    margin: 10px 0 0 0;
+}
+form.login .forgot-pass-content
+{
+    min-height: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+form.login label, form.login a
+{
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+}
+
+form.login a
+{
+    transition: color 0.5s ease;
+}
+
+form.login a:hover
+{
+    color: #2ecc71;
+}
+
+.pr-wrap
+{
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    display: none;
+}
+
+.show-pass-reset
+{
+    display: block !important;
+}
+
+.pass-reset
+{
+    margin: 0 auto;
+    width: 250px;
+    position: relative;
+    margin-top: 22%;
+    z-index: 999;
+    background: #000000;
+    padding: 20px 15px;
+}
+
+.pass-reset label
+{
+    font-size: 12px;
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+
+.pass-reset input[type="email"]
+{
+    width: 100%;
+    margin: 5px 0 0 0;
+    padding: 5px 10px;
+    background: 0;
+    border: 0;
+    border-bottom: 1px solid #000000;
+    outline: 0;
+    font-style: italic;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    color: #000000;
+    outline: 0;
+}
+
+.pass-reset input[type="submit"]
+{
+    width: 100%;
+    border: 0;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-top: 10px;
+    outline: 0;
+    cursor: pointer;
+    letter-spacing: 1px;
+}
+
+.pass-reset input[type="submit"]:hover
+{
+    transition: background-color 0.5s ease;
+}
+.posted-by
+{
+    position: absolute;
+    bottom: 26px;
+    margin: 0 auto;
+    color: #FFF;
+    background-color: rgba(0, 0, 0, 0.66);
+    padding: 10px;
+    left: 45%;
+}
+
+.gallery
+{
+    display: inline-block;
+    margin-top: 20px;
+}
+
+/* layout */
+#left ul.nav {
+    margin-bottom: 2px;
+    font-size: 12px; /* to change font-size, please change instead .lbl */
+}
+#left ul.nav ul,
+#left ul.nav ul li {
+    list-style: none!important;
+    list-style-type: none!important;
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+#left ul.nav ul {
+    padding-left: 0;
+    width: auto;
+}
+#left ul.nav ul.children {
+    padding-left: 12px;
+    width: auto;
+}
+#left ul.nav ul.children li{
+    margin-left: 0px;
+}
+#left ul.nav li a:hover {
+    text-decoration: none;
+}
+
+#left ul.nav li a:hover .lbl {
+    color: #999!important;
+}
+
+#left ul.nav li.current>a .lbl {
+    background-color: #999;
+    color: #fff!important;
+}
+
+/* parent item */
+#left ul.nav li.parent a {
+    padding: 0px;
+    color: #ccc;
+}
+#left ul.nav>li.parent>a {
+    border: solid 1px #999;
+    text-transform: uppercase;
+}    
+#left ul.nav li.parent a:hover {
+    background-color: #fff;
+    -webkit-box-shadow:inset 0 3px 8px rgba(0,0,0,0.125);
+    -moz-box-shadow:inset 0 3px 8px rgba(0,0,0,0.125);
+    box-shadow:inset 0 3px 8px rgba(0,0,0,0.125);    
+}
+
+/* link tag (a)*/
+#left ul.nav li.parent ul li a {
+    color: #457;
+    border: none;
+    display:block;
+    padding-left: 5px;    
+}
+
+#left ul.nav li.parent ul li a:hover {
+    background-color: #1abc9c;
+    -webkit-box-shadow:none;
+    -moz-box-shadow:none;
+    box-shadow:none;  
+}
+
+/* sign for parent item */
+#left ul.nav li .sign {
+    display: inline-block;
+    width: 14px;
+    padding: 5px 8px;
+    background-color: transparent;
+    color: #fff;
+}
+#left ul.nav li.parent>a>.sign{
+    margin-left: 0px;
+    background-color: #999;
+}
+
+/* label */
+#left ul.nav li .lbl {
+    padding: 5px 12px;
+    display: inline-block;
+}
+#left ul.nav li.current>a>.lbl {
+    color: #fff;
+}
+#left ul.nav  li a .lbl{
+    font-size: 12px;
+}
+
+/* THEMATIQUE
+------------------------- */
+/* theme 1 */
+#left ul.nav>li.item-1.parent>a {
+    border: solid 1px #ff6307;
+}
+#left ul.nav>li.item-1.parent>a>.sign,
+#left ul.nav>li.item-1 li.parent>a>.sign{
+    margin-left: 0px;
+    background-color: #ff6307;
+
+    .contact-form{ margin-top:15px;}
+.contact-form .textarea{ min-height:220px; resize:none;}
+.form-control{ box-shadow:none; border-color:#eee; height:49px;}
+.form-control:focus{ box-shadow:none; border-color:#00b09c;}
+.form-control-feedback{ line-height:50px;}
+.main-btn{ background:#00b09c; border-color:#00b09c; color:#fff;}
+.main-btn:hover{ background:#00a491;color:#fff;}
+.form-control-feedback {
+line-height: 50px;
+top: 0px;
+}
+
+
+
+body { padding-top: 15px; font-size: 12px } .main { max-width: 320px; margin: 0 auto; } .login-or { position: relative; font-size: 18px; color: #aaa; margin-top: 10px; margin-bottom: 10px; padding-top: 10px; padding-bottom: 10px; } .span-or { display: block; position: absolute; left: 50%; top: -2px; margin-left: -25px; background-color: #fff; width: 50px; text-align: center; } .hr-or { background-color: #cdcdcd; height: 1px; margin-top: 0px !important; margin-bottom: 0px !important; } h3 { text-align: center; line-height: 300%; }
