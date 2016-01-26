@@ -1,6 +1,8 @@
 
 
-/**なにか**/
+/**共通部分ではないcssの置き場です。
+何のcssなのかを記載していただけると嬉しいです
+**/
 #headerwrap:before{
 	content:"";
 	display: block;
