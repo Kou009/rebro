@@ -1,80 +1,3 @@
-<?php
-require('../dbconnect.php');
-session_start();
-$name = '';
-$error = array();
-$email = '';
-$password = '';
-$error['name'] = '';
-$error['email'] = '';
-$error['password'] = '';
-$error['image'] = '';
-$action = '';
-
-if (!empty($_POST))	{ //中身があった場合！は逆の意味になる→空じゃなかったら入力チェック
-	//$_POSTが空ではない
-	//エラー項目の確認
-	if($_POST['name'] == ''){ //nameが空のときは$error変数の中に値(BLANK)を入れる。以下同様。
-		$error['name'] = 'blank';
-	}
-
-	if($_POST['email'] == ''){
-		$error['email'] = 'blank';
-	}
-	if(strlen($_POST['password']) < 4){ //４文字以下のパスワードをはじく
-		$error['password'] = 'length';
-	}
-	if($_POST['password'] == '')	{
-		$error['password'] = 'blank';
-	}
-	$fileName = $_FILES['image']['name'];
-	if (!empty($fileName)){ //からじゃなかったら
-		$ext = substr($fileName, -3); //拡張子を取り出す。-3は後ろから３文字取り出すそして$extにいれる
-		if ($ext != 'jpg' && $ext != 'git' && $ext != 'png'){
-			$error['image'] = 'type';//jpgでもgitでもない場合はチェック
-		}
-	}
-
-	//重複アカウントのチェック
-	if(empty($error)){
-		$sql = sprintf('SELECT COUNT(*) AS cnt FROM members WHERE email="%s"',
-			mysqli_real_escape_string($db, $_POST['email'])
-			);
-		$record = mysqli_query($db, $sql) or die(mysqli_error($db));
-		$table = mysqli_fetch_assoc($record);
-		if($table['cnt'] > 0){
-			$error['email'] = 'duplicate';
-		}
-	}
-
-	
-
-	if ($error['name']=='' && $error['email']=='' && $error['password']=='') { 
-		$name = $_POST['name'];
-		$email = $_POST['email'];
-		$password = $_POST['password'];
-		$image = $_POST['image'];
-			//$errorが空のとき=今まで入力したやつがちゃんとなってるとき
-		//画像をアップロードする。うえの処理が問題ないとき↓
-		$image = date.time('YmdHis') . $_FILES['image']['name'];
-		move_uploaded_file($_FILES['image']['tmp_name'], '../member_picture/' . $image);
-
-		$_SESSION['join'] = $_POST; //$_SESSION
-		$_SESSION['join']['image'] = $image;// セッションにも保存
-		header('Location: check.php'); //入力し終えたらcheck.phpに戻る
-		exit();
-	}
-}
-//書き直し
-	if(isset($_REQEST['action'])){
-		$action = $_REQUEST['action'];
-	}
-	if ($action == 'rewrite'){
-		$_POST = $_SESSION['join'];
-		$error['rewrite'] = true;
-	}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -168,62 +91,18 @@ if (!empty($_POST))	{ //中身があった場合！は逆の意味になる→�
 	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css"/>
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/js/bootstrapValidator.min.js"></script>
 
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
 
-<div class="container">
-	<div class="row">
-		<div class="col-lg-2">
-			広告がはいります
-		</div>
-		<div class="col-lg-2">
-			
-		</div>
-
-        <div class="col-lg-8">
-		<form role="form" id="contact-form" class="contact-form">
-                    <div class="row">
-                		<!-- <div class="col-md-6"> -->
-                  		<div class="form-group">
-                            <input type="text" class="form-control" name="name" autocomplete="off" id="Name" placeholder="Title" value="<?php echo htmlspecialchars($name, ENT_QUOTES, 'UTF-8'); //一回入力して戻ったら書いたものが消えるから消えないような処理	?>"/>><?php if ($error['name'] == 'blank'): //nameが入力されてなかったら異常を知らせる?> 
-							<p class="error">* 本のタイトルを入力してください</p>
-			<?php endif; ?>
-                  		</div>
-                  		<!-- </div> -->
-                  <!--   	<div class="col-md-6"> -->
-                  		<div class="form-group">
-                            ¥<input type="text" style="ime-mode:disabled;width:95%;float:right;"onkeypress='if(event.keyCode<"0".charCodeAt(0) ||"9".charCodeAt(0)<event.keyCode)return false;' class="form-control" name="email" autocomplete="off" id="email" placeholder="price(半角英数)">
-                  	<!-- 	</div> -->
-                  		</div>
-
-
-                  		<!-- 
-                  		<div class="col-md-12"> -->
-                  		<div class="form-group">
-                            <textarea class="form-control textarea" rows="3" name="Message" id="Message" placeholder="Detail"></textarea>
-                  		</div>
-                  		<input type="file" name="image" size="35" />
-                  	<!-- 	</div> -->
-                    </div>
-	                    <div class="row">
-	                    <div class="col-md-12">
-	                 		 <button type="submit" class="btn main-btn pull-right">出品する</button>
-	                  	</div>
-	                  	</div>
-        </form>
-   		</div>
-   	</div>
-
-        <button type="button"><a href="ichiran.html">商品一覧に戻る</a></button>
+<body>
+<div id="wrap">
+<div id="head">
+<h1>会員登録</h1>
 </div>
-   
-	  <footer>
+
+<div id="content">
+<p>出品完了しました</p>
+<p><a href="ichiran.html">商品一覧に戻る</a></p>
+</div>
+ <footer>
         <div id="info-bar">
             <div class="container">
             	<div class="row">

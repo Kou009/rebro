@@ -3,11 +3,11 @@ require('../dbconnect.php');
 session_start();
 $name = '';
 $error = array();
-$email = '';
-$password = '';
+$price = '';
+$description = '';
 $error['name'] = '';
-$error['email'] = '';
-$error['password'] = '';
+$error['price'] = '';
+$error['description'] = '';
 $error['image'] = '';
 $action = '';
 
@@ -18,14 +18,12 @@ if (!empty($_POST))	{ //中身があった場合！は逆の意味になる→�
 		$error['name'] = 'blank';
 	}
 
-	if($_POST['email'] == ''){
-		$error['email'] = 'blank';
+	if($_POST['price'] == ''){
+		$error['price'] = 'blank';
 	}
-	if(strlen($_POST['password']) < 4){ //４文字以下のパスワードをはじく
-		$error['password'] = 'length';
-	}
-	if($_POST['password'] == '')	{
-		$error['password'] = 'blank';
+
+	if($_POST['description'] == ''){
+		$error['description'] = 'blank';
 	}
 	$fileName = $_FILES['image']['name'];
 	if (!empty($fileName)){ //からじゃなかったら
@@ -36,28 +34,28 @@ if (!empty($_POST))	{ //中身があった場合！は逆の意味になる→�
 	}
 
 	//重複アカウントのチェック
-	if(empty($error)){
-		$sql = sprintf('SELECT COUNT(*) AS cnt FROM members WHERE email="%s"',
-			mysqli_real_escape_string($db, $_POST['email'])
-			);
-		$record = mysqli_query($db, $sql) or die(mysqli_error($db));
-		$table = mysqli_fetch_assoc($record);
-		if($table['cnt'] > 0){
-			$error['email'] = 'duplicate';
-		}
-	}
+	// if(empty($error)){
+	// 	$sql = sprintf('SELECT COUNT(*) AS cnt FROM members WHERE email="%s"',
+	// 		mysqli_real_escape_string($db, $_POST['email'])
+	// 		);
+	// 	$record = mysqli_query($db, $sql) or die(mysqli_error($db));
+	// 	$table = mysqli_fetch_assoc($record);
+	// 	if($table['cnt'] > 0){
+	// 		$error['email'] = 'duplicate';
+	// 	}
+	// }
 
 	
 
-	if ($error['name']=='' && $error['email']=='' && $error['password']=='') { 
+	if ($error['name']=='' && $error['price']=='' && $error['description']=='') { 
 		$name = $_POST['name'];
-		$email = $_POST['email'];
-		$password = $_POST['password'];
+		$price = $_POST['price'];
+		$description = $_POST['description'];
 		$image = $_POST['image'];
 			//$errorが空のとき=今まで入力したやつがちゃんとなってるとき
 		//画像をアップロードする。うえの処理が問題ないとき↓
 		$image = date.time('YmdHis') . $_FILES['image']['name'];
-		move_uploaded_file($_FILES['image']['tmp_name'], '../member_picture/' . $image);
+		move_uploaded_file($_FILES['image']['tmp_name'], '../textbook_picture/' . $image);
 
 		$_SESSION['join'] = $_POST; //$_SESSION
 		$_SESSION['join']['image'] = $image;// セッションにも保存
@@ -187,36 +185,58 @@ if (!empty($_POST))	{ //中身があった場合！は逆の意味になる→�
 		</div>
 
         <div class="col-lg-8">
-		<form role="form" id="contact-form" class="contact-form">
+		<form role="form" id="contact-form" class="contact-form" action="" method="post" enctype="multipart/form-data">
                     <div class="row">
                 		<!-- <div class="col-md-6"> -->
                   		<div class="form-group">
-                            <input type="text" class="form-control" name="name" autocomplete="off" id="Name" placeholder="Title" value="<?php echo htmlspecialchars($name, ENT_QUOTES, 'UTF-8'); //一回入力して戻ったら書いたものが消えるから消えないような処理	?>"/>><?php if ($error['name'] == 'blank'): //nameが入力されてなかったら異常を知らせる?> 
+                            <input type="text" class="form-control" 
+                            name="name" autocomplete="off"
+                            placeholder="Title" 
+                            value="<?php echo htmlspecialchars($name, ENT_QUOTES, 'UTF-8'); //一回入力して戻ったら書いたものが消えるから消えないような処理	?>"/>
+                            <?php if ($error['name'] == 'blank'): //nameが入力されてなかったら異常を知らせる?> 
 							<p class="error">* 本のタイトルを入力してください</p>
-			<?php endif; ?>
+							<?php endif; ?>
                   		</div>
                   		<!-- </div> -->
                   <!--   	<div class="col-md-6"> -->
                   		<div class="form-group">
-                            ¥<input type="text" style="ime-mode:disabled;width:95%;float:right;"onkeypress='if(event.keyCode<"0".charCodeAt(0) ||"9".charCodeAt(0)<event.keyCode)return false;' class="form-control" name="email" autocomplete="off" id="email" placeholder="price(半角英数)">
+                            ¥<input type="text" 
+                            style="ime-mode:disabled;width:95%;float:right;"
+                            onkeypress='if(event.keyCode<"0".charCodeAt(0) ||"9".charCodeAt(0)<event.keyCode)return false;' 
+                            class="form-control" name="price" autocomplete="off" 
+                        	 placeholder="price(半角英数)"
+                            value="<?php echo htmlspecialchars($price, ENT_QUOTES, 'UTF-8'); ?>">
+                            <?php if ($error['price'] == 'blank'): ?>
+							<p class="error">* 価格を入力してください</p>
+							<?php endif; ?>
                   	<!-- 	</div> -->
                   		</div>
 
-
-                  		<!-- 
-                  		<div class="col-md-12"> -->
                   		<div class="form-group">
-                            <textarea class="form-control textarea" rows="3" name="Message" id="Message" placeholder="Detail"></textarea>
+                            <input class="form-control textarea" rows="3" name="description" placeholder="Detail"
+                            value="<?php echo htmlspecialchars($description, ENT_QUOTES, 'UTF-8'); ?>"/>
+                            <?php if ($error['description'] == 'blank'): ?>
+							<p class="error">* 詳細を入力してください</p>
+							<?php endif; ?>
+                        	</input>
                   		</div>
+
                   		<input type="file" name="image" size="35" />
+						<?php if ($error['image'] == 'type'): ?>
+						<p class="error">* 写真などは「.git」または「.jpg」の画像を指定してください</p>
+						<?php endif; ?>
+						<?php if(!empty($error)): ?>
+						<p class="error">*恐れ入りますが、画像を改めて指定してください</p>
+						<?php endif; ?>
                   	<!-- 	</div> -->
                     </div>
 	                    <div class="row">
 	                    <div class="col-md-12">
-	                 		 <button type="submit" class="btn main-btn pull-right">出品する</button>
+	                 		 <div><input type="submit" value="入力内容を確認する" /></div>
 	                  	</div>
 	                  	</div>
         </form>
+
    		</div>
    	</div>
 
