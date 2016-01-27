@@ -95,7 +95,7 @@
 <body>
 <div id="wrap">
 <div id="head">
-<h1>会員登録</h1>
+<h1>商品登録</h1>
 </div>
 
 <div id="content">
