@@ -100,7 +100,7 @@
 
 <div id="content">
 <p>出品完了しました</p>
-<p><a href="ichiran.html">商品一覧に戻る</a></p>
+<p><a href="ichiran.php">商品一覧に戻る</a></p>
 </div>
  <footer>
         <div id="info-bar">

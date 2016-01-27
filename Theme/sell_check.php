@@ -6,7 +6,7 @@ require('../dbconnect.php');
 
 
 if(!isset($_SESSION['join'])){
-	header('Location: sell.php');
+	header('Location: sell_index.php');
 	exit();
 }
 if (!empty($_POST)){
@@ -21,7 +21,7 @@ if (!empty($_POST)){
 	mysqli_query($db, $sql) or die(mysqli_error($db));
 	unset($_SESSION['join']);
 
-	header('Location: thanks.php');
+	header('Location: sell_thanks.php');
 	exit();
 }
 ?>
@@ -124,7 +124,7 @@ if (!empty($_POST)){
 
 <div id="content">
 <p>記入した内容を確認して、「出品する」ボタンをクリックしてください</p>
-<form action="check.php" method="post">
+<form action="sell_check.php" method="post">
 	<input type="hidden" name="action" value="submit" />
 	<dl>
 		<dt>タイトル</dt>
@@ -145,7 +145,7 @@ if (!empty($_POST)){
 		 width="100" height="100" alt="" />
 		</dd>
 		</dl>
-		<div><a href="sell.php?action=rewrite">&laquo;&nbsp;書き直す</a> | <input type="submit" value="出品する" /></div>
+		<div><a href="sell_index.php?action=rewrite">&laquo;&nbsp;書き直す</a> | <a href="sell_thanks.php"><input type="submit" value="出品する" /></div>
 </form>
 </div>
  <footer>

@@ -59,7 +59,7 @@ if (!empty($_POST))	{ //中身があった場合！は逆の意味になる→�
 
 		$_SESSION['join'] = $_POST; //$_SESSION
 		$_SESSION['join']['image'] = $image;// セッションにも保存
-		header('Location: check.php'); //入力し終えたらcheck.phpに戻る
+		header('Location: sell_check.php'); //入力し終えたらcheck.phpに戻る
 		exit();
 	}
 }
