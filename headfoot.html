@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <!-- "Resize & Fixed Header" コード名-->
+        <meta charset='utf-8'>
+        <title>チームREBRO</title>
+        <link rel="stylesheet" type="text/css" href="headfoot.css">
+        <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="headfoot.js">
+        </script>
+    
+        <script>
+            function init() {
+                window.addEventListener('scroll', function(e){
+                    var distanceY = window.pageYOffset || document.documentElement.scrollTop,
+                        shrinkOn = 300,
+                        header = document.querySelector("header");
+                    if (distanceY > shrinkOn) {
+                        classie.add(header,"smaller");
+                    } else {
+                        if (classie.has(header,"smaller")) {
+                            classie.remove(header,"smaller");
+                        }
+                    }
+                });
+            }
+            window.onload = init();
+        </script>
+        </head>
+
+
+
+        <body>
+
+        <div id="wrapper">
+
+        <header>
+            <div class="container clearfix">
+                <h1 id="logo">
+                    REBRO
+                </h1>
+                <i class="fa fa-book fa-4x"></i>     
+                <nav>
+                    <!-- <a href="">Lorem</a> -->
+                    <!-- 消えたnavタグ大事件... -->
+                    <a href="">ユーザー名</a> 
+                    <a href="">Logout</a>
+                </nav>
+            </div>
+        </header><!-- /header -->
+
+        <div id="main">
+           
+        </div><!-- #main -->
+
+
+        <footer>
+        <div id="info-bar">
+            <div class="container clearfix">
+                <div class="col-md-3">
+                    <span class="all-tutorials"><a href="">← TOP</a></span>
+                </div>
+
+
+                <div class="col-md-3">
+                    <ul>
+                        <h2>REBROについて</h2>
+                        <p>プライバシーポリシー</p>
+                        <p>環境保護活動</p>
+                    </ul>
+                </div>
+               
+               <div class="col-md-3">
+                    <ul>
+                        <h2>REBROを使う</h2>
+                        <p>都道府県検索</p>
+                        <p>大学検索</p>
+                        <p>出品一覧</p>
+                    </ul>
+                </div>
+
+                <div class="col-md-3">
+                    <span class="footer-logo"><a href="">Created by <i class="fa fa-heart"></i> Team REBRO</a></span>
+                </div>
+            </div>
+        </div><!-- /#top-bar -->
+        </footer><!-- /footer -->
+
+
+
+        </div><!-- /#wrapper -->
+    </body>
+</html>

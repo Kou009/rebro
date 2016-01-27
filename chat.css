@@ -1,0 +1,265 @@
+
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+a img {
+  border: none; }
+
+/* =Scss Variables
+-------------------------------------------------------------- */
+/* =Global  全体に対する装飾の指定
+-------------------------------------------------------------- */
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+body {
+  /*background-color: #3cb5f9;*/
+  color: #505050;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.8; }
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+  font-weight: 300; }
+
+a {
+  text-decoration: none;
+  color: #3cb5f9; }
+
+a:hover {
+  color: #0793e2; }
+
+/* =Template
+-------------------------------------------------------------- */
+#wrapper {
+  width: 100%;
+  margin: 0 auto; }
+
+#main {
+  background-color: #fff;
+  padding-top: 150px; }
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 0 30px; }
+
+
+
+/* =Info Bar
+-------------------------------------------------------------- */
+#info-bar {   /*フッタの色指定*/
+  background-color: #1abc9c;
+  background-color:rgba(26,188,156,0.7); }
+  #info-bar a,ul {
+    color: white;
+    font-size: 14px;
+    text-transform: uppercase;
+    display: inline-block;
+    margin: 0;
+    padding: 10px; }
+    #info-bar a:hover {
+      background-color: #0793e2; }
+  #info-bar span.all-tutorials,
+  #info-bar span.footer-logo {
+    display: inline;
+    width: 50%; }
+
+    .col-md-3{
+      float: left;
+      margin-left: 10%;
+    }
+  /*#info-bar span.all-tutorials {
+    float: left;
+    text-align: left; }
+  #info-bar span.footer-logo {
+    float: right;
+    text-align: right; }*/
+
+
+/* =Header
+-------------------------------------------------------------- 
+
+/*body
+-----------------------------------------------------------*/
+ #main{
+ 	position: static;
+ 	top: 50%;
+ }
+
+ .sidebar{
+	float: left;
+	/*margin-right: 1%;*/
+  padding: 5%;
+  padding-right: 12%;
+  padding-bottom: 70%;
+  color: #000;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  background: #f0f8ff;
+  text-align: center;
+}
+
+img {
+  /*width: 150px;*/
+  border-radius: 300px;
+  -webkit-border-radius: 300px;
+  -moz-border-radius: 300px;
+}
+
+.contents{
+	float: right;
+	clear: right;
+	display: block;
+  padding: 5%;
+  padding-left: 60%;
+  padding-bottom: 40%;
+  color: #000;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  background: #f0f8ff;
+}
+
+.footer{
+  position: static;
+  bottom: 20%;
+}
+
+/**---------------チャット部分のcss---------------**/
+.chat
+{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.chat li
+{
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted #B3A9A9;
+}
+
+.chat li.left .chat-body
+{
+    margin-left: 60px;
+}
+
+.chat li.right .chat-body
+{
+    margin-right: 60px;
+    text-align: right;
+}
+
+
+.chat li .chat-body p
+{
+    margin: 0;
+    color: #777777;
+}
+
+.panel .slidedown .glyphicon, .chat .glyphicon
+{
+    margin-right: 5px;
+}
+
+.panel-body
+{
+    overflow-y: scroll;
+    height: 450px;
+}
+
+::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar
+{
+    width: 12px;
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #555;
+}
+
+
+/* =Footer
+-------------------------------------------------------------- */
+Footer{
+	clear: left;
+}
+/* =Extras
+-------------------------------------------------------------- */
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  content: "";
+  clear: both;
+  height: 0; }
+
+/* =Media Queries
+-------------------------------------------------------------- */
+@media all and (max-width: 660px) {
+  /* =Header
+  -------------------------------------------------------------- */
+  header h1#logo {
+    display: block;
+    float: none;
+    margin: 0 auto;
+    height: 100px;
+    line-height: 100px;
+    text-align: center; }
+  header nav {
+    display: block;
+    float: none;
+    height: 50px;
+    text-align: center;
+    margin: 0 auto; }
+    header nav a {
+      line-height: 50px;
+      margin: 0 10px; }
+  header.smaller {
+    height: 75px; }
+    header.smaller h1#logo {
+      height: 40px;
+      line-height: 40px;
+      font-size: 30px; }
+    header.smaller nav {
+      height: 35px; }
+      header.smaller nav a {
+        line-height: 35px; } }
+@media all and (max-width: 600px) {
+  .container {
+    width: 100%; }
+
+  #info-bar a {
+    display: block; }
+  #info-bar span.all-tutorials,
+  #info-bar span.back-to-tutorial {
+    width: 100%; }
+  #info-bar span.all-tutorials,
+  #info-bar span.back-to-tutorial {
+    float: none;
+    text-align: center; }
+  #info-bar span.all-tutorials {
+    border-bottom: solid 1px #0793e2; } }
+
+
+

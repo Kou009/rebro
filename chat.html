@@ -1,0 +1,191 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset='UTF-8'>
+		<link rel="stylesheet" type="text/css" href="chat.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/common.css">
+		<title>個別チャット</title>
+        <link href="Theme/assets/css/font-awesome.min.css" rel="stylesheet">
+        <link href="Theme/assets/css/common.css" rel="stylesheet">
+        <link href="Theme/assets/css/custom.css" rel="stylesheet">
+        <script type="text/javascript" src="headfoot.js">
+        </script>
+    
+        <script>
+            function init() {
+                window.addEventListener('scroll', function(e){
+                    var distanceY = window.pageYOffset || document.documentElement.scrollTop,
+                        shrinkOn = 300,
+                        header = document.querySelector("header");
+                    if (distanceY > shrinkOn) {
+                        classie.add(header,"smaller");
+                    } else {
+                        if (classie.has(header,"smaller")) {
+                            classie.remove(header,"smaller");
+                        }
+                    }
+                });
+            }
+            window.onload = init();
+        </script>
+	</head>
+	<body>
+		<div class="header">
+			<!-- <h1><font face="MSゴシック">テキスト</font></h1> -->
+			 <div id="wrapper">
+
+		        <header>
+		            <div class="container clearfix">
+		                <h1 id="logo">
+		                    REBRO
+		                </h1>
+		                <i class="fa fa-book fa-4x"></i>     
+		                <nav>
+		                    <!-- <a href="">Lorem</a> -->
+		                    <!-- 消えたnavタグ大事件... -->
+		                    <a href="">About us</a> 
+		                    <a href="">Logout</a>
+		                </nav>
+		            </div>
+		        </header><!-- /header -->
+			</div>
+		</div>
+		<div id="main">
+			<!-- <h3><font face="MSゴシック">１：１のチャット</font></h3> -->
+			
+			<div class="sidebar">
+				<h1 class="glyphicon glyphicon-comment">出品者情報</h1>
+
+				<img class="syuppin" src="Theme/assets/img/default.png" width="128" height="128" alt="default.png">
+
+				
+			</div>
+
+			<div class="contents">
+				
+			</div>
+				<div class="container">
+					    <div class="row">
+					        <div class="col-md-3">
+					            <div class="panel panel-primary">
+					                <div class="panel-heading">
+					                    <span class="glyphicon glyphicon-comment"></span> Chat
+					                  
+					                </div>
+					                <div class="panel-body">
+					                    <ul class="chat">
+					                        <li class="left clearfix"><span class="chat-img pull-left">
+					                            <img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle" />
+					                        </span>
+					                            <div class="chat-body clearfix">
+					                                <div class="header">
+					                                    <strong class="primary-font">Jack Sparrow</strong> 
+					                                    	<small class="pull-right text-muted">
+					                                        	<span class="glyphicon glyphicon-time"></span>12 mins ago
+					                                        </small>
+					                                </div>
+					                                <p>
+					                                    売ります。とか
+					                                </p>
+					                            </div>
+					                        </li>
+					                        <li class="right clearfix"><span class="chat-img pull-right">
+					                            <img src="http://placehold.it/50/FA6F57/fff&text=ME" alt="User Avatar" class="img-circle" />
+					                        </span>
+					                            <div class="chat-body clearfix">
+					                                <div class="header">
+					                                    <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>13 mins ago</small>
+					                                    <strong class="pull-right primary-font">Bhaumik Patel</strong>
+					                                </div>
+					                                <p>
+					                                   買います。とか
+					                                </p>
+					                            </div>
+					                        </li>
+					                        <li class="left clearfix"><span class="chat-img pull-left">
+					                            <img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle" />
+					                        </span>
+					                            <div class="chat-body clearfix">
+					                                <div class="header">
+					                                    <strong class="primary-font">Jack Sparrow</strong> <small class="pull-right text-muted">
+					                                        <span class="glyphicon glyphicon-time"></span>14 mins ago</small>
+					                                </div>
+					                                <p>
+					                                    交渉成立！
+					                                </p>
+					                            </div>
+					                        </li>
+					                        <li class="right clearfix"><span class="chat-img pull-right">
+					                            <img src="http://placehold.it/50/FA6F57/fff&text=ME" alt="User Avatar" class="img-circle" />
+					                        </span>
+					                            <div class="chat-body clearfix">
+					                                <div class="header">
+					                                    <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>15 mins ago</small>
+					                                    <strong class="pull-right primary-font">Bhaumik Patel</strong>
+					                                </div>
+					                                <p>
+					                                    あざまーーす！！！
+					                                </p>
+					                            </div>
+					                        </li>
+					                    </ul>
+					                </div>
+					                <div class="panel-footer">
+					                    <div class="input-group">
+					                        <textarea id="btn-input" type="text" class="form-control input-sm" 
+					                        rows="3" colums="25" 
+					                         placeholder="Type your message here..." ></textarea>
+					                        <span class="input-group-btn">
+					                            <button class="btn btn-warning btn-sm" id="btn-chat">
+					                                Send</button>
+					                        </span>
+					                    </div>
+					                </div>
+					            </div>
+					        </div>
+					    </div>
+					</div>
+				</div>
+			</div>
+		
+
+		
+		<div class="footer">
+			 <footer>
+		        <div id="info-bar">
+		            <div class="container clearfix">
+		                <div class="col-lg-3">
+		                    <span class="all-tutorials"><a href="">← TOP</a></span>
+		                </div>
+
+
+		                <div class="col-lg-3">
+		                    <ul>
+		                        <h2>REBROについて</h2>
+		                        <p>プライバシーポリシー</p>
+		                        <p>環境保護活動</p>
+		                    </ul>
+		                </div>
+		               
+		               <div class="col-lg-3">
+		                    <ul>
+		                        <h2>REBROを使う</h2>
+		                        <p>都道府県検索</p>
+		                        <p>大学検索</p>
+		                        <p>出品一覧</p>
+		                    </ul>
+		                </div>
+
+		                <div class="col-lg-3">
+		                    <span class="footer-logo"><a href="">Created by <i class="fa fa-heart"></i> Team REBRO</a></span>
+		                </div>
+		            </div>
+		        </div><!-- /#top-bar -->
+		        </footer><!-- /footer -->
+		    </div>
+
+
+
+        </div><!-- /#wrapper -->
+    </body>
+</html>
