@@ -118,7 +118,7 @@ require('../dbconnect.php');
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
-	        <h1>女優写真集</h1>
+	        <h1></h1>
 	        <p></p>
             </div>
             <div class="col-lg-4">
@@ -135,7 +135,7 @@ require('../dbconnect.php');
     <!-- 左カラム-->
         <div class="row">
             <div class="col-lg-3">
-    		<div id="left" class="span3">
+    		<div id="left" class="span3" style="float:left;">
                 <ul id="menu-group-1" class="nav menu">  
                     <li class="item-1 deeper parent active">
                         <a class="" href="#">

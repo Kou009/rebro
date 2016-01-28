@@ -236,7 +236,7 @@ if (!empty($_POST))	{ //中身があった場合！は逆の意味になる→�
    		</div>
    	</div>
 
-        <button type="button"><a href="ichiran.html">商品一覧に戻る</a></button>
+        <button type="button"><a href="ichiran.php">商品一覧に戻る</a></button>
 </div>
    
 	  <footer>
