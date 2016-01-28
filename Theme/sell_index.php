@@ -166,11 +166,7 @@ if (!empty($_POST))	{ //中身があった場合！は逆の意味になる→�
 	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css"/>
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/js/bootstrapValidator.min.js"></script>
 
-</br>
-</br>
-</br>
-</br>
-</br>
+
 </br>
 </br>
 </br>

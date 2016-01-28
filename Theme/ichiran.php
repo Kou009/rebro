@@ -1,4 +1,7 @@
-
+<?date_default_timezone_set('Asia/Tokyo');
+session_start();
+require('../dbconnect.php');
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -101,222 +104,227 @@
 	</nav> -->
 	
 	<!-- MAIN IMAGE SECTION -->
-	<div id="portwrap">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 col-lg-offset-2">
-					<h2>気になる教科書見つけよう</h2>
-				</div>
-			</div><!-- row -->
-		</div><!-- /container -->
-	</div><!-- /portrwrap -->
+<div id="portwrap">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2">
+				<h2>気になる教科書見つけよう</h2>
+			</div>
+		</div><!-- row -->
+	</div><!-- /container -->
+</div><!-- /portrwrap -->
 
 	<!-- WELCOME SECTION -->
     <div class="container">
-      <div class="row mt">
-      	<div class="col-lg-8">
-	        <h1>画像がでてこないんだぁぁぁぁぁぁ</h1>
-	        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-      	</div>
-      	<div class="col-lg-4">
+        <div class="row">
+            <div class="col-lg-8">
+	        <h1>女優写真集</h1>
+	        <p></p>
+            </div>
+            <div class="col-lg-4">
       		<a href="sell_index.php">
-      		<p class="pull-right"><br><button type="button" class="btn btn-green">出品する
-      		</button></p></a>
-      	</div>
-      </div><!-- /row -->
-    </div><!-- /.container -->
+      		<p class="pull-right"><br>
+                <button type="button" class="btn btn-green">出品する
+      		    </button>
+            </p>
+            </a>
+            </div>
+        </div>
+   
 
     <!-- 左カラム-->
-    
-<div class="col-lg-3">
-	
-		<div id="left" class="span3">
-            <ul id="menu-group-1" class="nav menu">  
-                <li class="item-1 deeper parent active">
-                    <a class="" href="#">
-                        <span data-toggle="collapse" data-parent="#menu-group-1" href="#sub-item-1" class="sign"><i class="icon-plus icon-white"></i></span>
-                        <span class="lbl">福岡県</span>                      
-                    </a>
-                    <ul class="children nav-child unstyled small collapse" id="sub-item-1">
-                        <li class="item-2 deeper parent active">
-                            <a class="" href="#">
-                                <span data-toggle="collapse" data-parent="#menu-group-1" href="#sub-item-2" class="sign"><i class="icon-plus icon-white"></i></span>
-                                <span class="lbl">福岡市</span> 
-                            </a>
-                            <ul class="children nav-child unstyled small collapse" id="sub-item-2">
-                                <li class="item-3 current active">
-                                    <a class="" href="#">
-                                        <span class="sign"><i class="icon-play"></i></span>
-                                        <span class="lbl">福岡大学</span> (current menu)
-                                    </a>
-                                </li>
-                                <li class="item-4">
-                                    <a class="" href="#">
-                                        <span class="sign"><i class="icon-play"></i></span>
-                                        <span class="lbl">西南大学</span> 
-                                    </a>
-                                </li>                                
-                            </ul>
-                        </li>
-                        <li class="item-5 deeper parent">
-                            <a class="" href="#">
-                                <span data-toggle="collapse" data-parent="#menu-group-1" href="#sub-item-5" class="sign"><i class="icon-plus icon-white"></i></span>
-                                <span class="lbl">北九州市</span> 
-                            </a>
-                            <ul class="children nav-child unstyled small collapse" id="sub-item-5">
-                                <li class="item-6">
-                                    <a class="" href="#">
-                                        <span class="sign"><i class="icon-play"></i></span>
-                                        <span class="lbl">九州工業大学</span>                                    
-                                    </a>
-                                </li>
-                                <li class="item-7">
-                                    <a class="" href="#">
-                                        <span class="sign"><i class="icon-play"></i></span>
-                                        <span class="lbl">九州国際大学</span>                                    
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
+        <div class="row">
+            <div class="col-lg-3">
+    		<div id="left" class="span3">
+                <ul id="menu-group-1" class="nav menu">  
+                    <li class="item-1 deeper parent active">
+                        <a class="" href="#">
+                            <span data-toggle="collapse" data-parent="#menu-group-1" href="#sub-item-1" class="sign"><i class="icon-plus icon-white"></i></span>
+                            <span class="lbl">福岡県</span>                      
+                        </a>
+                        <ul class="children nav-child unstyled small collapse" id="sub-item-1">
+                            <li class="item-2 deeper parent active">
+                                <a class="" href="#">
+                                    <span data-toggle="collapse" data-parent="#menu-group-1" href="#sub-item-2" class="sign"><i class="icon-plus icon-white"></i></span>
+                                    <span class="lbl">福岡市</span> 
+                                </a>
+                                <ul class="children nav-child unstyled small collapse" id="sub-item-2">
+                                    <li class="item-3 current active">
+                                        <a class="" href="#">
+                                            <span class="sign"><i class="icon-play"></i></span>
+                                            <span class="lbl">福岡大学</span> (current menu)
+                                        </a>
+                                    </li>
+                                    <li class="item-4">
+                                        <a class="" href="#">
+                                            <span class="sign"><i class="icon-play"></i></span>
+                                            <span class="lbl">西南大学</span> 
+                                        </a>
+                                    </li>                                
+                                </ul>
+                            </li>
+                            <li class="item-5 deeper parent">
+                                <a class="" href="#">
+                                    <span data-toggle="collapse" data-parent="#menu-group-1" href="#sub-item-5" class="sign"><i class="icon-plus icon-white"></i></span>
+                                    <span class="lbl">北九州市</span> 
+                                </a>
+                                <ul class="children nav-child unstyled small collapse" id="sub-item-5">
+                                    <li class="item-6">
+                                        <a class="" href="#">
+                                            <span class="sign"><i class="icon-play"></i></span>
+                                            <span class="lbl">九州工業大学</span>                                    
+                                        </a>
+                                    </li>
+                                    <li class="item-7">
+                                        <a class="" href="#">
+                                            <span class="sign"><i class="icon-play"></i></span>
+                                            <span class="lbl">九州国際大学</span>                                    
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
 
-                <li class="item-8 deeper parent">
-                    <a class="" href="#">
-                        <span data-toggle="collapse" data-parent="#menu-group-1" href="#sub-item-8" class="sign"><i class="icon-plus icon-white"></i></span>
-                        <span class="lbl">佐賀県</span>                      
-                    </a>
-                    <ul class="children nav-child unstyled small collapse" id="sub-item-8">
-                        <li class="item-9 deeper parent">
-                            <a class="" href="#">
-                                <span data-toggle="collapse" data-parent="#menu-group-1" href="#sub-item-9" class="sign"><i class="icon-plus icon-white"></i></span>
-                                <span class="lbl">佐賀市</span> 
-                            </a>
-                            <ul class="children nav-child unstyled small collapse" id="sub-item-9">
-                                <li class="item-10">
-                                    <a class="" href="#">
-                                        <span class="sign"><i class="icon-play"></i></span>
-                                        <span class="lbl">佐賀大学</span>
-                                    </a>
-                                </li>
-                                <li class="item-11">
-                                    <a class="" href="#">
-                                        <span class="sign"><i class="icon-play"></i></span>
-                                        <span class="lbl">田舎大学</span> 
-                                    </a>
-                                </li>                                
-                            </ul>
-                        </li>
-                        <li class="item-12 deeper parent">
-                            <a class="" href="#">
-                                <span data-toggle="collapse" data-parent="#menu-group-1" href="#sub-item-12" class="sign"><i class="icon-plus icon-white"></i></span>
-                                <span class="lbl">ほかにない</span> 
-                            </a>
-                            <ul class="children nav-child unstyled small collapse" id="sub-item-12">
-                                <li class="item-13">
-                                    <a class="" href="#">
-                                        <span class="sign"><i class="icon-play"></i></span>
-                                        <span class="lbl">そうだよ田舎だよ</span>                                    
-                                    </a>
-                                </li>
-                                <li class="item-14">
-                                    <a class="" href="#">
-                                        <span class="sign"><i class="icon-play"></i></span>
-                                        <span class="lbl">思いつかねえよ</span>                                    
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>    			
-            </ul>          
-		</div>
+                    <li class="item-8 deeper parent">
+                        <a class="" href="#">
+                            <span data-toggle="collapse" data-parent="#menu-group-1" href="#sub-item-8" class="sign"><i class="icon-plus icon-white"></i></span>
+                            <span class="lbl">佐賀県</span>                      
+                        </a>
+                        <ul class="children nav-child unstyled small collapse" id="sub-item-8">
+                            <li class="item-9 deeper parent">
+                                <a class="" href="#">
+                                    <span data-toggle="collapse" data-parent="#menu-group-1" href="#sub-item-9" class="sign"><i class="icon-plus icon-white"></i></span>
+                                    <span class="lbl">佐賀市</span> 
+                                </a>
+                                <ul class="children nav-child unstyled small collapse" id="sub-item-9">
+                                    <li class="item-10">
+                                        <a class="" href="#">
+                                            <span class="sign"><i class="icon-play"></i></span>
+                                            <span class="lbl">佐賀大学</span>
+                                        </a>
+                                    </li>
+                                    <li class="item-11">
+                                        <a class="" href="#">
+                                            <span class="sign"><i class="icon-play"></i></span>
+                                            <span class="lbl">田舎大学</span> 
+                                        </a>
+                                    </li>                                
+                                </ul>
+                            </li>
+                            <li class="item-12 deeper parent">
+                                <a class="" href="#">
+                                    <span data-toggle="collapse" data-parent="#menu-group-1" href="#sub-item-12" class="sign"><i class="icon-plus icon-white"></i></span>
+                                    <span class="lbl">ほかにない</span> 
+                                </a>
+                                <ul class="children nav-child unstyled small collapse" id="sub-item-12">
+                                    <li class="item-13">
+                                        <a class="" href="#">
+                                            <span class="sign"><i class="icon-play"></i></span>
+                                            <span class="lbl">そうだよ田舎だよ</span>                                    
+                                        </a>
+                                    </li>
+                                    <li class="item-14">
+                                        <a class="" href="#">
+                                            <span class="sign"><i class="icon-play"></i></span>
+                                            <span class="lbl">思いつかねえよ</span>                                    
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>    			
+                </ul>          
+            </div>
+            </div>  
+        
+   
 
-	</div>  
 
 <!-- References: https://github.com/fancyapps/fancyBox -->
 
 
-<link rel="stylesheet" href="//frontend.reklamor.com/fancybox/jquery.fancybox.css" media="screen">
-<script src="//frontend.reklamor.com/fancybox/jquery.fancybox.js"></script>
+    <link rel="stylesheet" href="//frontend.reklamor.com/fancybox/jquery.fancybox.css" media="screen">
+    <script src="//frontend.reklamor.com/fancybox/jquery.fancybox.js"></script>
 
-<div class="container">
-	<div class="col-lg-9">
-	<div class="row">
-		<div class='list-group gallery'>
-					<?php
-				$dsn = 'mysql:dbname=rebro;host=localhost';
-				$user = 'root';
-				$password = '';
-				$dbh = new PDO($dsn,$user,$password);
-				$dbh->query('SET NAMES utf8');
+        
+	       <div class="col-lg-9">
+                <div class='list-group gallery'>
+    					<?php
+    				$dsn = 'mysql:dbname=rebro;host=localhost';
+    				$user = 'root';
+    				$password = '';
+    				$dbh = new PDO($dsn,$user,$password);
+    				$dbh->query('SET NAMES utf8');
 
-				$sql = 'SELECT * FROM `books` WHERE 1';
-				$stmt = $dbh->prepare($sql);
-				//INSERT文を実行
-				$stmt->execute();
+    				$sql = 'SELECT * FROM `books` WHERE 1';
+    				$stmt = $dbh->prepare($sql);
+    				//INSERT文を実行
+    				$stmt->execute();
 
-				while(1)
-				{
-					$rec = $stmt->fetch(PDO::FETCH_ASSOC);
-					if($rec==false)
-					{
-						break;
-					}
-					//'' ""　どちらでも可能&nbspは空白を表示
-					echo'</br>';
-					//echo $rec['id'];
-					echo '&nbsp;';
-					//echo "Title";
-					echo '&nbsp;';
-					//echo $rec['title'];
-					
-					echo'</br>';
-					
-					//echo $rec['price'];
+    				while(1)
+    				{
+    					$rec = $stmt->fetch(PDO::FETCH_ASSOC);
+    					if($rec==false)
+    					{
+    						break;
+    					}
+    					// //'' ""　どちらでも可能&nbspは空白を表示
+    					// echo'</br>';
+    					// //echo $rec['id'];
+    					// echo '&nbsp;';
+    					// //echo "Title";
+    					// echo '&nbsp;';
+    					// //echo $rec['title'];
+    					
+    					// echo'</br>';
+    					
+    					// //echo $rec['price'];
 
-					// echo'</br>';
-					// echo $rec['picture'];
-					echo'</br>';
-					//echo '<img src="../textbook_picture/'.$rec['picture'].'">';	
-				
-					echo '<div class="col-sm-4 col-xs-6 col-md-3 col-lg-3">';
-					echo '<a class="thumbnail fancybox" rel="ligthbox" >';
-					echo '<img class="img-responsive" alt="" src="../textbook_picture/'.$rec['picture'].'">';
-					echo '<div class="text-right">';
-					echo '<small class="text-muted">';
-					echo $rec['title'];
-					echo'</br>';
-					echo '¥';
-					echo $rec['price'];
-					echo '</small></div></a></div>';
-
-
-
-				}
-
-				$dbh = null;
-				?>
-				<div class="msg">
-				<img src="../textbook_picture/<?php echo htmlspecialchars($post['picture']); ?>" width="48" height="48">
-				</div>
+    					// // echo'</br>';
+    					// // echo $rec['picture'];
+    					// echo'</br>';
+    					// //echo '<img src="../textbook_picture/'.$rec['picture'].'">';	
+    				
+    					echo '<div style="float:left;">';
+    					echo '<a class="thumbnail fancybox" rel="ligthbox" >';
+    					echo '<img class="img-responsive" alt="" src="../textbook_picture/'.$rec['picture'].'"　
+                            style="width:200px;height:200px;">';
+    					echo '<div class="text-right">';
+    					echo '<small class="text-muted">';
+    					echo $rec['title'];
+    					echo'</br>';
+    					echo '¥';
+    					echo $rec['price'];
+    					echo '</small></div></a></div>';
+                        echo '  ';
 
 
-            <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-                <a class="thumbnail fancybox" rel="ligthbox" >
-                    <img class="img-responsive" alt="" src="http://placehold.it/320x320" />
-                    <div class='text-right'>
-                        <small class='text-muted'>Image Title</small>
-                    </div> <!-- text-right / end -->
-                </a>
-            </div> <!-- col-6 / end -->
+
+    				}
+
+    				$dbh = null;
+    				?>
+    			
+
+
+            <!-- <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'> -->
+                <!-- <a class="thumbnail fancybox" rel="ligthbox" > -->
+                    <!-- <img class="img-responsive" alt="" src="http://placehold.it/320x320" /> -->
+                    <!-- <div class='text-right'> -->
+                        <!-- <small class='text-muted'>Image Title</small> -->
+                    <!-- </div> text-right / end -->
+                <!-- </a> -->
+            <!-- </div> col-6 / end -->
            
 
         
-        </div> <!-- list-group / end -->
-	</div> <!-- row / end -->
-	</div> <!-- container / end -->
-</div>
+                </div> <!-- list-group / end -->
+            </div> <!-- col-lg / end -->
+	    </div> <!-- low / end -->
+     </div> <!-- container / end -->
+
+
 
 
   
@@ -356,10 +364,10 @@
                 <div class="col-lg-3">
                     <span class="footer-logo"><a href="">Created by <i class="fa fa-heart"></i> Team REBRO</a></span>
                 </div>
-            </div>
+                </div>
             </div>
         </div><!-- /#top-bar -->
-        </footer><!-- /footer -->
+     </footer><!-- /footer -->
 	
 	
 <!--これ以下は消さないこと!
