@@ -2,7 +2,7 @@
 .avatar_left{
 	position: relative;
 	float: right;
-	top: 0em;
+	top: 8em;
 	right: 0em;
 }
 .button-change-profile-picture{
@@ -13,7 +13,7 @@
 }
 
 /*参照 http://bootsnipp.com/snippets/featured/float-label-pattern-forms*/
-.float-label-control { position: relative; margin-bottom: 0em; }
+.float-label-control { position: relative; margin-bottom: 1.5em; }
     .float-label-control ::-webkit-input-placeholder { color: transparent; }
     .float-label-control :-moz-placeholder { color: transparent; }
     .float-label-control ::-moz-placeholder { color: transparent; }
