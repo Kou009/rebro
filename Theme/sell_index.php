@@ -59,7 +59,7 @@ if (!empty($_POST))	{ //中身があった場合！は逆の意味になる→�
 
 		$_SESSION['join'] = $_POST; //$_SESSION
 		$_SESSION['join']['image'] = $image;// セッションにも保存
-		header('Location: check.php'); //入力し終えたらcheck.phpに戻る
+		header('Location: sell_check.php'); //入力し終えたらcheck.phpに戻る
 		exit();
 	}
 }
@@ -166,11 +166,7 @@ if (!empty($_POST))	{ //中身があった場合！は逆の意味になる→�
 	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css"/>
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/js/bootstrapValidator.min.js"></script>
 
-</br>
-</br>
-</br>
-</br>
-</br>
+
 </br>
 </br>
 </br>
@@ -240,7 +236,7 @@ if (!empty($_POST))	{ //中身があった場合！は逆の意味になる→�
    		</div>
    	</div>
 
-        <button type="button"><a href="ichiran.html">商品一覧に戻る</a></button>
+        <button type="button"><a href="ichiran.php">商品一覧に戻る</a></button>
 </div>
    
 	  <footer>

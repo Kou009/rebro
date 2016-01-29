@@ -1,3 +1,27 @@
+<?php 
+	date_default_timezone_set('Asia/Tokyo');
+	session_start();
+	require('../dbconnect.php');
+	// $dsn = 'mysql:dbname=rebro;host=localhost';
+ //    $user = 'root';
+ //    $password = '';
+ //    $dbh = new PDO($dsn,$user,$password);
+    //$dbh->query('SET NAMES utf8');
+
+	$sql = 'SELECT * FROM `user_profiles` WHERE user_id = 2';
+
+	$result = mysqli_query($db, $sql) or die(mysqli_error($db));
+
+	$rec = mysqli_fetch_assoc($result);
+	// $stmt = $dbh->prepare($sql);
+ //    				//INSERT文を実行
+ //    $stmt->execute();
+
+    //$rec = $stmt;
+
+	// echo $rec['user_name'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -109,123 +133,121 @@
 						</dd>
 					
 					<div class="col-sm-4">
+					
 
 
 						
 
 		                <h3 class="page-header">Profile</h3>
-		                <form role="form">
+		                <form role="form" action　="user_profiles_edit.php" method="post" enctype="multipart/form-data">
 		                    <div class="form-group float-label-control">
-		                        <label for="">名前</label>
-		                        <input type="text" class="form-control" placeholder="Username">
+		                        <label for="">名前（※必須）<a><?php echo $rec['user_name']; ?></a></label>
+		                        <p> </p><br/><br/>
+		                        <hr/>
 		                    </div>
-		                    <div class="profile-edit-1">
+		                    <!-- <div class="profile-edit-1">
 								<div class="row">
 							    	<button href="#"  class="btn btn-xlarge" /><i class="fa fa-chevron-right fa-5x" ></i></button>
 							    </div>
-							</div>
+							</div> -->
 
 		                    <div class="form-group float-label-control">
 		                        <label for="">ふりがな</label>
 		                        <input type="text" class="form-control" placeholder="Username">
 		                    </div>
-		                    <div class="profile-edit-2">
-								<div class="row">
-							    	<button href="#"  class="btn btn-xlarge" /><i class="fa fa-chevron-right fa-5x" ></i></button>
-							    </div>
-							</div>
+		                    
 
 		                    <div class="form-group float-label-control">
 		                        <label for="">アカウント名</label>
 		                        <input type="text" class="form-control" placeholder="Username">
 		                    </div>
-		                    <div class="profile-edit-3">
+		                    <!-- <div class="profile-edit-3">
 								<div class="row">
 							    	<button href="#"  class="btn btn-xlarge" /><i class="fa fa-chevron-right fa-5x" ></i></button>
 							    </div>
-							</div>
+							</div> -->
 
 		                    <div class="form-group float-label-control">
 		                        <label for="">年齢</label>
 		                        <input type="text" class="form-control" placeholder="Username">
 		                    </div>
-		                    <div class="profile-edit-4">
+		                    <!-- <div class="profile-edit-4">
 								<div class="row">
 							    	<button href="#"  class="btn btn-xlarge" /><i class="fa fa-chevron-right fa-5x" ></i></button>
 							    </div>
-							</div>
+							</div> -->
 
 		                    <div class="form-group float-label-control">
 		                        <label for="">大学名</label>
 		                        <input type="text" class="form-control" placeholder="Username">
 		                    </div>
-		                    <div class="profile-edit-5">
+		                    <!-- <div class="profile-edit-5">
 								<div class="row">
 							    	<button href="#"  class="btn btn-xlarge" /><i class="fa fa-chevron-right fa-5x" ></i></button>
 							    </div>
 							</div>
-
+ -->
 		                    <div class="form-group float-label-control">
 		                        <label for="">　　　　　都道府県</label>
 		                        <input type="text" class="form-control" placeholder="Username">
 		                    </div>
-		                    <div class="profile-edit-6">
+		                    <!-- <div class="profile-edit-6">
 								<div class="row">
 							    	<button href="#"  class="btn btn-xlarge" /><i class="fa fa-chevron-right fa-5x" ></i></button>
 							    </div>
 							</div>
-
+ -->
 
 		                    <div class="form-group float-label-control">
 		                        <label for="">　　　　　市町村</label>
 		                        <input type="text" class="form-control" placeholder="Username">
 		                    </div>
-		                    <div class="profile-edit-7">
+		                    <!-- <div class="profile-edit-7">
 								<div class="row">
 							    	<button href="#"  class="btn btn-xlarge" /><i class="fa fa-chevron-right fa-5x" ></i></button>
 							    </div>
-							</div>
+							</div> -->
 
 		                    <div class="form-group float-label-control">
 		                        <label for="">学部名</label>
 		                        <input type="text" class="form-control" placeholder="Username">
 		                    </div>
-		                    <div class="profile-edit-8">
+		                    <!-- <div class="profile-edit-8">
 								<div class="row">
 							    	<button href="#"  class="btn btn-xlarge" /><i class="fa fa-chevron-right fa-5x" ></i></button>
-							    </div>
-							</div>
+							    </div>	
+							</div> -->
 
  							<div class="form-group float-label-control">
 		                        <label for="">E-mail</label>
 		                        <input type="email" class="form-control" placeholder="Username">
 		                    </div>
-		                    <div class="profile-edit-9">
+		                    <!-- <div class="profile-edit-9">
 								<div class="row">
 							    	<button href="#"  class="btn btn-xlarge" /><i class="fa fa-chevron-right fa-5x" ></i></button>
 							    </div>
-							</div>
+							</div> -->
 
 		                    <div class="form-group float-label-control">
 		                        <label for="">電話番号</label>
 		                        <input type="text" class="form-control" placeholder="Username">
 		                    </div>
-		                    <div class="profile-edit-9">
+		                    <!-- <div class="profile-edit-9">
 								<div class="row">
 							    	<button href="#"  class="btn btn-xlarge" /><i class="fa fa-chevron-right fa-5x" ></i></button>
 							    </div>
-							</div>
+							</div> -->
 
 		                    <div class="form-group float-label-control">
 		                        <label for="">住所</label>
 		                        <input type="text" class="form-control" placeholder="Username">
 		                    </div>
-		                    <div class="profile-edit-10">
+		                    <!-- <div class="profile-edit-10">
 								<div class="row">
 							    	<button href="#"  class="btn btn-xlarge" /><i class="fa fa-chevron-right fa-5x" ></i></button>
 							    </div>
 							</div>
-
+ -->
 		                    <!-- <div class="form-group float-label-control">
 		                        <label for="">Username</label>
 		                        <input type="email" class="form-control" placeholder="Username">
@@ -236,14 +258,15 @@
 		                        <input type="password" class="form-control" placeholder="Password">
 		                    </div> -->
 		                    <div class="form-group float-label-control">
-		                        <label for="">自己PR</label>
-		                        <textarea class="form-control" placeholder="Textarea" rows="1"></textarea>
+		                        <label for="">自己PR（※必須）</label>
+		                        <textarea class="form-control"  name ="pr" placeholder="Textarea" rows="1"></textarea>
 		                    </div>
-		                    <div class="profile-edit-11">
+		                    <!-- <div class="profile-edit-11">
 								<div class="row">
 							    	<button href="#"  class="btn btn-xlarge" /><i class="fa fa-chevron-right fa-5x" ></i></button>
 							    </div>
-							</div>
+							</div> -->
+							
 
 		                </form>
 
