@@ -1,6 +1,33 @@
 <?date_default_timezone_set('Asia/Tokyo');
 session_start();
 require('../dbconnect.php');
+
+// 投稿を取得する
+$page = $_REQUEST['page'];
+if ($page ==''){
+    $page =1;
+}
+$page = max($page, 1);
+
+//最終ページの確認
+$sql = 'SELECT COUNT(*) AS cnt FROM books WHERE delete_flag = 0 ';
+$recordSet = mysqli_query($db, $sql);
+$table = mysqli_fetch_assoc($recordSet);
+$maxPage = ceil($table['cnt'] / 3);
+$page = min($page, $maxPage);
+
+$start = ($page - 1) * 3;
+$start = max(0, $start);
+
+// $sql = sprintf('SELECT * FROM  WHERE m.id=p.member_id AND delete_flag=0 ORDER BY p.created DESC LIMIT %d,5',
+//     $start
+//     );
+$sql =  sprintf('SELECT * FROM `books` WHERE 1 AND delete_flag=0 ORDER BY `created` DESC LIMIT %d,3',
+    $start
+    );
+// var_dump($sql);
+$posts = mysqli_query($db, $sql) or die(mysqli_error($db));
+
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +66,7 @@ require('../dbconnect.php');
   </head>
 
   <body>
-  	 <script src="assets/js/modernizr.custom.js"></script>
+     <script src="assets/js/modernizr.custom.js"></script>
     <script src="assets/js/login.js"></script>
 
      <script>
@@ -65,7 +92,7 @@ require('../dbconnect.php');
   <body>
 
 
-  	<header>
+    <header>
             <div class="container clearfix">
                 <h1 id="logo">
                     Rebro
@@ -81,51 +108,51 @@ require('../dbconnect.php');
         </header><!-- /header -->
 
 
-	
+    
 
-	<!-- Menu -->
-	<!-- <nav class="menu" id="theMenu">
-		<div class="menu-wrap">
-			<h1 class="logo"><a href="index.html#home">LINK</a></h1>
-			<i class="fa fa-arrow-right menu-close"></i>
-			<a href="index.html">Home</a>
-			<a href="services.html">Services</a>
-			<a href="portfolio.html">Portfolio</a>
-			<a href="about.html">About</a>
-			<a href="#contact">Contact</a>
-			<a href="#"><i class="fa fa-facebook"></i></a>
-			<a href="#"><i class="fa fa-twitter"></i></a>
-			<a href="#"><i class="fa fa-dribbble"></i></a>
-			<a href="#"><i class="fa fa-envelope"></i></a>
-		</div> -->
-		
-		<!-- Menu button -->
-	<!-- 	<div id="menuToggle"><i class="fa fa-bars"></i></div>
-	</nav> -->
-	
-	<!-- MAIN IMAGE SECTION -->
+    <!-- Menu -->
+    <!-- <nav class="menu" id="theMenu">
+        <div class="menu-wrap">
+            <h1 class="logo"><a href="index.html#home">LINK</a></h1>
+            <i class="fa fa-arrow-right menu-close"></i>
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="about.html">About</a>
+            <a href="#contact">Contact</a>
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-dribbble"></i></a>
+            <a href="#"><i class="fa fa-envelope"></i></a>
+        </div> -->
+        
+        <!-- Menu button -->
+    <!--    <div id="menuToggle"><i class="fa fa-bars"></i></div>
+    </nav> -->
+    
+    <!-- MAIN IMAGE SECTION -->
 <div id="portwrap">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-8 col-lg-offset-2">
-				<h2>気になる教科書見つけよう</h2>
-			</div>
-		</div><!-- row -->
-	</div><!-- /container -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>気になる教科書見つけよう</h2>
+            </div>
+        </div><!-- row -->
+    </div><!-- /container -->
 </div><!-- /portrwrap -->
 
-	<!-- WELCOME SECTION -->
+    <!-- WELCOME SECTION -->
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
-	        <h1></h1>
-	        <p></p>
+            <h1></h1>
+            <p></p>
             </div>
             <div class="col-lg-4">
-      		<a href="sell_index.php">
-      		<p class="pull-right"><br>
+            <a href="sell_index.php">
+            <p class="pull-right"><br>
                 <button type="button" class="btn btn-green">出品する
-      		    </button>
+                </button>
             </p>
             </a>
             </div>
@@ -135,10 +162,10 @@ require('../dbconnect.php');
     <!-- 左カラム-->
         <div class="row">
             <div class="col-lg-3">
-    		<div id="left" class="span3" style="float:left;">
+            <div id="left" class="span3" style="float:left;">
                 <ul id="menu-group-1" class="nav menu">  
                     <li class="item-1 deeper parent active">
-                        <a class="" href="#">
+                        <a class="" href="#sub-item-1">
                             <span data-toggle="collapse" data-parent="#menu-group-1" href="#sub-item-1" class="sign"><i class="icon-plus icon-white"></i></span>
                             <span class="lbl">福岡県</span>                      
                         </a>
@@ -233,7 +260,7 @@ require('../dbconnect.php');
                                 </ul>
                             </li>
                         </ul>
-                    </li>    			
+                    </li>               
                 </ul>          
             </div>
             </div>  
@@ -248,64 +275,66 @@ require('../dbconnect.php');
     <script src="//frontend.reklamor.com/fancybox/jquery.fancybox.js"></script>
 
         
-	       <div class="col-lg-9">
+           <div class="col-lg-9">
                 <div class='list-group gallery'>
-    					<?php
-    				$dsn = 'mysql:dbname=rebro;host=localhost';
-    				$user = 'root';
-    				$password = '';
-    				$dbh = new PDO($dsn,$user,$password);
-    				$dbh->query('SET NAMES utf8');
+                        <?php
+                    // $dsn = 'mysql:dbname=rebro;host=localhost';
+                    // $user = 'root';
+                    // $password = '';
+                    // $dbh = new PDO($dsn,$user,$password);
+                    // $dbh->query('SET NAMES utf8');
 
-    				$sql = 'SELECT * FROM `books` WHERE 1';
-    				$stmt = $dbh->prepare($sql);
-    				//INSERT文を実行
-    				$stmt->execute();
+                    // $sql = 'SELECT * FROM `books` WHERE 1';
+                    // $stmt = $dbh->prepare($sql);
+                    // //INSERT文を実行
+                    // $stmt->execute();
 
-    				while(1)
-    				{
-    					$rec = $stmt->fetch(PDO::FETCH_ASSOC);
-    					if($rec==false)
-    					{
-    						break;
-    					}
-    					// //'' ""　どちらでも可能&nbspは空白を表示
-    					// echo'</br>';
-    					// //echo $rec['id'];
-    					// echo '&nbsp;';
-    					// //echo "Title";
-    					// echo '&nbsp;';
-    					// //echo $rec['title'];
-    					
-    					// echo'</br>';
-    					
-    					// //echo $rec['price'];
+                    while(1)
+                    {
+                        // $rec = $stmt->fetch(PDO::FETCH_ASSOC);
+                        $rec = mysqli_fetch_assoc($posts);
 
-    					// // echo'</br>';
-    					// // echo $rec['picture'];
-    					// echo'</br>';
-    					// //echo '<img src="../textbook_picture/'.$rec['picture'].'">';	
-    				
-    					echo '<div style="float:left;">';
-    					echo '<a class="thumbnail fancybox" rel="ligthbox" >';
-    					echo '<img class="img-responsive" alt="" src="../textbook_picture/'.$rec['picture'].'"　
+                        if($rec==false)
+                        {
+                            break;
+                        }
+                        // //'' ""　どちらでも可能&nbspは空白を表示
+                        // echo'</br>';
+                        // //echo $rec['id'];
+                        // echo '&nbsp;';
+                        // //echo "Title";
+                        // echo '&nbsp;';
+                        // //echo $rec['title'];
+                        
+                        // echo'</br>';
+                        
+                        // //echo $rec['price'];
+
+                        // // echo'</br>';
+                        // // echo $rec['picture'];
+                        // echo'</br>';
+                        // //echo '<img src="../textbook_picture/'.$rec['picture'].'">';    
+                    
+                        echo '<div style="float:left;">';
+                        echo '<a class="thumbnail fancybox" rel="ligthbox" >';
+                        echo '<img class="img-responsive" alt="" src="../textbook_picture/'.$rec['picture'].'"　
                             style="width:200px;height:200px;">';
-    					echo '<div class="text-right">';
-    					echo '<small class="text-muted">';
-    					echo $rec['title'];
-    					echo'</br>';
-    					echo '¥';
-    					echo $rec['price'];
-    					echo '</small></div></a></div>';
+                        echo '<div class="text-right">';
+                        echo '<small class="text-muted">';
+                        echo $rec['title'];
+                        echo'</br>';
+                        echo '¥';
+                        echo $rec['price'];
+                        echo '</small></div></a></div>';
                         echo '  ';
 
 
 
-    				}
+                    }
 
-    				$dbh = null;
-    				?>
-    			
+                    $dbh = null;
+                    ?>
+                
 
 
             <!-- <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'> -->
@@ -321,24 +350,52 @@ require('../dbconnect.php');
         
                 </div> <!-- list-group / end -->
             </div> <!-- col-lg / end -->
-	    </div> <!-- low / end -->
+        </div> <!-- low / end -->
      </div> <!-- container / end -->
+
+     <div align="center">
+     <ul class="paging" >
+            <?php
+            if ($page > 1){
+            ?>
+            <li><a href="ichiran.php?page=<?php print($page -1); ?>">前のページへ</a></li>
+            <?php
+            } else {
+            ?>
+            <li>前のページへ</li>
+            <?php
+        
+            }
+            ?>
+            <?php
+            if ($page < $maxPage) {
+            ?>
+            <li><a href="ichiran.php?page=<?php print($page + 1); ?>">次のページへ</a></li>
+            <?php
+        }else{
+            ?>
+            <li>次のページへ</li>
+            <?php
+        }
+        ?>
+    </ul>
+</div>
 
 
 
 
   
-	  
-	
-	
-	
-	
-	
+      
+    
+    
+    
+    
+    
 
-	  <footer>
+      <footer>
         <div id="info-bar">
             <div class="container">
-            	<div class="row">
+                <div class="row">
                 <div class="col-lg-3">
                     <span class="all-tutorials"><a href="">← TOP</a></span>
                 </div>
@@ -368,8 +425,8 @@ require('../dbconnect.php');
             </div>
         </div><!-- /#top-bar -->
      </footer><!-- /footer -->
-	
-	
+    
+    
 <!--これ以下は消さないこと!
 
      Bootstrap core JavaScript
@@ -378,16 +435,16 @@ require('../dbconnect.php');
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/main.js"></script>
-	<script src="assets/js/masonry.pkgd.min.js"></script>
-	<script src="assets/js/imagesloaded.js"></script>
+    <script src="assets/js/masonry.pkgd.min.js"></script>
+    <script src="assets/js/imagesloaded.js"></script>
     <script src="assets/js/classie.js"></script>
-	<script src="assets/js/AnimOnScroll.js"></script>
-	<script>
-		new AnimOnScroll( document.getElementById( 'grid' ), {
-			minDuration : 0.4,
-			maxDuration : 0.7,
-			viewportFactor : 0.2
-		} );
-	</script>
+    <script src="assets/js/AnimOnScroll.js"></script>
+    <script>
+        new AnimOnScroll( document.getElementById( 'grid' ), {
+            minDuration : 0.4,
+            maxDuration : 0.7,
+            viewportFactor : 0.2
+        } );
+    </script>
   </body>
 </html>
