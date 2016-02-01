@@ -3,6 +3,11 @@
 	session_start();
 	require('../dbconnect.php');
   // echo htmlspecialchars($_POST["users_name"]);
+	$sql = 'SELECT * FROM `user_profiles` WHERE user_id = 1';
+
+	$result = mysqli_query($db, $sql) or die(mysqli_error($db));
+
+	$rec = mysqli_fetch_assoc($result);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -123,7 +128,7 @@
 		                <form role="form"　action ="user_check.php" method ="post">
 		                    <div class="form-group float-label-control">
 		                        <label for="">名前（※必須）</label>
-		                        <input type="text" name ="name" class="form-control" placeholder="Username">
+		                        <input type="text" name ="name" class="form-control" placeholder="Username" value ="<?php echo $rec['user_name']?>">
 		                    </div>
 		                    <!-- <div class="profile-edit-1">
 								<div class="row">

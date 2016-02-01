@@ -280,7 +280,7 @@
 		                    </div> -->
 		                    <div class="form-group float-label-control">
 		                        <label for="">自己PR</label>
-		                        <textarea class="form-control"  name ="pr" placeholder="Textarea" rows="5">今年の春から入学しました。宜しく御願い致します</textarea>
+		                        <textarea class="form-control"  name ="pr" placeholder="Textarea" rows="5"><?php echo $rec['pr']; ?></textarea>
 		                    </div>
 		                    <a href ="http://localhost/text/Theme/user_profiles_edit.php?">
 		                    	<p class ="comform">
