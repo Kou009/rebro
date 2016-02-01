@@ -13,16 +13,16 @@ $page = max($page, 1);
 $sql = 'SELECT COUNT(*) AS cnt FROM books WHERE delete_flag = 0 ';
 $recordSet = mysqli_query($db, $sql);
 $table = mysqli_fetch_assoc($recordSet);
-$maxPage = ceil($table['cnt'] / 3);
+$maxPage = ceil($table['cnt'] / 12);
 $page = min($page, $maxPage);
 
-$start = ($page - 1) * 3;
+$start = ($page - 1) * 12;
 $start = max(0, $start);
 
 // $sql = sprintf('SELECT * FROM  WHERE m.id=p.member_id AND delete_flag=0 ORDER BY p.created DESC LIMIT %d,5',
 //     $start
 //     );
-$sql =  sprintf('SELECT * FROM `books` WHERE 1 AND delete_flag=0 ORDER BY `created` DESC LIMIT %d,3',
+$sql =  sprintf('SELECT * FROM `books` WHERE 1 AND delete_flag=0 ORDER BY `created` DESC LIMIT %d,12',
     $start
     );
 // var_dump($sql);
