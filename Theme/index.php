@@ -3,6 +3,8 @@ session_start();
 require('../dbconnect.php');
 
 
+
+$sql =  sprintf('SELECT * FROM `books` WHERE 1 AND delete_flag=0 ORDER BY `created`');
 $posts = mysqli_query($db, $sql) or die(mysqli_error($db));
 
 ?>
@@ -59,6 +61,68 @@ $posts = mysqli_query($db, $sql) or die(mysqli_error($db));
             }
             window.onload = init();
         </script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+        <script type="text/javascript">
+$(function(){
+	var $setElm = $('.loopslider');
+	var slideTime = 25000; // スピード調整：スライド全体一周にかかる秒数（25000 = 25秒で一周）
+
+	$setElm.each(function(){
+		var classFilter = $(this).attr('rel'); // 'loopleft' or 'loopright'
+
+		var targetObj = $(this);
+		var loopsliderWidth = targetObj.width();
+		var loopsliderHeight = targetObj.height();
+		targetObj.children('ul').wrapAll('<div class="loopslider_wrap"></div>');
+
+		var findWrap = targetObj.find('.loopslider_wrap');
+
+		var listWidth = findWrap.children('ul').children('li').width();
+		var listCount = findWrap.children('ul').children('li').length;
+
+		var loopWidth = (listWidth)*(listCount);
+
+		findWrap.css({
+			top: '0',
+			left: '0',
+			width: ((loopWidth) * 2),
+			height: (loopsliderHeight),
+			overflow: 'hidden',
+			position: 'absolute'
+		});
+
+		findWrap.children('ul').css({
+			width: (loopWidth)
+		});
+
+		if(classFilter == 'loopleft') {
+			loopPosLeft();
+			findWrap.children('ul').clone().appendTo(findWrap);
+		}
+		if(classFilter == 'loopright') {
+			loopPosRight();
+			findWrap.children('ul').clone().prependTo(findWrap);
+		}
+
+		function loopPosLeft(){
+			findWrap.css({left:'0'});
+			findWrap.stop().animate({left:'-' + (loopWidth) + 'px'},slideTime,'linear');
+			setTimeout(function(){
+				loopPosLeft();
+			},slideTime);
+		};
+		function loopPosRight(){
+			var wrapWidth = findWrap.width();
+			findWrap.css({left:'-' + ((wrapWidth) / 2) + 'px'});
+			findWrap.stop().animate({left:'0'},slideTime,'linear');
+			setTimeout(function(){
+				loopPosRight();
+			},slideTime);
+		};
+	});
+});
+</script>
 
     
   </head>
@@ -189,53 +253,8 @@ $posts = mysqli_query($db, $sql) or die(mysqli_error($db));
 	    	<!-- </div><! row --> 
 	    <!-- </div>container -->
     <!-- </div>portfolio -->
-    <?php
+   
 
-     while(1)
-                    {
-                        // $rec = $stmt->fetch(PDO::FETCH_ASSOC);
-                        $rec = mysqli_fetch_assoc($posts);
-
-                        if($rec==false)
-                        {
-                            break;
-                        }
-                        // //'' ""　どちらでも可能&nbspは空白を表示
-                        // echo'</br>';
-                        // //echo $rec['id'];
-                        // echo '&nbsp;';
-                        // //echo "Title";
-                        // echo '&nbsp;';
-                        // //echo $rec['title'];
-                        
-                        // echo'</br>';
-                        
-                        // //echo $rec['price'];
-
-                        // // echo'</br>';
-                        // // echo $rec['picture'];
-                        // echo'</br>';
-                        // //echo '<img src="../textbook_picture/'.$rec['picture'].'">';    
-                    
-                        echo '<div style="float:left;">';
-                        echo '<a class="thumbnail fancybox" rel="ligthbox" >';
-                        echo '<img class="img-responsive" alt="" src="../textbook_picture/'.$rec['picture'].'"　
-                            style="width:200px;height:200px;">';
-                        echo '<div class="text-right">';
-                        echo '<small class="text-muted">';
-                        echo $rec['title'];
-                        echo'</br>';
-                        echo '¥';
-                        echo $rec['price'];
-                        echo '</small></div></a></div>';
-                        echo '  ';
-
-
-
-                    }
-
-                    $dbh = null;
-                    ?>
 
       
         <div class="row">
@@ -245,13 +264,32 @@ $posts = mysqli_query($db, $sql) or die(mysqli_error($db));
                      <!-- Carousel items -->
                         <div class="carousel fdi-Carousel slide" id="eventCarousel" data-interval="0">
                             <div class="carousel-inner onebyone-carosel">
-                                <div class="item active">
-                                    <div class="col-md-4">
-                                        <a href="#"><img src="http://placehold.it/250x250" class="img-responsive center-block"></a>
-                                        <div class="text-center">1</div>
-                                    </div>
-                                </div>
-                                <div class="item">
+                                
+                                	<?php
+
+								     while(1)
+								                    {
+								                        // $rec = $stmt->fetch(PDO::FETCH_ASSOC);
+								                        $rec = mysqli_fetch_assoc($posts);
+
+								                        if($rec==false)
+								                        {
+								                            break;
+								                        }
+// 
+								    echo '<div class="item active">';
+                        				echo '<a class="thumbnail fancybox" rel="ligthbox" >';
+                                    echo '<div class="col-md-4">';
+                                    echo '<img class="img-responsive center-block" alt="" src="../textbook_picture/'.$rec['picture'].'"　
+                         				   style="width:250px;height:250px;">';
+                                    echo '<div class="text-center">1</div></div></div>';
+                          
+
+													  }
+
+									                    $dbh = null;
+									                    ?> -->
+                         <!--        <div class="item">
                                     <div class="col-md-4">
                                         <a href="#"><img src="http://placehold.it/250x250" class="img-responsive center-block"></a>
                                         <div class="text-center">2</div>
@@ -280,8 +318,8 @@ $posts = mysqli_query($db, $sql) or die(mysqli_error($db));
                                         <a href="#"><img src="http://placehold.it/250x250" class="img-responsive center-block"></a>
                                         <div class="text-center">6</div>
                                     </div>
-                                </div>
-                            </div>
+                                </div> -->
+                            <!-- </div> -->
                             <a class="left carousel-control" href="#eventCarousel" data-slide="prev"></a>
                             <a class="right carousel-control" href="#eventCarousel" data-slide="next"></a>
                         </div>
@@ -291,6 +329,32 @@ $posts = mysqli_query($db, $sql) or die(mysqli_error($db));
             </div>
         </div>
     	</div>
+
+<div class="row">
+	<div claass="col-lg-12">
+		
+			<div class="loopslider" rel="loopleft">
+			<ul>
+				<li><a href="#"><img src="img/photo01.jpg" width="100" height="100" alt="" /></a></li>
+				<li><a href="#"><img src="img/photo02.jpg" width="100" height="100" alt="" /></a></li>
+				<li><a href="#"><img src="img/photo03.jpg" width="100" height="100" alt="" /></a></li>
+				<li><a href="#"><img src="img/photo04.jpg" width="100" height="100" alt="" /></a></li>
+				<li><a href="#"><img src="img/photo05.jpg" width="100" height="100" alt="" /></a></li>
+				<li><a href="#"><img src="img/photo06.jpg" width="100" height="100" alt="" /></a></li>
+				<li><a href="#"><img src="img/photo07.jpg" width="100" height="100" alt="" /></a></li>
+				<li><a href="#"><img src="img/photo08.jpg" width="100" height="100" alt="" /></a></li>
+				<li><a href="#"><img src="img/photo09.jpg" width="100" height="100" alt="" /></a></li>
+				<li><a href="#"><img src="img/photo10.jpg" width="100" height="100" alt="" /></a></li>
+			</ul>	
+			</div><!--/.loopslider-->
+		
+	</div>
+</div>		
+
+<br /><br />
+
+
+
 
 
 
