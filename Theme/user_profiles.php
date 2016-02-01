@@ -32,7 +32,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="assets/ico/favicon.png">
 
-    <title>Libro </title>
+    <title>Rebro</title>
 
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -111,17 +111,17 @@
 				<ul class="grid effect-2" id="grid">
 
 						<dd class="avatar-upload-container clearfix">
-							<img class="avatar_left" width="90" height="90" src="#" alt="@YYokosawa">
-							<div class="avatar_upload">
-							<a class="btn button-change-profile-picture" href="#">
-								<!-- <label for="upload-profile-picture">
+							<img src="../textbook_picture/IMG_3747.jpg"  class="avatar_left" width="250" height="250" alt="">
+							<!-- <div class="avatar_upload"> -->
+							<!-- <a class="btn button-change-profile-picture" href="#">
+								<label for="upload-profile-picture">
 								Upload new picture
 								<input id="upload-profile-picture" class="manual-file-chooser js-manual-file-chooser js-avatar-field" type="file">
-								</label> -->
+								</label>
 							</a>
-							<!-- <div class="upload-state default">
-							<p>You can also drag and drop a picture from your computer.</p>
-							</div> -->
+							<div class="upload-state default">
+							<p>You can also drag and drop a picture from your computer.</p> -->
+							</div>
 							<!-- <div class="upload-state loading">
 								<div class="upload-state text-danger file-empty"> This file is empty. </div>
 								<div class="upload-state text-danger too-big"> Please upload a picture smaller than 1 MB. </div>
@@ -141,9 +141,10 @@
 		                <h3 class="page-header">Profile</h3>
 		                <form role="form" action　="user_profiles_edit.php" method="post" enctype="multipart/form-data">
 		                    <div class="form-group float-label-control">
-		                        <label for="">名前（※必須）<a><?php echo $rec['user_name']; ?></a></label>
-		                        <p> </p><br/><br/>
-		                        <hr/>
+		                        <label for="">名前</label>
+		                        <br />
+		                        <a><?php echo $rec['user_name']; ?></a>
+		                        <hr />
 		                    </div>
 		                    <!-- <div class="profile-edit-1">
 								<div class="row">
@@ -153,13 +154,17 @@
 
 		                    <div class="form-group float-label-control">
 		                        <label for="">ふりがな</label>
-		                        <input type="text" class="form-control" placeholder="Username">
+		                        <br />
+		                        <a><?php echo "ほうせいじろう"; ?></a>
+		                        <hr />
 		                    </div>
 		                    
 
 		                    <div class="form-group float-label-control">
 		                        <label for="">アカウント名</label>
-		                        <input type="text" class="form-control" placeholder="Username">
+		                        <br />
+		                        <a><?php echo "housei@gmail.com"; ?></a>
+		                        <hr />
 		                    </div>
 		                    <!-- <div class="profile-edit-3">
 								<div class="row">
@@ -169,7 +174,9 @@
 
 		                    <div class="form-group float-label-control">
 		                        <label for="">年齢</label>
-		                        <input type="text" class="form-control" placeholder="Username">
+		                        <br />
+		                        <a><?php echo "18"; ?>歳</a>
+		                        <hr />
 		                    </div>
 		                    <!-- <div class="profile-edit-4">
 								<div class="row">
@@ -179,7 +186,9 @@
 
 		                    <div class="form-group float-label-control">
 		                        <label for="">大学名</label>
-		                        <input type="text" class="form-control" placeholder="Username">
+		                        <br />
+		                        <a><?php echo "国際基督教大学"; ?></a>
+		                        <hr />
 		                    </div>
 		                    <!-- <div class="profile-edit-5">
 								<div class="row">
@@ -188,8 +197,10 @@
 							</div>
  -->
 		                    <div class="form-group float-label-control">
-		                        <label for="">　　　　　都道府県</label>
-		                        <input type="text" class="form-control" placeholder="Username">
+		                        <label for="">都道府県</label>
+		                        <br />
+		                        <a><?php echo "東京都"; ?></a>
+		                        <hr />
 		                    </div>
 		                    <!-- <div class="profile-edit-6">
 								<div class="row">
@@ -199,8 +210,10 @@
  -->
 
 		                    <div class="form-group float-label-control">
-		                        <label for="">　　　　　市町村</label>
-		                        <input type="text" class="form-control" placeholder="Username">
+		                        <label for="">市町村</label>
+		                        <br />
+		                        <a><?php echo "三鷹市大沢三丁目10番2号"; ?></a>
+		                        <hr />
 		                    </div>
 		                    <!-- <div class="profile-edit-7">
 								<div class="row">
@@ -210,7 +223,9 @@
 
 		                    <div class="form-group float-label-control">
 		                        <label for="">学部名</label>
-		                        <input type="text" class="form-control" placeholder="Username">
+		                        <br />
+		                        <a><?php echo "教養学部"; ?></a>
+		                        <hr />
 		                    </div>
 		                    <!-- <div class="profile-edit-8">
 								<div class="row">
@@ -220,7 +235,9 @@
 
  							<div class="form-group float-label-control">
 		                        <label for="">E-mail</label>
-		                        <input type="email" class="form-control" placeholder="Username">
+		                        <br />
+		                        <a><?php echo "housei@gmail.com"; ?></a>
+		                        <hr />
 		                    </div>
 		                    <!-- <div class="profile-edit-9">
 								<div class="row">
@@ -230,7 +247,9 @@
 
 		                    <div class="form-group float-label-control">
 		                        <label for="">電話番号</label>
-		                        <input type="text" class="form-control" placeholder="Username">
+		                        <br />
+		                        <a><?php echo "09023456789"; ?></a>
+		                        <hr />
 		                    </div>
 		                    <!-- <div class="profile-edit-9">
 								<div class="row">
@@ -240,7 +259,9 @@
 
 		                    <div class="form-group float-label-control">
 		                        <label for="">住所</label>
-		                        <input type="text" class="form-control" placeholder="Username">
+		                        <br />
+		                        <a><?php echo "東京都港区六本木６丁目１１−１"; ?></a>
+		                        <hr />
 		                    </div>
 		                    <!-- <div class="profile-edit-10">
 								<div class="row">
@@ -258,16 +279,19 @@
 		                        <input type="password" class="form-control" placeholder="Password">
 		                    </div> -->
 		                    <div class="form-group float-label-control">
-		                        <label for="">自己PR（※必須）</label>
-		                        <textarea class="form-control"  name ="pr" placeholder="Textarea" rows="1"></textarea>
+		                        <label for="">自己PR</label>
+		                        <textarea class="form-control"  name ="pr" placeholder="Textarea" rows="5">今年の春から入学しました。宜しく御願い致します</textarea>
 		                    </div>
+		                    <a href ="http://localhost/text/Theme/user_profiles_edit.php?">
+		                    	<p class ="comform">
+		                    	<button type ="submit" class ="btn-type1">Profileを編集する<a href ="user_profiles_edit.php"></a></button>
+		                    	</p>
+		                    </a>
 		                    <!-- <div class="profile-edit-11">
 								<div class="row">
 							    	<button href="#"  class="btn btn-xlarge" /><i class="fa fa-chevron-right fa-5x" ></i></button>
 							    </div>
 							</div> -->
-							
-
 		                </form>
 
 

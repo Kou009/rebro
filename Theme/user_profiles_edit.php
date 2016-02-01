@@ -14,7 +14,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="assets/ico/favicon.png">
 
-    <title>Libro </title>
+    <title>Rebro</title>
 
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -93,7 +93,7 @@
 				<ul class="grid effect-2" id="grid">
 
 						<dd class="avatar-upload-container clearfix">
-							<img class="avatar_left" width="90" height="90" src="#" alt="@YYokosawa">
+							<img class="avatar_left" width="250" height="250"  alt="写真を入力して下さい">
 							<div class="avatar_upload">
 							<a class="btn button-change-profile-picture" href="#">
 								<!-- <label for="upload-profile-picture">
@@ -120,10 +120,10 @@
 						
 
 		                <h3 class="page-header">Profile</h3>
-		                <form role="form">
+		                <form role="form"　action ="user_check.php" method ="post">
 		                    <div class="form-group float-label-control">
-		                        <label for="">名前</label>
-		                        <input type="text" class="form-control" placeholder="Username">
+		                        <label for="">名前（※必須）</label>
+		                        <input type="text" name ="name" class="form-control" placeholder="Username">
 		                    </div>
 		                    <!-- <div class="profile-edit-1">
 								<div class="row">
@@ -172,7 +172,7 @@
 							</div> -->
 
 		                    <div class="form-group float-label-control">
-		                        <label for="">　　　　　都道府県</label>
+		                        <label for="">都道府県</label>
 		                        <input type="text" class="form-control" placeholder="Username">
 		                    </div>
 		                  <!--   <div class="profile-edit-6">
@@ -183,7 +183,7 @@
 
  -->
 		                    <div class="form-group float-label-control">
-		                        <label for="">　　　　　市町村</label>
+		                        <label for="">市町村</label>
 		                        <input type="text" class="form-control" placeholder="Username">
 		                    </div>
 		                   <!--  <div class="profile-edit-7">
@@ -242,19 +242,19 @@
 		                        <input type="password" class="form-control" placeholder="Password">
 		                    </div> -->
 		                    <div class="form-group float-label-control">
-		                        <label for="">自己PR</label>
-		                        <textarea class="form-control" placeholder="Textarea" rows="1"></textarea>
+		                        <label for="">自己PR（※必須）</label>
+		                        <textarea class="form-control"  name ="pr" placeholder="Textarea" rows="5"></textarea>
 		                    </div>
+		                    <p class ="comform">
+		                    	<a><input type ="submit" value ="確認画面へ進む"></a>
+		                    </p> 
 		                    <!-- <div class="profile-edit-11">
 								<div class="row">
 							    	<button href="#"  class="btn btn-xlarge" /><i class="fa fa-chevron-right fa-5x" ></i></button>
 							    </div>
-							</div>
- -->
- 							<p class="confirm">
-								<button type="submit" class="btn_type1">入力内容を編集をする</button>
-							</P>
-		                </form>
+							</div> -->
+						</form>
+		                
 
 
 		                <!-- <h4 class="page-header">Bottom Labels</h4>
@@ -272,7 +272,7 @@
 		                        <label for="">Email Address</label>
 		                        <input type="email" class="form-control" placeholder="What's your email address?">
 		                    </div>
-		                </form> -->
+		                </form>
 
 		            </div>
 					<!-- <li><a href="singleproject.html"><img src="assets/img/portfolio/14.jpg"></a></li> -->

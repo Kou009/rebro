@@ -10,22 +10,26 @@ require('../dbconnect.php');
 // }
 
 //ボタンが押されてPOST送信でデータが送られてきた時
-if (!empty($_POST)) {
-	//登録処理する
-	$sql = sprintf('INSERT INTO users SET email="%s",password="%s",created="%s"',
-		mysqli_real_escape_string($db,$_SESSION['join']['email']),		
-		mysqli_real_escape_string($db,sha1($_SESSION['join']['password'])),
-		//パスワード暗号化の　sha1　の　最後は数字の1、間違えないように
-		date('Y-m-d H:i:s')
-	);
-	// var_dump($sql);
+// if (!empty($_POST)) {
+// 	//登録処理する
+// 	$sql = sprintf('INSERT INTO users SET email="%s",password="%s",created="%s"',
+// 		mysqli_real_escape_string($db,$_SESSION['join']['email']),		
+// 		mysqli_real_escape_string($db,sha1($_SESSION['join']['password'])),
+// 		//パスワード暗号化の　sha1　の　最後は数字の1、間違えないように
+// 		date('Y-m-d H:i:s')
+// 	);
+// 	// var_dump($sql);
 
-	mysqli_query($db,$sql) or die(mysqli_error($db));
-	unset($_SESSION['join']);
+// 	mysqli_query($db,$sql) or die(mysqli_error($db));
+// 	unset($_SESSION['join']);
 
-	header('Location: user_thanks.php');
-	exit();
-}
+// 	header('Location: user_thanks.php');
+// 	exit();
+// }
+$name = $_POST['name'];
+// SQL文の作成と実行
+$sql ="INSERT INTO user_profiles VLUES('$name')"
+$res =$db->query($sql);
 ?>
 
 <!DOCTYPE html>
@@ -109,16 +113,20 @@ if (!empty($_POST)) {
 			<form action="" method="post">
 				<input type="hidden" name="action" value="submit" />
 					<dl>
-						<dt>メールアドレス</dt>
+						<dt>写真</dt>
 						<dd>
-						<?php echo htmlspecialchars($_SESSION['join']['email'],ENT_QUOTES,'UTF-8'); ?>
+						<?php echo htmlspecialchars($_SESSION['picture'],ENT_QUOTES,'UTF-8'); ?>
 						</dd>
-						<dt>パスワード</dt>
+						<dt>名前</dt>
 						<dd>
-						【表示されません】
+						<?php echo htmlspecialchars($_SESSION['name'],ENT_QUOTES,'UTF-8'); ?>
+						</dd>
+						<dt>自己PR</dt>
+						<dd>
+						<?php echo htmlspecialchars($_SESSION['pr'],ENT_QUOTES,'UTF-8'); ?>
 						</dd>
 					</dl>
-				<div><a href="index.php?action=rewrite">&laquo;&nbsp;書き直す</a> | <input type="submit" value="登録する" /></div>
+				<div><a href="user_profiles_edit.php=rewrite">&laquo;&nbsp;書き直す</a> | <input type="submit" value="登録する" /></div>
 			</form>
 
 		</div><!-- #main -->

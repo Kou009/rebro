@@ -8,7 +8,7 @@
 	    <meta name="author" content="">
 	    <link rel="shortcut icon" href="assets/ico/favicon.png">
 
-	    <title>Libro</title>
+	    <title>Rebro</title>
 
 	    <!-- Bootstrap core CSS -->
 	    <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -89,12 +89,12 @@
 			</div><!-- /aboutwrap -->
 
 			<div id="head">
-				<h1>会員登録</h1>
+				<h1>プロフィール変更が完了しました</h1>
 			</div>
 
 			<div id="content">
-				<p>ユーザー登録が完了しました</p>
-				<p><a href="login.php">ログインする</a></p>
+				<!-- <pプロフィール登録が完了しました</p> -->
+				<p><a href="ichiran.php">商品一覧へ</a></p>
 			</div>
 
 		</div><!-- #main -->
