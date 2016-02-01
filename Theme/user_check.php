@@ -25,11 +25,11 @@ require('../dbconnect.php');
 
 // 	header('Location: user_thanks.php');
 // 	exit();
-// }
-$name = $_POST['name'];
-// SQL文の作成と実行
-$sql ="INSERT INTO user_profiles VLUES('$name')"
-$res =$db->query($sql);
+// // }
+// $name = $_POST['name'];
+// // SQL文の作成と実行
+// $sql ="INSERT INTO user_profiles VLUES('$name')"
+// $res =$db->query($sql);
 ?>
 
 <!DOCTYPE html>
