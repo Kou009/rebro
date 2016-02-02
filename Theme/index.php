@@ -1,11 +1,11 @@
 <?date_default_timezone_set('Asia/Tokyo');
 session_start();
-require('../dbconnect.php');
+//require('../dbconnect.php');
 
 
 
-$sql =  sprintf('SELECT * FROM `books` WHERE 1 AND delete_flag=0 ORDER BY `created`');
-$posts = mysqli_query($db, $sql) or die(mysqli_error($db));
+// $sql =  sprintf('SELECT * FROM `books` WHERE 1 AND delete_flag=0 ORDER BY `created`');
+// $posts = mysqli_query($db, $sql) or die(mysqli_error($db));
 
 ?>
 
@@ -41,8 +41,7 @@ $posts = mysqli_query($db, $sql) or die(mysqli_error($db));
     <![endif]-->
     
     <script src="assets/js/modernizr.custom.js"></script>
-    <script src="assets/js/login.js"></script>
-
+    
 
      <script>
             function init() {
@@ -65,64 +64,41 @@ $posts = mysqli_query($db, $sql) or die(mysqli_error($db));
 
         <script type="text/javascript">
 $(function(){
-	var $setElm = $('.loopslider');
-	var slideTime = 25000; // スピード調整：スライド全体一周にかかる秒数（25000 = 25秒で一周）
-
-	$setElm.each(function(){
-		var classFilter = $(this).attr('rel'); // 'loopleft' or 'loopright'
-
-		var targetObj = $(this);
-		var loopsliderWidth = targetObj.width();
-		var loopsliderHeight = targetObj.height();
-		targetObj.children('ul').wrapAll('<div class="loopslider_wrap"></div>');
-
-		var findWrap = targetObj.find('.loopslider_wrap');
-
-		var listWidth = findWrap.children('ul').children('li').width();
-		var listCount = findWrap.children('ul').children('li').length;
-
-		var loopWidth = (listWidth)*(listCount);
-
-		findWrap.css({
-			top: '0',
-			left: '0',
-			width: ((loopWidth) * 2),
-			height: (loopsliderHeight),
-			overflow: 'hidden',
-			position: 'absolute'
-		});
-
-		findWrap.children('ul').css({
-			width: (loopWidth)
-		});
-
-		if(classFilter == 'loopleft') {
-			loopPosLeft();
-			findWrap.children('ul').clone().appendTo(findWrap);
-		}
-		if(classFilter == 'loopright') {
-			loopPosRight();
-			findWrap.children('ul').clone().prependTo(findWrap);
-		}
-
-		function loopPosLeft(){
-			findWrap.css({left:'0'});
-			findWrap.stop().animate({left:'-' + (loopWidth) + 'px'},slideTime,'linear');
-			setTimeout(function(){
-				loopPosLeft();
-			},slideTime);
-		};
-		function loopPosRight(){
-			var wrapWidth = findWrap.width();
-			findWrap.css({left:'-' + ((wrapWidth) / 2) + 'px'});
-			findWrap.stop().animate({left:'0'},slideTime,'linear');
-			setTimeout(function(){
-				loopPosRight();
-			},slideTime);
-		};
-	});
-});
-</script>
+    $('#loopslider').each(function(){
+        var loopsliderWidth = $(this).width();
+        var loopsliderHeight = $(this).height();
+        $(this).children('ul').wrapAll('<div id="loopslider_wrap"></div>');
+ 
+        var listWidth = $('#loopslider_wrap').children('ul').children('li').width();
+        var listCount = $('#loopslider_wrap').children('ul').children('li').length;
+ 
+        var loopWidth = (listWidth)*(listCount);
+ 
+        $('#loopslider_wrap').css({
+            top: '0',
+            left: '0',
+            width: ((loopWidth) * 2),
+            height: (loopsliderHeight),
+            overflow: 'hidden',
+            position: 'absolute'
+        });
+ 
+        $('#loopslider_wrap ul').css({
+            width: (loopWidth)
+        });
+        loopsliderPosition();
+ 
+        function loopsliderPosition(){
+            $('#loopslider_wrap').css({left:'0'});
+            $('#loopslider_wrap').stop().animate({left:'-' + (loopWidth) + 'px'},25000,'linear');
+            setTimeout(function(){
+                loopsliderPosition();
+            },25000);
+        };
+ 
+        $('#loopslider_wrap ul').clone().appendTo('#loopslider_wrap');
+    });
+});</script>
 
     
   </head>
@@ -257,83 +233,12 @@ $(function(){
 
 
       
-        <div class="row">
-            <div class="span12">
-                <div class="well">
-                    <div id="myCarousel" class="carousel fdi-Carousel slide">
-                     <!-- Carousel items -->
-                        <div class="carousel fdi-Carousel slide" id="eventCarousel" data-interval="0">
-                            <div class="carousel-inner onebyone-carosel">
-                                
-                                	<?php
 
-								     while(1)
-								                    {
-								                        // $rec = $stmt->fetch(PDO::FETCH_ASSOC);
-								                        $rec = mysqli_fetch_assoc($posts);
-
-								                        if($rec==false)
-								                        {
-								                            break;
-								                        }
-// 
-								    echo '<div class="item active">';
-                        				echo '<a class="thumbnail fancybox" rel="ligthbox" >';
-                                    echo '<div class="col-md-4">';
-                                    echo '<img class="img-responsive center-block" alt="" src="../textbook_picture/'.$rec['picture'].'"　
-                         				   style="width:250px;height:250px;">';
-                                    echo '<div class="text-center">1</div></div></div>';
-                          
-
-													  }
-
-									                    $dbh = null;
-									                    ?> -->
-                         <!--        <div class="item">
-                                    <div class="col-md-4">
-                                        <a href="#"><img src="http://placehold.it/250x250" class="img-responsive center-block"></a>
-                                        <div class="text-center">2</div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="col-md-4">
-                                        <a href="#"><img src="http://placehold.it/250x250" class="img-responsive center-block"></a>
-                                        <div class="text-center">3</div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="col-md-4">
-                                        <a href="#"><img src="http://placehold.it/250x250" class="img-responsive center-block"></a>
-                                        <div class="text-center">4</div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="col-md-4">
-                                        <a href="#"><img src="http://placehold.it/250x250" class="img-responsive center-block"></a>
-                                        <div class="text-center">5</div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="col-md-4">
-                                        <a href="#"><img src="http://placehold.it/250x250" class="img-responsive center-block"></a>
-                                        <div class="text-center">6</div>
-                                    </div>
-                                </div> -->
-                            <!-- </div> -->
-                            <a class="left carousel-control" href="#eventCarousel" data-slide="prev"></a>
-                            <a class="right carousel-control" href="#eventCarousel" data-slide="next"></a>
-                        </div>
-                        <!--/carousel-inner-->
-                    </div><!--/myCarousel-->
-                </div><!--/well-->
-            </div>
-        </div>
-    	</div>
-
+       
 <div class="row">
 	<div claass="col-lg-12">
 		
-			<div class="loopslider" rel="loopleft">
+			<div id="loopslider">
 			<ul>
 				<li><a href="#"><img src="img/photo01.jpg" width="100" height="100" alt="" /></a></li>
 				<li><a href="#"><img src="img/photo02.jpg" width="100" height="100" alt="" /></a></li>
@@ -350,7 +255,7 @@ $(function(){
 		
 	</div>
 </div>		
-
+</div>  
 <br /><br />
 
 
