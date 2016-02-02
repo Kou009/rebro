@@ -1,3 +1,14 @@
+<?date_default_timezone_set('Asia/Tokyo');
+session_start();
+//require('../dbconnect.php');
+
+
+
+// $sql =  sprintf('SELECT * FROM `books` WHERE 1 AND delete_flag=0 ORDER BY `created`');
+// $posts = mysqli_query($db, $sql) or die(mysqli_error($db));
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -30,7 +41,64 @@
     <![endif]-->
     
     <script src="assets/js/modernizr.custom.js"></script>
-    <script src="assets/js/login.js"></script>
+    
+
+     <script>
+            function init() {
+                window.addEventListener('scroll', function(e){
+                    var distanceY = window.pageYOffset || document.documentElement.scrollTop,
+                        shrinkOn = 300,
+                        header = document.querySelector("header");
+                    if (distanceY > shrinkOn) {
+                        classie.add(header,"smaller");
+                    } else {
+                        if (classie.has(header,"smaller")) {
+                            classie.remove(header,"smaller");
+                        }
+                    }
+                });
+            }
+            window.onload = init();
+        </script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+        <script type="text/javascript">
+$(function(){
+    $('#loopslider').each(function(){
+        var loopsliderWidth = $(this).width();
+        var loopsliderHeight = $(this).height();
+        $(this).children('ul').wrapAll('<div id="loopslider_wrap"></div>');
+ 
+        var listWidth = $('#loopslider_wrap').children('ul').children('li').width();
+        var listCount = $('#loopslider_wrap').children('ul').children('li').length;
+ 
+        var loopWidth = (listWidth)*(listCount);
+ 
+        $('#loopslider_wrap').css({
+            top: '0',
+            left: '0',
+            width: ((loopWidth) * 2),
+            height: (loopsliderHeight),
+            overflow: 'hidden',
+            position: 'absolute'
+        });
+ 
+        $('#loopslider_wrap ul').css({
+            width: (loopWidth)
+        });
+        loopsliderPosition();
+ 
+        function loopsliderPosition(){
+            $('#loopslider_wrap').css({left:'0'});
+            $('#loopslider_wrap').stop().animate({left:'-' + (loopWidth) + 'px'},25000,'linear');
+            setTimeout(function(){
+                loopsliderPosition();
+            },25000);
+        };
+ 
+        $('#loopslider_wrap ul').clone().appendTo('#loopslider_wrap');
+    });
+});</script>
 
     
   </head>
@@ -41,7 +109,7 @@
                 <h1 id="logo">
                     Rebro
                 </h1>
-                <i class="fa fa-book fa-4x"></i>     
+                <!-- <i class="fa fa-book fa-4x"></i>      -->
                 <nav>
                     <!-- <a href="">Lorem</a> -->
                     <!-- 消えたnavタグ大事件... -->
@@ -79,7 +147,7 @@
 					<h1>Rebro</h1>
 					<h2>Live Smart</h2>
 					<div class="spacer"></div>
-					<i class="fa fa-angle-down"></i>
+					<!-- <i class="fa fa-angle-down"></i> -->
 				</div>
 			</div><!-- row -->
 		</div><!-- /container -->
@@ -161,61 +229,37 @@
 	    	<!-- </div><! row --> 
 	    <!-- </div>container -->
     <!-- </div>portfolio -->
+   
+
 
       
-        <div class="row">
-            <div class="span12">
-                <div class="well">
-                    <div id="myCarousel" class="carousel fdi-Carousel slide">
-                     <!-- Carousel items -->
-                        <div class="carousel fdi-Carousel slide" id="eventCarousel" data-interval="0">
-                            <div class="carousel-inner onebyone-carosel">
-                                <div class="item active">
-                                    <div class="col-md-4">
-                                        <a href="#"><img src="http://placehold.it/250x250" class="img-responsive center-block"></a>
-                                        <div class="text-center">1</div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="col-md-4">
-                                        <a href="#"><img src="http://placehold.it/250x250" class="img-responsive center-block"></a>
-                                        <div class="text-center">2</div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="col-md-4">
-                                        <a href="#"><img src="http://placehold.it/250x250" class="img-responsive center-block"></a>
-                                        <div class="text-center">3</div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="col-md-4">
-                                        <a href="#"><img src="http://placehold.it/250x250" class="img-responsive center-block"></a>
-                                        <div class="text-center">4</div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="col-md-4">
-                                        <a href="#"><img src="http://placehold.it/250x250" class="img-responsive center-block"></a>
-                                        <div class="text-center">5</div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="col-md-4">
-                                        <a href="#"><img src="http://placehold.it/250x250" class="img-responsive center-block"></a>
-                                        <div class="text-center">6</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a class="left carousel-control" href="#eventCarousel" data-slide="prev"></a>
-                            <a class="right carousel-control" href="#eventCarousel" data-slide="next"></a>
-                        </div>
-                        <!--/carousel-inner-->
-                    </div><!--/myCarousel-->
-                </div><!--/well-->
-            </div>
-        </div>
-    	</div>
+
+       
+<div class="row">
+	<div claass="col-lg-12">
+		
+			<div id="loopslider">
+			<ul>
+				<li><a href="#"><img src="img/photo01.jpg" width="100" height="100" alt="" /></a></li>
+				<li><a href="#"><img src="img/photo02.jpg" width="100" height="100" alt="" /></a></li>
+				<li><a href="#"><img src="img/photo03.jpg" width="100" height="100" alt="" /></a></li>
+				<li><a href="#"><img src="img/photo04.jpg" width="100" height="100" alt="" /></a></li>
+				<li><a href="#"><img src="img/photo05.jpg" width="100" height="100" alt="" /></a></li>
+				<li><a href="#"><img src="img/photo06.jpg" width="100" height="100" alt="" /></a></li>
+				<li><a href="#"><img src="img/photo07.jpg" width="100" height="100" alt="" /></a></li>
+				<li><a href="#"><img src="img/photo08.jpg" width="100" height="100" alt="" /></a></li>
+				<li><a href="#"><img src="img/photo09.jpg" width="100" height="100" alt="" /></a></li>
+				<li><a href="#"><img src="img/photo10.jpg" width="100" height="100" alt="" /></a></li>
+			</ul>	
+			</div><!--/.loopslider-->
+		
+	</div>
+</div>		
+</div>  
+<br /><br />
+
+
+
 
 
 
@@ -243,7 +287,7 @@
 			</div><!-- row -->
 		</div><!-- container -->
 	</div><!-- dg -->
-	 -->
+	 
 	
 	
 	

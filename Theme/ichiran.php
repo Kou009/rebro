@@ -3,7 +3,11 @@ session_start();
 require('../dbconnect.php');
 
 // 投稿を取得する
+$page='';
+if (isset($_REQUEST['page'])){
 $page = $_REQUEST['page'];
+
+}
 if ($page ==''){
     $page =1;
 }
@@ -13,16 +17,16 @@ $page = max($page, 1);
 $sql = 'SELECT COUNT(*) AS cnt FROM books WHERE delete_flag = 0 ';
 $recordSet = mysqli_query($db, $sql);
 $table = mysqli_fetch_assoc($recordSet);
-$maxPage = ceil($table['cnt'] / 3);
+$maxPage = ceil($table['cnt'] / 4);
 $page = min($page, $maxPage);
 
-$start = ($page - 1) * 3;
+$start = ($page - 1) * 4;
 $start = max(0, $start);
 
 // $sql = sprintf('SELECT * FROM  WHERE m.id=p.member_id AND delete_flag=0 ORDER BY p.created DESC LIMIT %d,5',
 //     $start
 //     );
-$sql =  sprintf('SELECT * FROM `books` WHERE 1 AND delete_flag=0 ORDER BY `created` DESC LIMIT %d,3',
+$sql =  sprintf('SELECT * FROM `books` WHERE 1 AND delete_flag=0 ORDER BY `created` DESC LIMIT %d,4',
     $start
     );
 // var_dump($sql);
@@ -140,6 +144,21 @@ $posts = mysqli_query($db, $sql) or die(mysqli_error($db));
         </div><!-- row -->
     </div><!-- /container -->
 </div><!-- /portrwrap -->
+
+<div class="container">
+    <div class="row">
+    <h2>Expandable when is Focus</h2>
+    <h3>Mac Search Style</h3>
+        <div class="span12">
+            <form id="custom-search-form" class="form-search form-horizontal pull-right">
+                <div class="input-append span12">
+                    <input type="text" class="search-query mac-style" placeholder="Search">
+                    <button type="submit" class="btn"><i class="icon-search"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
     <!-- WELCOME SECTION -->
     <div class="container">
