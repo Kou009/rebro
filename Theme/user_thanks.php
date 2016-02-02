@@ -1,3 +1,9 @@
+<?php
+// var_dump($_POST['email']);
+// var_dump($_POST['password']);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -18,8 +24,13 @@
 	    <link href="assets/css/custom.css" rel="stylesheet">
 	    <link href="assets/css/common.css" rel="stylesheet">
 
+	     <link href="assets/css/user_touroku.css" rel="stylesheet">
+
 	    <!--ヘッダーフッターファイルより-->
 	    <link rel="stylesheet" type="text/css" href="headfoot.css">
+
+	    <!-- ログイン・登録画面ページ専用css -->
+    	<link href="assets/css/user_touroku.css" rel="stylesheet">
 
 	    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
 
@@ -80,22 +91,27 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-8 col-lg-offset-2">
-							<h2>Live smart<br/>
-								さぁ、本を探しに行こう
+							<h2>Thank you!<br/><br/>
+								Live smart<br/>
+								さぁ、本を探しに行こう<br /><br />
+								<!-- <a href="user_profiles.html">Log IN</a> -->
+								<!-- ログイン、ログアウトテスト用 -->
+								<a href="test_user_profiles.php">Log IN</a>
 							</h2>
+							<br />
 						</div>
 					</div><!-- row -->
 				</div><!-- /container -->
 			</div><!-- /aboutwrap -->
 
-			<div id="head">
+			<!-- <div id="head">
 				<h1>会員登録</h1>
 			</div>
 
 			<div id="content">
 				<p>ユーザー登録が完了しました</p>
-				<p><a href="login.php">ログインする</a></p>
-			</div>
+				<p><a href="user_profiles.html">ログインする</a></p>
+			</div> -->
 
 		</div><!-- #main -->
 

@@ -4,10 +4,10 @@ require('../dbconnect.php');
 
 //session変数に何もデータがない場合、これ以上処理する意味がないので、入力画面に戻る。
 //URL入力で直接このページに飛んだ時など、データは何もない状態になる
-// if (!isset($_SESSION['join'])) {
-// 	header('Location: index.php');
-// 	exit();
-// }
+if (!isset($_SESSION['join'])) {
+	header('Location: login.php');
+	exit();
+}
 
 //ボタンが押されてPOST送信でデータが送られてきた時
 if (!empty($_POST)) {
@@ -48,8 +48,13 @@ if (!empty($_POST)) {
 	    <link href="assets/css/custom.css" rel="stylesheet">
 	    <link href="assets/css/common.css" rel="stylesheet">
 
+	    <link href="assets/css/user_touroku.css" rel="stylesheet">
+
 	    <!--ヘッダーフッターファイルより-->
 	    <link rel="stylesheet" type="text/css" href="headfoot.css">
+
+	    <!-- ログイン・登録画面ページ専用css -->
+ 		<link href="assets/css/user_touroku.css" rel="stylesheet">
 
 	    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
 
@@ -70,7 +75,7 @@ if (!empty($_POST)) {
 	        function init() {
 	            window.addEventListener('scroll', function(e){
 	                var distanceY = window.pageYOffset || document.documentElement.scrollTop,
-	                    shrinkOn = 300,
+	                    shrinkOn = 0,
 	                    header = document.querySelector("header");
 	                if (distanceY > shrinkOn) {
 	                    classie.add(header,"smaller");
@@ -104,24 +109,29 @@ if (!empty($_POST)) {
 	        </div>
 	    </header><!-- /header -->
 	
+		<!-- ヘッダー分のスペースを空ける用 -->
+	    <div id= "top_space"></div>
 
-		<div id="main">
+		<div id="check_space">
 			<form action="" method="post">
 				<input type="hidden" name="action" value="submit" />
 					<dl>
+						<h2>以下の内容で登録</h2><br />
 						<dt>メールアドレス</dt>
 						<dd>
 						<?php echo htmlspecialchars($_SESSION['join']['email'],ENT_QUOTES,'UTF-8'); ?>
 						</dd>
+						<br />
 						<dt>パスワード</dt>
 						<dd>
-						【表示されません】
+						<!-- 【表示されません】 -->
+						<?php echo htmlspecialchars($_SESSION['join']['password'],ENT_QUOTES,'UTF-8'); ?>
 						</dd>
-					</dl>
+					</dl><br /><br />
 				<div><a href="index.php?action=rewrite">&laquo;&nbsp;書き直す</a> | <input type="submit" value="登録する" /></div>
 			</form>
 
-		</div><!-- #main -->
+		</div><!-- #check_space -->
 
 		<footer>
 	        <div id="info-bar">
