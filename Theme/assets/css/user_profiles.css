@@ -1,19 +1,21 @@
 /*●profile表示*/
 .avatar_left{
 	position: relative;
-	float: right;
-	top: 8em;
+	float: center;
+	top: 1.5em;
 	right: 0em;
+  left: 38%;
 }
 .button-change-profile-picture{
 	position: relative;
 	clear: right;
 	top: 0em;
 	right: 0em;
+  left: 14em;
 }
 
 /*参照 http://bootsnipp.com/snippets/featured/float-label-pattern-forms*/
-.float-label-control { position: relative; margin-bottom: 1.5em; }
+.float-label-control  { position: relative; margin-bottom: 1.5em; }
     .float-label-control ::-webkit-input-placeholder { color: transparent; }
     .float-label-control :-moz-placeholder { color: transparent; }
     .float-label-control ::-moz-placeholder { color: transparent; }
