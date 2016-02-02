@@ -3,7 +3,7 @@
 	require('C:\xampp\htdocs\teamLibro/dbconnect.php');
 	
 	$_SESSION['id']=1;
-	$_SESSION['book_id']=2;  //session変数に本のID入れてもらって、一覧ページから飛ばしてもらう
+	$_SESSION['book_id']=1;  //session変数に本のID入れてもらって、一覧ページから飛ばしてもらう
 
 	if(isset($_SESSION['id'])){
 		$sql=sprintf('SELECT * FROM users WHERE id=%d',
@@ -130,9 +130,8 @@
 		        </header><!-- /header -->
 			</div>
 		</div>
+
 		<div id="main">
-			<!-- <h3><font face="MSゴシック">１：１のチャット</font></h3> -->
-			
 			<div class="sidebar" style="height:800px" >
 				<h1>出品者情報</h1>
 					<img class="sell-user" src="assets/img/default2.png" width="128" height="128" alt="出品者画像">
@@ -149,10 +148,8 @@
 							<dt>個人PR</dt><p><?php echo $sell_user['pr']; ?></p>
 
 						</dl>
-					</div>
-
-				
-			</div>
+					</div>			
+			</div> <!-- sidebar -->
 
 			<div class="contents" style="height:450px" >
 				<span><img class="book" src="assets/img/portfolio/<?php echo $books['picture']; ?>" width="210" height="298" alt="商品イメージ"></span>
@@ -161,36 +158,34 @@
 						<h2><dt>タイトル</dt></h2>
 						<h1><dt><?php echo $books['title']; ?></dt></h1>
 						<br>
-						<dt>定価<p>￥<?php echo $books['price']; ?></p></dt>
-						<br>
-						<dt>売値<p>￥<?php echo $books['sell_price']; ?></p></dt>
+						<dt>価格<p>￥<?php echo $books['price']; ?></p></dt>
 						<br>
 						<dt>状態<p style='width:400px'><?php echo $books['description']; ?></p></dt>
 					</dl>
 				</div></span>
 
-			</div>
+			</div> <!-- contents -->
 
 
 <!--- -ここからパブリックコメント-->
 			<?php 
 		        $sql=sprintf('SELECT c.*,up.user_name FROM comments c,user_profiles up WHERE c.sender_id=up.user_id AND book_id=%d
-		        	AND reciever_id=0
+		       
 		        	ORDER BY c.created DESC',
 		        	mysqli_real_escape_string($db,$_SESSION['book_id']));
 				$record=mysqli_query($db,$sql) or die(mysqli_error($db));
 			?>
 
-							<div class="container">
+							<div class="chat-container">
 						    <div class="row">
 
 						        <div class="message-wrap col-lg-8">
-						            <div class="msg-wrap" style="width:500px height:1000px">
+						            <div class="msg-wrap" style="width:500px height:100px">
 
 						            		<?php 
 						            		while($table=mysqli_fetch_assoc($record)):  //fetchがここで終わらないようにセミコロンじゃなくて、ころん！
 						            		?> 
-								            <div class="media msg ">
+								            <div class="media-msg">
 								                    <a class="pull-left" href="#">
 								                        <img class="media-object" alt="64x64" style="width: 32px; height: 32px;" src="assets/img/portfolio/15.jpg">
 								                    </a>
@@ -198,51 +193,31 @@
 								                        <small class="pull-right time"> <?php echo $table['created'] ?></small>
 								                        <h5 class="media-heading"><?php echo $table['user_name']; ?></h5>
 								                        <small class="col-lg-10"><?php echo $table['message'];?></small>
+								                        <?php if($table['reciever_id'] == 1) { ?>
+								                        	<h5 class="media-heading">出品者より</h5>
+								                        <?php }?>
+								                    </div>
+								                </div> <!-- while文用の閉じタグ -->
 							                   
 							            <?php endwhile; ?>
-							            		</div>
-
-							            <?php //出品者からのメッセージ
-							            $sql=sprintf('SELECT c.*,up.user_name FROM comments c,user_profiles up WHERE c.sender_id=up.user_id AND book_id=%d
-								        	AND reciever_id=1
-								        	ORDER BY c.created DESC',
-								        	mysqli_real_escape_string($db,$_SESSION['book_id']));
-										$record=mysqli_query($db,$sql) or die(mysqli_error($db));
-							            ?>
-							            <?php 
-						            		while($table=mysqli_fetch_assoc($record)):  //fetchがここで終わらないようにセミコロンじゃなくて、ころん！
-						            		?> 
-								            <div class="media msg ">
-								                    <a class="pull-left" href="#">
-								                        <img class="media-object" alt="64x64" style="width: 32px; height: 32px;" src="assets/img/portfolio/15.jpg">
-								                    </a>
-								                <div class="media-body">
-								                        <small class="pull-right time"> <?php echo $table['created'] ?></small>
-								                        <h5 class="media-heading"><?php echo $table['user_name']; ?></h5>
-								                        <small class="col-lg-10"><?php echo $table['message'];?></small>
-							                   			<h5 class="media-heading">出品者より</h5> 
-							            <?php endwhile; ?>
-							            		</div>
-
-							                  
-							                </div>
-
-						            </div>
-						        </div>
+							            		</div>					
+						           			</div> <!-- この2つの閉じタグ消さないでください　レイアウト崩れます -->  
+						        	</div>
+						    	</div> <!-- message-wrap-->
 
 						        <form method="post" action="">
 					            <div class="send-wrap">
 					                <textarea name="message"class="form-control send-message" rows="3" placeholder="Write a reply...">
 					                </textarea>
 					             <p><input type="submit" value="送信" /></p>
-					            </div>
 					        </form>
+					        <a href="chat.php">個別チャットする</a>
+					        </div> <!-- send-wrap -->
+					      
+					      </div> <!--row -->
+					  </div> <!-- chat-container -->
+					</div> <!-- main -->
 
-					        </div>
-					    </div>
-					
-				
-		<div class="footer">
 			 <footer>
 		        <div id="info-bar">
 		            <div class="container clearfix">
@@ -274,7 +249,7 @@
 		            </div>
 		        </div><!-- /#top-bar -->
 		        </footer><!-- /footer -->
-		    </div>
+	
 
 
 
