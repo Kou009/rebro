@@ -2,9 +2,9 @@
 require('../dbconnect.php');
 session_start();
 
+// $_POST['email'] = '';
+// $_POST['password'] ='';
 
-$_POST['email'] = '';
-$_POST['password'] ='';
 
 // if ($_COOKIE['email'] !='') {
 // 	$_POST['email'] = $_COOKIE['email'];
@@ -14,19 +14,21 @@ $_POST['password'] ='';
 //$_COOKIEが空じゃなかったら
 
 if (!empty($_POST)) {
-	var_dump('if文入ってる？');
-	var_dump($_POST['email']);
-	var_dump($_POST['password']);
+	// var_dump('if文入ってる？');
+	// var_dump($_POST['email']);
+	// var_dump($_POST['password']);
 	//ログイン処理
 	if ($_POST['email'] != '' && $_POST['password'] !='') {
-		var_dump($_POST['email']);
-		var_dump($_POST['password']);
+		// var_dump($_POST['email']);
+		// var_dump($_POST['password']);
 		// var_dump('naka入ってる？');
+		//sprintf( フォーマット [, 引数１] [, 引数２]･・・):指定したフォーマットにしたがって整形した文字列を返す。
+		// mysqli_real_escape_string：PHPからMySQLにデータを登録するときに、MySQLで使用する特殊文字をエスケープする方法
 		$sql = sprintf('SELECT * FROM users WHERE email="%s" AND password="%s"',
 			mysqli_real_escape_string($db,$_POST['email']),
 			mysqli_real_escape_string($db,sha1($_POST['password']))
 			);
-		var_dump($sql);
+		// var_dump($sql);
 		// != で'~'の中が~じゃなかったらとなる(!==にしない)
 		$record = mysqli_query($db,$sql) or die(mysqli_error($db));
 		if ($table = mysqli_fetch_assoc($record)){
@@ -40,8 +42,9 @@ if (!empty($_POST)) {
 				setcookie('email',$_POST['email'], time()+60*60*24*14);
 				setcookie('password',$_POST['password'], time()+60*60*24*14);
 			}
-
-			header('Location: user_profiles.html');
+			// header('Location: user_profiles.html');
+			// ログイン、ログアウトテスト用
+			header('Location: test_user_profiles.php');
 			exit();
 		} else {
 			$error['login'] = 'failed';
@@ -50,11 +53,19 @@ if (!empty($_POST)) {
 		$error['login'] = 'blank';
 	}
 }
-// else{
-// $_POST['email'] = '';
-// $_POST['password'] ='';
-// }//最初に入力欄に何かしらの文字が入っていた場合に、中を空にする。(brankではない。)
+else{
+//最初に入力欄に何かしらの文字が入っていた場合に、中を空にする。(brankではない。)
+//最初に入力欄にエラー構文が入る問題の解消のため
+$_POST['email'] = '';
+$_POST['password'] ='';
+// 初期値として、エラーの中身を空にする
+$error = array('login'=> '' );
+}
+
+
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -78,6 +89,9 @@ if (!empty($_POST)) {
 
     <!--ヘッダーフッターファイルより-->
     <link rel="stylesheet" type="text/css" href="headfoot.css">
+
+    <!-- ログイン・登録画面ページ専用css -->
+    <link href="assets/css/user_touroku.css" rel="stylesheet">
 
     <link href="assets/css/font-awesome.min.css" rel="stylesheet">
 
@@ -185,16 +199,17 @@ if (!empty($_POST)) {
 			          		<p class="form-title">
 			                <font color="#000"> Sign In</font></p>
 			                <!-- <form class="login"> -->
-				                <input type="text" name="email" placeholder="Email" value="<?php echo htmlspecialchars($_POST['email'], ENT_QUOTES,'UTF-8'); ?>"/>
-				                <?php if($error['login'] == 'blank'): ?>
-								<p class="error">*  メールアドレスとパスワードをご記入ください</p>
-								<?php endif; ?>
+				                <input type="email" name="email" placeholder="Email" value="<?php echo htmlspecialchars($_POST['email']); ?>"/>
+				                
 
 								<?php
 								// var_dump($email,$password);
 								?>
 
-				                <input type="password" name="password" placeholder="Password" value="<?php echo htmlspecialchars($_POST['password'], ENT_QUOTES,'UTF-8'); ?>" />
+				                <input type="password" name="password" placeholder="Password" value="<?php echo htmlspecialchars($_POST['password']); ?>" />
+				                <?php if($error['login'] == 'blank'): ?>
+								<p class="error">*  メールアドレスとパスワードをご記入ください</p>
+								<?php endif; ?>
 				                <?php if($error['login'] == 'failed'): ?>
 								<p class="error">*  ログインに失敗しました。正しくご記入ください。</p>
 								<?php endif; ?>
