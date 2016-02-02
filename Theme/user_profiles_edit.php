@@ -138,7 +138,7 @@
 
 		                    <div class="form-group float-label-control">
 		                        <label for="">ふりがな</label>
-		                        <input type="text" class="form-control" placeholder="Username">
+		                        <input type="text" class="form-control" placeholder="Username" value ="<?php echo $rec['hurigana']?>">
 		                    </div>
 		                    <!-- <div class="profile-edit-2">
 								<div class="row">
@@ -146,10 +146,10 @@
 							    </div>
 							</div> -->
 
-		                    <div class="form-group float-label-control">
+		                    <!-- <div class="form-group float-label-control">
 		                        <label for="">アカウント名</label>
 		                        <input type="text" class="form-control" placeholder="Username">
-		                    </div>
+		                    </div> -->
 		                    <!-- <div class="profile-edit-3">
 								<div class="row">
 							    	<button href="#"  class="btn btn-xlarge" /><i class="fa fa-chevron-right fa-5x" ></i></button>
@@ -158,7 +158,7 @@
  -->
 		                    <div class="form-group float-label-control">
 		                        <label for="">年齢</label>
-		                        <input type="text" class="form-control" placeholder="Username">
+		                        <input type="text" class="form-control" placeholder="Username" value ="<?php echo $rec['age']?>">
 		                    </div>
 		                   <!--  <div class="profile-edit-4">
 								<div class="row">
@@ -168,7 +168,7 @@
 
 		                    <div class="form-group float-label-control">
 		                        <label for="">大学名</label>
-		                        <input type="text" class="form-control" placeholder="Username">
+		                        <input type="text" class="form-control" placeholder="Username" value ="<?php echo $rec['college_id']?>">
 		                    </div>
 		                   <!--  <div class="profile-edit-5">
 								<div class="row">
@@ -178,7 +178,7 @@
 
 		                    <div class="form-group float-label-control">
 		                        <label for="">都道府県</label>
-		                        <input type="text" class="form-control" placeholder="Username">
+		                        <input type="text" class="form-control" placeholder="Username" value ="<?php echo $rec['pref_id']?>">
 		                    </div>
 		                  <!--   <div class="profile-edit-6">
 								<div class="row">
@@ -189,7 +189,7 @@
  -->
 		                    <div class="form-group float-label-control">
 		                        <label for="">市町村</label>
-		                        <input type="text" class="form-control" placeholder="Username">
+		                        <input type="text" class="form-control" placeholder="Username" value ="<?php echo $rec['city_id']?>">
 		                    </div>
 		                   <!--  <div class="profile-edit-7">
 								<div class="row">
@@ -199,7 +199,7 @@
 
 		                    <div class="form-group float-label-control">
 		                        <label for="">学部名</label>
-		                        <input type="text" class="form-control" placeholder="Username">
+		                        <input type="text" class="form-control" placeholder="Username" value ="<?php echo $rec['major_id']?>">
 		                    </div>
 		                   <!--  <div class="profile-edit-8">
 								<div class="row">
@@ -207,20 +207,20 @@
 							    </div>
 							</div> -->
 
- 							<div class="form-group float-label-control">
+ 							<!-- <div class="form-group float-label-control">
 		                        <label for="">E-mail</label>
 		                        <input type="email" class="form-control" placeholder="Username">
-		                    </div>
+		                    </div> -->
 		                    <!-- <div class="profile-edit-9">
 								<div class="row">
 							    	<button href="#"  class="btn btn-xlarge" /><i class="fa fa-chevron-right fa-5x" ></i></button>
 							    </div>
 							</div> -->
 
-		                    <div class="form-group float-label-control">
+		                    <!-- <div class="form-group float-label-control">
 		                        <label for="">電話番号</label>
 		                        <input type="text" class="form-control" placeholder="Username">
-		                    </div>
+		                    </div> -->
 		                    <!-- <div class="profile-edit-9">
 								<div class="row">
 							    	<button href="#"  class="btn btn-xlarge" /><i class="fa fa-chevron-right fa-5x" ></i></button>
@@ -229,7 +229,7 @@
 
 		                    <div class="form-group float-label-control">
 		                        <label for="">住所</label>
-		                        <input type="text" class="form-control" placeholder="Username">
+		                        <input type="text" class="form-control" placeholder="Username"value ="<?php echo $rec['address']?>">
 		                    </div>
 		                    <!-- <div class="profile-edit-10">
 								<div class="row">
@@ -248,7 +248,7 @@
 		                    </div> -->
 		                    <div class="form-group float-label-control">
 		                        <label for="">自己PR（※必須）</label>
-		                        <textarea class="form-control"  name ="pr" placeholder="Textarea" rows="5"></textarea>
+		                        <textarea class="form-control"  name ="pr" placeholder="Textarea" rows="5"><?php echo $rec['pr']?></textarea>
 		                    </div>
 		                    <p class ="comform">
 		                    	<a><input type ="submit" value ="確認画面へ進む"></a>

@@ -8,7 +8,7 @@
  //    $dbh = new PDO($dsn,$user,$password);
     //$dbh->query('SET NAMES utf8');
 
-	$sql = 'SELECT * FROM `user_profiles` WHERE user_id = 2';
+	$sql = 'SELECT * FROM `user_profiles` WHERE user_id = 1';
 
 	$result = mysqli_query($db, $sql) or die(mysqli_error($db));
 
@@ -111,7 +111,7 @@
 				<ul class="grid effect-2" id="grid">
 
 						<dd class="avatar-upload-container clearfix">
-							<img src="../textbook_picture/IMG_3747.jpg"  class="avatar_left" width="250" height="250" alt="">
+							<img src="../textbook_picture/<?php $rec['picture'];?>"  class="avatar_left" width="250" height="250" alt="">
 							<!-- <div class="avatar_upload"> -->
 							<!-- <a class="btn button-change-profile-picture" href="#">
 								<label for="upload-profile-picture">
@@ -155,17 +155,17 @@
 		                    <div class="form-group float-label-control">
 		                        <label for="">ふりがな</label>
 		                        <br />
-		                        <a><?php echo "ほうせいじろう"; ?></a>
+		                        <a><?php echo $rec['hurigana']; ?></a>
 		                        <hr />
 		                    </div>
 		                    
 
-		                    <div class="form-group float-label-control">
+		                    <!-- <div class="form-group float-label-control">
 		                        <label for="">アカウント名</label>
 		                        <br />
-		                        <a><?php echo "housei@gmail.com"; ?></a>
+		                        <a></a>
 		                        <hr />
-		                    </div>
+		                    </div> -->
 		                    <!-- <div class="profile-edit-3">
 								<div class="row">
 							    	<button href="#"  class="btn btn-xlarge" /><i class="fa fa-chevron-right fa-5x" ></i></button>
@@ -175,7 +175,7 @@
 		                    <div class="form-group float-label-control">
 		                        <label for="">年齢</label>
 		                        <br />
-		                        <a><?php echo "18"; ?>歳</a>
+		                        <a><?php echo $rec['age']; ?>歳</a>
 		                        <hr />
 		                    </div>
 		                    <!-- <div class="profile-edit-4">
@@ -184,12 +184,7 @@
 							    </div>
 							</div> -->
 
-		                    <div class="form-group float-label-control">
-		                        <label for="">大学名</label>
-		                        <br />
-		                        <a><?php echo "国際基督教大学"; ?></a>
-		                        <hr />
-		                    </div>
+		                    
 		                    <!-- <div class="profile-edit-5">
 								<div class="row">
 							    	<button href="#"  class="btn btn-xlarge" /><i class="fa fa-chevron-right fa-5x" ></i></button>
@@ -199,56 +194,64 @@
 		                    <div class="form-group float-label-control">
 		                        <label for="">都道府県</label>
 		                        <br />
-		                        <a><?php echo "東京都"; ?></a>
+		                        <a><?php echo $rec['pref_id']; ?></a>
 		                        <hr />
 		                    </div>
 		                    <!-- <div class="profile-edit-6">
 								<div class="row">
 							    	<button href="#"  class="btn btn-xlarge" /><i class="fa fa-chevron-right fa-5x" ></i></button>
-							    </div>
-							</div>
- -->
-
+							    </div> -->
+			
+							
 		                    <div class="form-group float-label-control">
 		                        <label for="">市町村</label>
 		                        <br />
-		                        <a><?php echo "三鷹市大沢三丁目10番2号"; ?></a>
+		                        <a><?php echo $rec['city_id']; ?></a>
 		                        <hr />
 		                    </div>
 		                    <!-- <div class="profile-edit-7">
 								<div class="row">
 							    	<button href="#"  class="btn btn-xlarge" /><i class="fa fa-chevron-right fa-5x" ></i></button>
-							    </div>
-							</div> -->
-
+							    </div> -->
+							<div class="form-group float-label-control">
+		                        <label for="">大学名</label>
+		                        <br />
+		                        <a><?php echo $rec['college_id']; ?></a>
+		                        <hr />
+		                    </div>
 		                    <div class="form-group float-label-control">
 		                        <label for="">学部名</label>
 		                        <br />
-		                        <a><?php echo "教養学部"; ?></a>
+		                        <a><?php echo $rec['major_id']; ?></a>
 		                        <hr />
 		                    </div>
 		                    <!-- <div class="profile-edit-8">
 								<div class="row">
 							    	<button href="#"  class="btn btn-xlarge" /><i class="fa fa-chevron-right fa-5x" ></i></button>
 							    </div>	
-							</div> -->
+							</div>
 
  							<div class="form-group float-label-control">
 		                        <label for="">E-mail</label>
 		                        <br />
-		                        <a><?php echo "housei@gmail.com"; ?></a>
+		                        <a></a>
 		                        <hr />
 		                    </div>
-		                    <!-- <div class="profile-edit-9">
+		                    <<div class="profile-edit-9">
 								<div class="row">
 							    	<button href="#"  class="btn btn-xlarge" /><i class="fa fa-chevron-right fa-5x" ></i></button>
 							    </div>
 							</div> -->
-
+							<div class="form-group float-label-control">
+		                        <label for="">住所</label>
+		                        <br />
+		                        <a><?php echo $rec['address']; ?></a>
+		                        <hr />
+		                    </div>
 		                    <div class="form-group float-label-control">
 		                        <label for="">電話番号</label>
 		                        <br />
-		                        <a><?php echo "09023456789"; ?></a>
+		                        <a><?php echo $rec['tel']; ?></a>
 		                        <hr />
 		                    </div>
 		                    <!-- <div class="profile-edit-9">
@@ -257,12 +260,7 @@
 							    </div>
 							</div> -->
 
-		                    <div class="form-group float-label-control">
-		                        <label for="">住所</label>
-		                        <br />
-		                        <a><?php echo "東京都港区六本木６丁目１１−１"; ?></a>
-		                        <hr />
-		                    </div>
+		                    
 		                    <!-- <div class="profile-edit-10">
 								<div class="row">
 							    	<button href="#"  class="btn btn-xlarge" /><i class="fa fa-chevron-right fa-5x" ></i></button>
