@@ -101,7 +101,7 @@ $posts = mysqli_query($db, $sql) or die(mysqli_error($db));
                 <h1 id="logo">
                     Rebro
                 </h1>
-                <i class="fa fa-book fa-4x"></i>     
+                <!-- <i class="fa fa-book fa-4x"></i>      -->
                 <nav>
                     <!-- <a href="">Lorem</a> -->
                     <!-- 消えたnavタグ大事件... -->
