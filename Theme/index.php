@@ -16,7 +16,7 @@ $page = max($page, 1);
 
 
 
-$sql =  sprintf('SELECT * FROM `books` WHERE `picture` AND delete_flag=0 ORDER BY `created`');
+$sql =  sprintf('SELECT `title`,`picture`,`price` FROM `books` WHERE delete_flag=0 ORDER BY `created`');
 $posts = mysqli_query($db, $sql) or die(mysqli_error($db));
 
 ?>
@@ -253,24 +253,33 @@ $(function(){
 			<div id="loopslider">
 			<ul>
 
+				
 				<?php
 
 				   while(1)
                     {
                         // $rec = $stmt->fetch(PDO::FETCH_ASSOC);
                         $rec = mysqli_fetch_assoc($posts);
+                        
 
                         if($rec==false)
                         {
                             break;
                         }
 
- 						echo '<div style="float:left;">';
- 						echo '<a class="thumbnail fancybox" rel="ligthbox" >';
-                        echo '<li><img class="img-responsive" alt="" src="../textbook_picture/'.$rec['picture'].'"　
-                            style="width:200px;height:200px;"></li>';
-                        echo '</a></div>';
-
+ 						// echo '<div style="float:left;">';
+                        echo '<li><a class="thumbnail fancybox" rel="ligthbox" >
+                        	<img class="img-responsive" alt="" src="../textbook_picture/'.$rec['picture'].'"　
+                            style="width:200px;height:200px;"></a></li>';
+                        // echo '<div class="text-right">';
+                        // echo '<small class="text-muted">';
+                        echo $rec['title'];
+                        // echo'</br>';
+                        // echo '¥';
+                        // echo $rec['price'];
+                        // echo '</small></div></a></div>';
+                        // echo '  ';
+                        // echo '</a></div>';
 
                     }
 
