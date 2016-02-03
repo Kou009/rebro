@@ -8,6 +8,107 @@
 	$result = mysqli_query($db, $sql) or die(mysqli_error($db));
 
 	$rec = mysqli_fetch_assoc($result);
+
+
+	//POST送信されたら、check画面に移動
+	// $user_name = htmlspecialchars($_POST['user_name']);
+	// $hurigana = htmlspecialchars($_POST['hurigana']);
+	// $age = htmlspecialchars($_POST['age']);
+	// $college_id = htmlspecialchars($_POST['college_id']);
+	// $pref_id = htmlspecialchars($_POST['pref_id']);
+	// $city_id = htmlspecialchars($_POST['city_id']);
+	// $major_id = htmlspecialchars($_POST['major_id']);
+	// $address = htmlspecialchars($_POST['address']);
+	// $pr = htmlspecialchars($_POST['pr']);
+	// $picture = htmlspecialchars($_POST['picture']);
+
+
+	// header('Location: user_check.php'); //入力し終えたらuser_check.phpに進みます
+
+	// echo $_POST;
+	if (!empty($_POST)){
+
+		$_SESSION['join'] = $_POST;
+		
+		header('Location: user_check.php'); //入力し終えたらuser_check.phpに進みます
+ 		exit();
+	}
+
+	// if (!empty($_POST)) {
+
+	// 	if($_POST['user_name'] == ''){
+	// 		$error['user_name'] = 'blank';
+	// 	}
+
+	// 	if($_POST['hurigana'] == ''){
+	// 		$error['hurigana'] = 'blank';
+	// 	}
+
+	// 	if($_POST['age'] == ''){
+	// 		$error['age'] = 'blank';
+	// 	}
+
+	// 	if($_POST['college_id'] == ''){
+	// 		$error['college_id'] = 'blank';
+	// 	}
+		
+	// 	if($_POST['pref_id'] == ''){
+	// 		$error['pref_id'] = 'blank';
+	// 	}
+
+	// 	if($_POST['city_id'] == ''){
+	// 		$error['city_id'] = 'blank';
+	// 	}
+
+	// 	if($_POST['major_id'] == ''){
+	// 		$error['major_id'] = 'blank';
+	// 	}
+
+	// 	if($_POST['address'] == ''){
+	// 		$error['address'] = 'blank';
+	// 	}
+
+	// 	if($_POST['pr'] == ''){
+	// 		$error['pr'] = 'blank';
+	// 	}
+	// 	$fileName = $_FILES['picture']['user_name'];
+	// 	if(!empty($fileName)){
+	// 		$ext = substr($fileName, -3);
+	// 		if($ext != 'jpg' && $ext != 'git' && $ext != 'png'){
+	// 			$error['picture'] = 'type';
+	// 		}
+	// 	}
+
+	// 	if($error['user_name']=='' && $error['hurigana']=='' && $error['age']=='' && $error['college_id']=='' && $error['pref_id']=='' && $error['city']=='' && $error['major_id']=='' && $error['address']=='' && $error['pr']=='' ){
+	// 		$user_name = ($_POST['user_name']);
+	// 		$hurigana = ($_POST['hurigana']);
+	// 		$age = ($_POST['age']);
+	// 		$college_id = ($_POST['college_id']);
+	// 		$pref_id = ($_POST['pref_id']);
+	// 		$city_id = ($_POST['city_id']);
+	// 		$major_id = ($_POST['major_id']);
+	// 		$address = ($_POST['address']);
+	// 		$pr = ($_POST['pr']);
+	// 		$picture = ($_POST['picture']);
+
+	// 		$image = date.time('YmdHis') . $FILES['picture']['user_name'];
+	// 		move_uploaded_file($_FILES,['picture']['tmp_name'], '../textbook_picture/' . $image);
+
+	// 		$_SESSION['join'] = $_POST;
+	// 		$_SESSION['join']['picture'] = $picture;
+	// 		header('Location: user_check.php'); //入力し終えたらuser_check.phpに進みます
+	// 		exit();
+	// 	}	
+	// }
+	// //書き直し
+	// if(isset($_REQEST['action'])){
+	// 	$action = $_REQUEST['action'];
+	// }
+	// if ($action == 'rewrite'){
+	// 	$_POST = $_SESSION['join'];
+	// 	$error['rewrite'] = true;
+	// }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +120,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="assets/ico/favicon.png">
 
-    <title>Libro</title>
+    <title>Lebro</title>
 
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -125,10 +226,10 @@
 						
 
 		                <h3 class="page-header">Profile</h3>
-		                <form role="form"　action ="user_check.php" method ="post">
+		                <form role="form"　action ="" method ="post">
 		                    <div class="form-group float-label-control">
 		                        <label for="">名前（※必須）</label>
-		                        <input type="text" name ="name" class="form-control" placeholder="Username" value ="<?php echo $rec['user_name']?>">
+		                        <input type="text" name ="user_name" class="form-control" placeholder="Username" value ="<?php echo $rec['user_name']?>">
 		                    </div>
 		                    <!-- <div class="profile-edit-1">
 								<div class="row">
@@ -138,7 +239,7 @@
 
 		                    <div class="form-group float-label-control">
 		                        <label for="">ふりがな</label>
-		                        <input type="text" class="form-control" placeholder="Username" value ="<?php echo $rec['hurigana']?>">
+		                        <input type="text" name ="hurigana" class="form-control" placeholder="Username" value ="<?php echo $rec['hurigana']?>">
 		                    </div>
 		                    <!-- <div class="profile-edit-2">
 								<div class="row">
@@ -158,7 +259,7 @@
  -->
 		                    <div class="form-group float-label-control">
 		                        <label for="">年齢</label>
-		                        <input type="text" class="form-control" placeholder="Username" value ="<?php echo $rec['age']?>">
+		                        <input type="text" name ="age" class="form-control" placeholder="Username" value ="<?php echo $rec['age']?>">
 		                    </div>
 		                   <!--  <div class="profile-edit-4">
 								<div class="row">
@@ -168,7 +269,7 @@
 
 		                    <div class="form-group float-label-control">
 		                        <label for="">大学名</label>
-		                        <input type="text" class="form-control" placeholder="Username" value ="<?php echo $rec['college_id']?>">
+		                        <input type="text" name ="college_id" class="form-control" placeholder="Username" value ="<?php echo $rec['college_id']?>">
 		                    </div>
 		                   <!--  <div class="profile-edit-5">
 								<div class="row">
@@ -178,7 +279,7 @@
 
 		                    <div class="form-group float-label-control">
 		                        <label for="">都道府県</label>
-		                        <input type="text" class="form-control" placeholder="Username" value ="<?php echo $rec['pref_id']?>">
+		                        <input type="text" name ="pref_id" class="form-control" placeholder="Username" value ="<?php echo $rec['pref_id']?>">
 		                    </div>
 		                  <!--   <div class="profile-edit-6">
 								<div class="row">
@@ -189,7 +290,7 @@
  -->
 		                    <div class="form-group float-label-control">
 		                        <label for="">市町村</label>
-		                        <input type="text" class="form-control" placeholder="Username" value ="<?php echo $rec['city_id']?>">
+		                        <input type="text" name ="city_id" class="form-control" placeholder="Username" value ="<?php echo $rec['city_id']?>">
 		                    </div>
 		                   <!--  <div class="profile-edit-7">
 								<div class="row">
@@ -199,7 +300,7 @@
 
 		                    <div class="form-group float-label-control">
 		                        <label for="">学部名</label>
-		                        <input type="text" class="form-control" placeholder="Username" value ="<?php echo $rec['major_id']?>">
+		                        <input type="text" name ="major_id" class="form-control" placeholder="Username" value ="<?php echo $rec['major_id']?>">
 		                    </div>
 		                   <!--  <div class="profile-edit-8">
 								<div class="row">
@@ -229,7 +330,7 @@
 
 		                    <div class="form-group float-label-control">
 		                        <label for="">住所</label>
-		                        <input type="text" class="form-control" placeholder="Username"value ="<?php echo $rec['address']?>">
+		                        <input type="text" name ="address" class="form-control" placeholder="Username"value ="<?php echo $rec['address']?>">
 		                    </div>
 		                    <!-- <div class="profile-edit-10">
 								<div class="row">

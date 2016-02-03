@@ -1,6 +1,21 @@
 <?php
+date_default_timezone_set('Asia/Tokyo');
 session_start();
 require('../dbconnect.php');
+
+echo $_SESSION['user_name'];
+
+// if (!empty($_POST)){
+// 	//事後処理をする
+// 	$sql = sprintf(INSERT user_profiles SET 
+// 		mysqli_real_escape_string($db, $_SESSION['join']['user_name']),
+// 		);
+// 	mysqli_query($db, $sql) or die(mysqli_error($db));
+// 	unset($_SESSION['join']);
+
+// 	header('Location: user_thanks.php');
+// 	exit();
+// }
 
 //session変数に何もデータがない場合、これ以上処理する意味がないので、入力画面に戻る。
 //URL入力で直接このページに飛んだ時など、データは何もない状態になる
@@ -42,7 +57,7 @@ require('../dbconnect.php');
 	    <meta name="author" content="">
 	    <link rel="shortcut icon" href="assets/ico/favicon.png">
 
-	    <title>Libro</title>
+	    <title>Lebro</title>
 
 	    <!-- Bootstrap core CSS -->
 	    <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -119,7 +134,7 @@ require('../dbconnect.php');
 						</dd>
 						<dt>名前</dt>
 						<dd>
-						<?php echo htmlspecialchars($_SESSION['name'],ENT_QUOTES,'UTF-8'); ?>
+						<?php echo htmlspecialchars($_SESSION['user_name'],ENT_QUOTES,'UTF-8'); ?>
 						</dd>
 						<dt>自己PR</dt>
 						<dd>
