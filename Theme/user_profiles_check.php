@@ -13,7 +13,7 @@ echo $_SESSION['user_name'];
 // 	mysqli_query($db, $sql) or die(mysqli_error($db));
 // 	unset($_SESSION['join']);
 
-// 	header('Location: user_thanks.php');
+// 	header('Location: user_profiles_thanks.php');
 // 	exit();
 // }
 
@@ -38,7 +38,7 @@ echo $_SESSION['user_name'];
 // 	mysqli_query($db,$sql) or die(mysqli_error($db));
 // 	unset($_SESSION['join']);
 
-// 	header('Location: user_thanks.php');
+// 	header('Location: user_profiles_thanks.php');
 // 	exit();
 // // }
 // $name = $_POST['name'];

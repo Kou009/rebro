@@ -1,6 +1,6 @@
 <?php
 session_start();
-	require('C:\xampp\htdocs\teamLibro/dbconnect.php');
+	require('../dbconnect.php');
 	
 	$_SESSION['id']=1;
 	$_SESSION['book_id']=1;  //session変数に本のID入れてもらって、一覧ページから飛ばしてもらう

@@ -30,7 +30,7 @@
 
 		$_SESSION['join'] = $_POST;
 		
-		header('Location: user_check.php'); //入力し終えたらuser_check.phpに進みます
+		header('Location: user_profiles_check.php'); //入力し終えたらuser_profiles_check.phpに進みます
  		exit();
 	}
 
