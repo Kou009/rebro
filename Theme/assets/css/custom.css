@@ -645,7 +645,7 @@ top: 0px;
 /**indexのうごくやつ*/
 #loopslider {
 	margin: 0 auto;
-	width: 500px;
+	width: 100%;
 	height: 100px;
 	text-align: left;
 	position: relative;
@@ -654,14 +654,14 @@ top: 0px;
 
 #loopslider ul {
 	width: 100px;
-	height: 100px;
+	height: 1000px;
 	float: left;
 	display: inline;
 	overflow: hidden;
 }
 #loopslider ul li {
-	width: 100px;
-	height: 100px;
+	width: 170px;
+	height: 170px;
 	float: left;
 	display: inline;
 	overflow: hidden;

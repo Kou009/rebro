@@ -1,11 +1,23 @@
 <?date_default_timezone_set('Asia/Tokyo');
 session_start();
-//require('../dbconnect.php');
+require('../dbconnect.php');
+
+// 投稿を取得する
+$page='';
+if (isset($_REQUEST['page'])){
+$page = $_REQUEST['page'];
+
+}
+if ($page ==''){
+    $page =1;
+}
+$page = max($page, 1);
 
 
 
-// $sql =  sprintf('SELECT * FROM `books` WHERE 1 AND delete_flag=0 ORDER BY `created`');
-// $posts = mysqli_query($db, $sql) or die(mysqli_error($db));
+
+$sql =  sprintf('SELECT * FROM `books` WHERE `picture` AND delete_flag=0 ORDER BY `created`');
+$posts = mysqli_query($db, $sql) or die(mysqli_error($db));
 
 ?>
 
@@ -240,16 +252,41 @@ $(function(){
 		
 			<div id="loopslider">
 			<ul>
-				<li><a href="#"><img src="img/photo01.jpg" width="100" height="100" alt="" /></a></li>
-				<li><a href="#"><img src="img/photo02.jpg" width="100" height="100" alt="" /></a></li>
-				<li><a href="#"><img src="img/photo03.jpg" width="100" height="100" alt="" /></a></li>
-				<li><a href="#"><img src="img/photo04.jpg" width="100" height="100" alt="" /></a></li>
-				<li><a href="#"><img src="img/photo05.jpg" width="100" height="100" alt="" /></a></li>
-				<li><a href="#"><img src="img/photo06.jpg" width="100" height="100" alt="" /></a></li>
-				<li><a href="#"><img src="img/photo07.jpg" width="100" height="100" alt="" /></a></li>
-				<li><a href="#"><img src="img/photo08.jpg" width="100" height="100" alt="" /></a></li>
-				<li><a href="#"><img src="img/photo09.jpg" width="100" height="100" alt="" /></a></li>
-				<li><a href="#"><img src="img/photo10.jpg" width="100" height="100" alt="" /></a></li>
+
+				<?php
+
+				   while(1)
+                    {
+                        // $rec = $stmt->fetch(PDO::FETCH_ASSOC);
+                        $rec = mysqli_fetch_assoc($posts);
+
+                        if($rec==false)
+                        {
+                            break;
+                        }
+
+                        echo '<li><img class="img-responsive" alt="" src="../textbook_picture/'.$rec['picture'].'"　
+                            style="width:200px;height:200px;"></li>';
+
+                    }
+
+                    $dbh = null;
+
+
+
+				?>
+
+<!-- 
+				<li><a href="#"><img src="assets/img/portfolio/24.jpg" width="100" height="150" alt="" /></a></li>
+				<li><a href="#"><img src="assets/img/portfolio/15.jpg" width="100" height="150" alt="" /></a></li>
+				<li><a href="#"><img src="assets/img/portfolio/16.jpg" width="100" height="150" alt="" /></a></li>
+				<li><a href="#"><img src="assets/img/portfolio/25.jpg" width="100" height="150" alt="" /></a></li>
+				<li><a href="#"><img src="assets/img/portfolio/18.jpg" width="100" height="150" alt="" /></a></li>
+				<li><a href="#"><img src="assets/img/portfolio/19.jpg" width="100" height="150" alt="" /></a></li>
+				<li><a href="#"><img src="assets/img/portfolio/20.jpg" width="100" height="150" alt="" /></a></li>
+				<li><a href="#"><img src="assets/img/portfolio/21.jpg" width="100" height="150" alt="" /></a></li>
+				<li><a href="#"><img src="assets/img/portfolio/22.jpg" width="100" height="150" alt="" /></a></li>
+				<li><a href="#"><img src="assets/img/portfolio/23.jpg" width="100" height="150" alt="" /></a></li> -->
 			</ul>	
 			</div><!--/.loopslider-->
 		

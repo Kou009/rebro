@@ -25,25 +25,33 @@ if (!empty($_POST)) {
 	}
 
 	//重複アカウントのチェック
-	if (empty($error)){
+	if (empty($error['email'] && $error['password'])){
 		$sql = sprintf('SELECT COUNT(*) AS cnt FROM users WHERE email ="%s"',
 			mysqli_real_escape_string($db,$_POST['email']));
 		//mysqli~はmysql専用 PDOと異なり、専用であるが、すっきりした構文をかけるのとmysqlを使っているのがすぐわかる
 		//AS~は別名をつける WHERE emailは入力したメール %sはフォーマット文字列 %は置き換え 数字に置き換えたい時は %d
 		//countで列数を数えているので、(*)の中身をidなどに置き換えてもあまり意味ない
-
+			
 		$record=mysqli_query($db,$sql) or die(mysqli_error($db));
 		$table = mysqli_fetch_assoc($record);
 		if ($table['cnt'] > 0){
 			$error['email'] = 'duplicate';
+
+		}else{
+	
+
+			$_SESSION['join'] = $_POST;
+			//画面遷移　エラーがなければchecl.phpに移動する
+			header('Location: user_check.php');
+			exit();
+
 		}
+
 	}
+
 		
 
-		$_SESSION['join'] = $_POST;
-		//画面遷移　checl.phpに移動する
-		header('Location: user_check.php');
-		exit();
+		
 }
 //書き直し
 // if ($_REQEST['action'] == 'rewrite') {
@@ -78,6 +86,9 @@ if (!empty($_POST)) {
     <!--ヘッダーフッターファイルより-->
     <link rel="stylesheet" type="text/css" href="headfoot.css">
 
+    <!-- ログイン・登録画面ページ専用css -->
+    <link href="assets/css/user_touroku.css" rel="stylesheet">
+
     <link href="assets/css/font-awesome.min.css" rel="stylesheet">
 
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
@@ -97,7 +108,7 @@ if (!empty($_POST)) {
         function init() {
             window.addEventListener('scroll', function(e){
                 var distanceY = window.pageYOffset || document.documentElement.scrollTop,
-                    shrinkOn = 300,
+                    shrinkOn = 0,
                     header = document.querySelector("header");
                 if (distanceY > shrinkOn) {
                     classie.add(header,"smaller");
@@ -151,6 +162,8 @@ if (!empty($_POST)) {
 	        </div>
 	    </header><!-- /header -->
 
+	    <!-- ヘッダー分のスペースを空ける用 -->
+	    <div id= "top_space"></div>
 
 	    <div id="main">
 			<!-- MAIN IMAGE SECTION -->
@@ -171,7 +184,7 @@ if (!empty($_POST)) {
 			    <div class="container">
 			    	<div class="col-lg-4"> 
 			      	 	<div class="main"> 
-			      	 		<h3>Please Log In, or <a href="#">Sign Up</a></h3>
+			      	 		<!-- <h3>Please Log In, or <a href="#">Sign Up</a></h3> -->
 							<div class="row"> 
 								<a href="#" class="btn btn-lg btn-primary btn-block">Facebook</a> 
 								<a href="#" class="btn btn-lg btn-info btn-block">Google</a>
@@ -184,8 +197,32 @@ if (!empty($_POST)) {
 			          		<p class="form-title">
 			                <font color="#000"> Sign In</font></p>
 			                <!-- <form class="login"> -->
-				                <input type="text" name="email" placeholder="Email" value="<?php echo htmlspecialchars($_POST['email'], ENT_QUOTES,'UTF-8'); ?>"/>
+			                <?php
+			                $_POST['email'] = '';
+							$_POST['password'] ='';
+							?>
+
+								<input type="email" name="email" placeholder="Email" value="<?php echo htmlspecialchars($_POST['email'], ENT_QUOTES,'UTF-8'); ?>"/>
+								<!-- 追加文  -->
+								<?php if ($error['email'] == 'blank'): ?>
+								<p class="error">* メールアドレスを入力してください</p>
+								<?php endif; ?>
+								<!-- 登録アカウントの重複を防止する機能付き -->
+								<?php if ($error['email'] == 'duplicate'): ?>
+								<p class="error">* すでに登録済みのメールアドレスです</p>
+								<?php endif; ?>
+
+
+				                
 				                <input type="password" name="password" placeholder="Password" value="<?php echo htmlspecialchars($_POST['password'], ENT_QUOTES,'UTF-8'); ?>" />
+				                
+				                <?php if($error['password'] == 'blank'): ?>
+								<p class="error">* パスワードを入力してください</p>
+								<?php endif; ?>
+								<?php if ($error['password'] == 'length'): ?>
+								<p class="error">* パスワードは4文字以上で入力してください</p>
+								<?php endif; ?>
+
 				                <div>
 				                	<input type="submit" value="Sign In" class="btn btn-success btn-sm" />
 				                </div>
@@ -205,93 +242,7 @@ if (!empty($_POST)) {
 
 			<p class="pull-right"><br><button type="button" class="btn btn-green"><a href="kensaku.html">ログインする</a></button></p>
 
-			<!-- SERVICES SECTION -->
-			<div id="services">
-				<div class="container">
-					<div class="row mt">
-						<!-- Srvice 1 -->
-						<!-- <div class="col-lg-1 centered">
-							<i class="fa fa-certificate"></i>
-						</div>
-						<div class="col-lg-3">
-							<h3>Quality Design</h3>
-							<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-						</div> -->
 
-						<!-- Srvice 2 -->
-						<!-- <div class="col-lg-1 centered">
-							<i class="fa fa-question-circle"></i>
-						</div>
-						<div class="col-lg-3">
-							<h3>Awesome Support</h3>
-							<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-						</div> -->
-
-						<!-- Srvice 3 -->
-						<!-- <div class="col-lg-1 centered">
-							<i class="fa fa-globe"></i>
-						</div>
-						<div class="col-lg-3">
-							<h3>Global Services</h3>
-							<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-						</div> -->
-						
-						<!-- Srvice 4 -->
-						<!-- <div class="col-lg-1 centered">
-							<i class="fa fa-desktop"></i>
-						</div>
-						<div class="col-lg-3">
-							<h3>Responsive Design</h3>
-							<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-						</div>
-		 -->
-						<!-- Srvice 5 -->
-						<!-- <div class="col-lg-1 centered">
-							<i class="fa fa-cog"></i>
-						</div>
-						<div class="col-lg-3">
-							<h3>Easy Configuration</h3>
-							<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-						</div> -->
-					
-						<!-- Srvice 6 -->
-					<!-- 	<div class="col-lg-1 centered">
-							<i class="fa fa-heart"></i>
-						</div>
-						<div class="col-lg-3">
-							<h3>Crafted With Love</h3>
-							<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-						</div> -->
-
-					</div><!-- row -->
-				</div><!-- container -->
-			</div><!-- services section -->
-			
-			
-			<!-- TEAM INTRODUCTION -->
-			<div class="container">
-				<div class="row mt">
-					<div class="col-lg-8">
-						<h1>特徴とか使い方アゲイン</h1>
-					</div>
-					使い回し可
-					<div class="col-lg-4"></div>
-				</div><!-- row mt-->
-				<div class="row">
-				<!-- 	<div class="col-lg-8">
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-						<p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages.</p>
-					</div> -->
-					<div class="col-lg-3 col-lg-offset-1">
-						<p><b>CORPORATE BRIEF</b></p>
-						<p class="tm">Download the last information about our agency, our notable works, our team members, next projects & more.</p>
-						<p class="tm"><a href="#"><i class="fa fa-link"></i> <b>Download PDF</b></a></p>	
-					</div>
-				</div><!-- row -->
-			</div><!-- container -->
-		</div><!-- #main -->
-
-		
 		
 		ここいかはふったーにかわります
 		<footer>
