@@ -265,8 +265,12 @@ $(function(){
                             break;
                         }
 
+ 						echo '<div style="float:left;">';
+ 						echo '<a class="thumbnail fancybox" rel="ligthbox" >';
                         echo '<li><img class="img-responsive" alt="" src="../textbook_picture/'.$rec['picture'].'"　
                             style="width:200px;height:200px;"></li>';
+                        echo '</a></div>';
+
 
                     }
 
