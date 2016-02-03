@@ -1,5 +1,5 @@
 <?php
-	session_start();
+session_start();
 	require('C:\xampp\htdocs\teamLibro/dbconnect.php');
 	
 	$_SESSION['id']=1;
@@ -49,42 +49,16 @@
 		$major_name=mysqli_fetch_assoc($record5);
 
 
-	//投稿を記録する
-	
-		if(!empty($_POST)){
-			//出品者かどうか判別　出品者だった場合、レシーバーフラグ立てます
-	if($_SESSION['id'] == $books['users_id']) {
-		$sql=sprintf('INSERT INTO comments SET sender_id=%d,reciever_id=1,book_id=%d,message="%s",created=NOW()',
-			mysqli_real_escape_string($db,$member['id']),
-				mysqli_real_escape_string($db,$_SESSION['book_id']),
-				mysqli_real_escape_string($db,$_POST['message']));
-			mysqli_query($db,$sql) or die(mysqli_error($db));
-			
-			header('Location: show.php');
-			exit();
-			}//出品者じゃなかった場合
-			elseif($_POST['message']!=''){
-				$sql=sprintf('INSERT INTO comments SET sender_id=%d,book_id=%d,message="%s",created=NOW()',
-				mysqli_real_escape_string($db,$member['id']),
-				mysqli_real_escape_string($db,$_SESSION['book_id']),
-				mysqli_real_escape_string($db,$_POST['message']));
-			mysqli_query($db,$sql) or die(mysqli_error($db));
-			
-			header('Location: show.php');
-			exit();
-			}
-
-		}
-	
 
 ?>
+
 <!DOCTYPE HTML>
 <html>
 	<head>
 		<meta charset='UTF-8'>
-		<link rel="stylesheet" type="text/css" href="show.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/chat.css">
 		<link rel="stylesheet" type="text/css" href="assets/css/common.css">
-		<title>商品詳細ページ</title>
+		<title>個別チャット</title>
         <link href="assets/css/font-awesome.min.css" rel="stylesheet">
         <link href="assets/css/common.css" rel="stylesheet">
         <link href="assets/css/custom.css" rel="stylesheet">
@@ -121,8 +95,6 @@
 		                </h1>
 		                <i class="fa fa-book fa-4x"></i>     
 		                <nav>
-		                    <!-- <a href="">Lorem</a> -->
-		                    <!-- 消えたnavタグ大事件... -->
 		                    <a href="">About us</a> 
 		                    <a href="">Logout</a>
 		                </nav>
@@ -130,9 +102,11 @@
 		        </header><!-- /header -->
 			</div>
 		</div>
-
 		<div id="main">
-			<div class="sidebar" style="height:800px" >
+			<!-- <h3><font face="MSゴシック">１：１のチャット</font></h3> -->
+			
+		
+				<div class="sidebar" style="height:800px" >
 				<h1>出品者情報</h1>
 					<img class="sell-user" src="assets/img/default2.png" width="128" height="128" alt="出品者画像">
 					<br>
@@ -150,6 +124,8 @@
 						</dl>
 					</div>			
 			</div> <!-- sidebar -->
+				
+			
 
 			<div class="contents" style="height:450px" >
 				<span><img class="book" src="assets/img/portfolio/<?php echo $books['picture']; ?>" width="210" height="298" alt="商品イメージ"></span>
@@ -166,58 +142,107 @@
 
 			</div> <!-- contents -->
 
+			<div class="chat-container"> <!-- ここからチャット-->
+				<div class="row">
+		        <div class="col-md-5">
+		            <div class="panel panel-primary">
+		                <div class="panel-heading">
+		                    <span class="glyphicon glyphicon-comment"></span>
+		                   
+		                </div>
 
-<!--- -ここからパブリックコメント-->
-			<?php 
-		        $sql=sprintf('SELECT c.*,up.user_name FROM comments c,user_profiles up WHERE c.sender_id=up.user_id AND book_id=%d
-		       
-		        	ORDER BY c.created DESC',
-		        	mysqli_real_escape_string($db,$_SESSION['book_id']));
-				$record=mysqli_query($db,$sql) or die(mysqli_error($db));
-			?>
+		                <?php 
+		               		$sql=sprintf('SELECT chat.*,up.user_name FROM chat,user_profiles up
+		               			WHERE book_id=%d AND sender_id=%d || reciever_id=%d',
+							mysqli_real_escape_string($db,$_SESSION['book_id']),
+							mysqli_real_escape_string($db,$_SESSION['id']),
+							mysqli_real_escape_string($db,$_SESSION['id'])
+							);
+							$record6=mysqli_query($db,$sql) or die(mysqli_error($db));
+							
 
-							<div class="chat-container">
-						    <div class="row">
+							while ($chat_comment=mysqli_fetch_assoc($record6)) {
+								echo $chat_comment['user_name'];
+								//echo $chat_comment['reciever_id'];
+								echo $chat_comment['message'];
+							}
+		                ?>
 
-						        <div class="message-wrap col-lg-8">
-						            <div class="msg-wrap" style="width:500px height:100px">
 
-						            		<?php 
-						            		while($table=mysqli_fetch_assoc($record)):  //fetchがここで終わらないようにセミコロンじゃなくて、ころん！
-						            		?> 
-								            <div class="media-msg">
-								                    <a class="pull-left" href="#">
-								                        <img class="media-object" alt="64x64" style="width: 32px; height: 32px;" src="assets/img/portfolio/15.jpg">
-								                    </a>
-								                <div class="media-body">
-								                        <small class="pull-right time"> <?php echo $table['created'] ?></small>
-								                        <h5 class="media-heading"><?php echo $table['user_name']; ?></h5>
-								                        <small class="col-lg-10"><?php echo $table['message'];?></small>
-								                        <?php if($table['reciever_id'] == 1) { ?>
-								                        	<h5 class="media-heading">出品者より</h5>
-								                        <?php }?>
-								                    </div>
-								                </div> <!-- while文用の閉じタグ -->
-							                   
-							            <?php endwhile; ?>
-							            		</div>					
-						           			</div> <!-- この2つの閉じタグ消さないでください　レイアウト崩れます -->  
-						        	</div>
-						    	</div> <!-- message-wrap-->
+		                <div class="panel-body">
+		                    <ul class="chat">
+		                        <li class="left clearfix"><span class="chat-img pull-left">
+		                            <img src="http://placehold.it/50/55C1E7/fff&text=Q" alt="User Avatar" class="img-circle" />
+		                        </span>
+		                            <div class="chat-body clearfix">
+		                                <div class="header">
+		                                    <strong class="primary-font">Jack Sparrow</strong> <small class="pull-right text-muted">
+		                                        <span class="glyphicon glyphicon-time"></span>12 mins ago</small>
+		                                </div>
+		                                <p>
+		                                    サバンナ
+		                                </p>
+		                            </div>
+		                        </li>
+		                        <li class="right clearfix"><span class="chat-img pull-right">
+		                            <img src="http://placehold.it/50/FA6F57/fff&text=A" alt="User Avatar" class="img-circle" />
+		                        </span>
+		                            <div class="chat-body clearfix">
+		                                <div class="header">
+		                                    <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>13 mins ago</small>
+		                                    <strong class="pull-right primary-font">Bhaumik Patel</strong>
+		                                </div>
+		                                <p>
+		                                    アマゾン
+		                                </p>
+		                            </div>
+		                        </li>
+		                        <li class="left clearfix"><span class="chat-img pull-left">
+		                            <img src="http://placehold.it/50/55C1E7/fff&text=Q" alt="User Avatar" class="img-circle" />
+		                        </span>
+		                            <div class="chat-body clearfix">
+		                                <div class="header">
+		                                    <strong class="primary-font">Jack Sparrow</strong> <small class="pull-right text-muted">
+		                                        <span class="glyphicon glyphicon-time"></span>14 mins ago</small>
+		                                </div>
+		                                <p>
+		                                    かいます
+		                                </p>
+		                            </div>
+		                        </li>
+		                        <li class="right clearfix"><span class="chat-img pull-right">
+		                            <img src="http://placehold.it/50/FA6F57/fff&text=A" alt="User Avatar" class="img-circle" />
+		                        </span>
+		                            <div class="chat-body clearfix">
+		                                <div class="header">
+		                                    <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>15 mins ago</small>
+		                                    <strong class="pull-right primary-font">Bhaumik Patel</strong>
+		                                </div>
+		                                <p>
+		                                    うります
+		                                </p>
+		                            </div>
+		                        </li>
+		                    </ul>
+		                </div>
+			                <div class="panel-footer">
+			                    <div class="input-group">
+			                        <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+			                        <span class="input-group-btn">
+			                            <button class="btn btn-warning btn-sm" id="btn-chat">
+			                                Send</button>
+			                        </span>
+			                    </div>
+			                </div>
+			            </div>
+			        </div>
+			    </div>
+					   
+			</div>
+		
 
-						        <form method="post" action="">
-					            <div class="send-wrap">
-					                <textarea name="message"class="form-control send-message" rows="3" placeholder="Write a reply...">
-					                </textarea>
-					             <p><input type="submit" value="送信" /></p>
-					        </form>
-					        <a href="chat.php">個別チャットする</a>
-					        </div> <!-- send-wrap -->
-					      
-					      </div> <!--row -->
-					  </div> <!-- chat-container -->
-					</div> <!-- main -->
-
+		
+		<div class="footer">
 			 <footer>
 		        <div id="info-bar">
 		            <div class="container clearfix">
@@ -249,7 +274,7 @@
 		            </div>
 		        </div><!-- /#top-bar -->
 		        </footer><!-- /footer -->
-	
+		    </div>
 
 
 
