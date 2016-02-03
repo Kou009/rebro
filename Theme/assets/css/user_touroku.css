@@ -1,0 +1,204 @@
+/*user_check.php用*/
+/*user_check.phpのヘッダー分のスペース空け用*/
+#top_space{
+	padding: 0px;
+	/*background: url(images/bg_content.png) left bottom no-repeat #ecf7fc;*/
+	background: ;
+	width: 100%;
+	min-height: 10em;
+	
+}
+/*user_check.phpのmain部分枠*/
+#check_space {
+
+	padding: 50px 0px 30px 30px;
+	/*background: url(images/bg_content.png) left bottom no-repeat #ecf7fc;*/
+	background: #ecf7fc;
+	width: 90%;
+	min-height: 400px;
+	margin: 0 auto;
+	margin-bottom: 30px;
+	font-size: 120%;
+}
+
+
+
+/*ログイン・登録画面共通　変更部css*/
+/*bootstrap.cssより変更部*/
+.row {
+    margin-right: -15px;
+    margin-left: 40px;
+}
+
+.radio,
+.checkbox {
+  float: right;/*チェックボックスの位置変更*/
+  display: block;
+  min-height: 20px;
+  padding-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  vertical-align: middle;
+}
+
+.btn-block {
+    display: block;
+    width: 200px;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+
+
+/*main.cssより変更部 279*/
+#aboutwrap {
+    background: url(../img/about-bg1.jpg) no-repeat center top;
+    margin-top: 0px; /*143から0へ*/
+    padding-top: 20px;
+    text-align: center;
+    background-attachment: relative;
+    background-position: center center;
+    min-height: 500px;
+    width: 100%;
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+/*thanksページ用のcss*/
+#aboutwrap_thanks {
+    background: url(../img/about-bg1.jpg) no-repeat center top;
+    margin-top: 0px; /*143から0へ*/
+    padding-top: 20px;
+    text-align: center;
+    background-attachment: relative;
+    background-position: center center;
+    min-height: 500px;
+    width: 100%;
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#aboutwrap h2 {
+    color: #fff;
+    font-size: 50px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    margin-top: 150px;
+}
+/*thanksページ用のcss*/
+#aboutwrap_thanks h2 {
+    color: #fff;
+    font-size: 50px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    margin-top: 150px;
+}
+
+/*custom.cssより変更部 32*/
+/*画像前のカバー*/
+#aboutwrap:before{
+	content:"";
+	display: block;
+	width: 100%;
+	height: 62.5%; /*トップ画像カバー部分*/
+	background: -moz-linear-gradient(
+		270deg,
+		#1abc9c 100%,
+		#ffffff 0%);
+	background: -webkit-linear-gradient(
+		270deg,
+		#1abc9c 100%,
+		#ffffff 0%);
+	background: -o-linear-gradient(
+		270deg,
+		#1abc9c 100%,
+		#ffffff 0%%);
+	background: -ms-linear-gradient(
+		270deg,
+		#1abc9c 100%,
+		#ffffff 0%);
+
+	position: absolute;
+	top: 150px;
+	left: 0;
+	opacity: 0.4;
+}
+/*thanksページ用のcss*/
+#aboutwrap_thanks:before{
+    content:"";
+    display: block;
+    width: 100%;
+    height: 70.5%; /*トップ画像カバー部分*/
+    background: -moz-linear-gradient(
+        270deg,
+        #1abc9c 100%,
+        #ffffff 0%);
+    background: -webkit-linear-gradient(
+        270deg,
+        #1abc9c 100%,
+        #ffffff 0%);
+    background: -o-linear-gradient(
+        270deg,
+        #1abc9c 100%,
+        #ffffff 0%%);
+    background: -ms-linear-gradient(
+        270deg,
+        #1abc9c 100%,
+        #ffffff 0%);
+
+    position: absolute;
+    top: 150px;
+    left: 0;
+    opacity: 0.4;
+}
+
+
+/*custom.cssより変更部 357*/
+form.login input[type="text"],form.login input[type="email"], form.login input[type="password"]
+{
+    width: 35em;/*100%から35emに*/
+    margin: 0;
+    padding: 5px 10px 5px 10px;
+    background: 0;
+    border: 0;
+    border-bottom: 1px solid #000000;
+    outline: 0;
+    font-style: italic;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    color: #000000;
+    outline: 0;
+}
+
+form.login input[type="submit"]
+{
+	float: right;/*ボタン位置変更*/
+    width: 30%; /*100から30に変更*/
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-top: 16px;
+    outline: 0;
+    cursor: pointer;
+    letter-spacing: 1px;
+}
+
+/*common.cssより変更部 91*/
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px 0px 0px 30px; 
+}

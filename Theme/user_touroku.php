@@ -83,16 +83,16 @@ if (!empty($_POST)) {
     <link href="assets/css/custom.css" rel="stylesheet">
     <link href="assets/css/common.css" rel="stylesheet">
 
-    <!--ヘッダーフッターファイルより-->
-    <link rel="stylesheet" type="text/css" href="headfoot.css">
-
-    <!-- ログイン・登録画面ページ専用css -->
-    <link href="assets/css/user_touroku.css" rel="stylesheet">
-
     <link href="assets/css/font-awesome.min.css" rel="stylesheet">
 
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
+
+    <!--ヘッダーフッターファイルより-->
+    <link rel="stylesheet" type="text/css" href="headfoot.css">
+
+    <!-- ログイン・登録画面ページ専用css -->
+	<link href="assets/css/user_touroku.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -163,7 +163,7 @@ if (!empty($_POST)) {
 	    </header><!-- /header -->
 
 	    <!-- ヘッダー分のスペースを空ける用 -->
-	    <div id= "top_space"></div>
+	    <!-- <div id= "top_space"></div> -->
 
 	    <div id="main">
 			<!-- MAIN IMAGE SECTION -->
