@@ -270,10 +270,10 @@ $(function(){
  						// echo '<div style="float:left;">';
                         echo '<li><a class="thumbnail fancybox" rel="ligthbox" >
                         	<img class="img-responsive" alt="" src="../textbook_picture/'.$rec['picture'].'"　
-                            style="width:200px;height:200px;"></a></li>';
+                            style="width:200px;height:300px;"></a></li>';
                         // echo '<div class="text-right">';
                         // echo '<small class="text-muted">';
-                        echo $rec['title'];
+                        // echo $rec['title'];
                         // echo'</br>';
                         // echo '¥';
                         // echo $rec['price'];
