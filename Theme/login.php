@@ -44,7 +44,9 @@ if (!empty($_POST)) {
 			}
 			// header('Location: user_profiles.html');
 			// ログイン、ログアウトテスト用
-			header('Location: test_user_profiles.php');
+			// header('Location: test_user_profiles.php');
+			// 本番移行先
+			header('Location: user_profiles_edit.php');
 			exit();
 		} else {
 			$error['login'] = 'failed';
@@ -185,13 +187,13 @@ $error = array('login'=> '' );
 		    <div id="chartwrap">
 			    <div class="container">
 			    	<div class="col-lg-4"> 
-			      	 	<div class="main"> 
+			      	 	<div class="another_login"> 
 			      	 		<h3>Please Log In, or <a href="user_touroku.php">Sign Up</a></h3>
 							<div class="row"> 
 								<a href="#" class="btn btn-lg btn-primary btn-block">Facebook</a> 
 								<a href="#" class="btn btn-lg btn-info btn-block">Google</a>
 							</div><!-- row -->   	 
-			      	 	</div><!-- main -->
+			      	 	</div><!-- another_login -->
 			    	</div><!-- col-lg-4 -->
 
 			    	<form class="login" action="" method="post" enctype="multipart/form-data">
