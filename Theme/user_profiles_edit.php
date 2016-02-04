@@ -26,89 +26,85 @@
 	// header('Location: user_check.php'); //入力し終えたらuser_check.phpに進みます
 
 	// echo $_POST;
-	if (!empty($_POST)){
+	// if (!empty($_POST)){
 
-		$_SESSION['join'] = $_POST;
+	// 	$_SESSION['join'] = $_POST;
 		
-		header('Location: user_profiles_check.php'); //入力し終えたらuser_profiles_check.phpに進みます
- 		exit();
+	// 	header('Location: user_profiles_check.php'); //入力し終えたらuser_profiles_check.phpに進みます
+ // 		exit();
+	// }
+
+	if (!empty($_POST)) {
+
+		if($_POST['user_name'] == ''){
+			$error['user_name'] = 'blank';
+		}
+
+		if($_POST['hurigana'] == ''){
+			$error['hurigana'] = 'blank';
+		}
+
+		if($_POST['age'] == ''){
+			$error['age'] = 'blank';
+		}
+
+		if($_POST['college_id'] == ''){
+			$error['college_id'] = 'blank';
+		}
+		
+		if($_POST['pref_id'] == ''){
+			$error['pref_id'] = 'blank';
+		}
+
+		if($_POST['city_id'] == ''){
+			$error['city_id'] = 'blank';
+		}
+
+		if($_POST['major_id'] == ''){
+			$error['major_id'] = 'blank';
+		}
+
+		if($_POST['tel'] == ''){
+			$error['tel'] = 'blank';
+		}
+
+		if($_POST['address'] == ''){
+			$error['address'] = 'blank';
+		}
+
+		if($_POST['pr'] == ''){
+			$error['pr'] = 'blank';
+		}
+		$fileName = $_FILES['picture']['user_name'];
+		if(!empty($fileName)){
+			$ext = substr($fileName, -3);
+			if($ext != 'jpg' && $ext != 'git' && $ext != 'png'){
+				$error['picture'] = 'type';
+			}
+		}
+
+		if($error['user_name']=='' && $error['hurigana']=='' && $error['age']=='' && $error['college_id']=='' && $error['pref_id']=='' && $error['city']=='' && $error['major_id']=='' && $error['address']=='' && $error['pr']=='' ){
+			$user_name = ($_POST['user_name']);
+			$hurigana = ($_POST['hurigana']);
+			$age = ($_POST['age']);
+			$college_id = ($_POST['college_id']);
+			$pref_id = ($_POST['pref_id']);
+			$city_id = ($_POST['city_id']);
+			$major_id = ($_POST['major_id']);
+			$tel = ($_POST['tel']);
+			$address = ($_POST['address']);
+			$pr = ($_POST['pr']);
+			$picture = ($_POST['picture']);
+
+			$image = date.time('YmdHis') . $FILES['picture']['user_name'];
+			move_uploaded_file($_FILES,['picture']['tmp_name'], '../textbook_picture/' . $picture);
+
+			$_SESSION['join'] = $_POST;
+			$_SESSION['join']['picture'] = $picture;
+			header('Location: user_profiles_check.php'); //入力し終えたらuser_check.phpに進みます
+			exit();
+		}	
 	}
-
-	// if (!empty($_POST)) {
-
-	// 	if($_POST['user_name'] == ''){
-	// 		$error['user_name'] = 'blank';
-	// 	}
-
-	// 	if($_POST['hurigana'] == ''){
-	// 		$error['hurigana'] = 'blank';
-	// 	}
-
-	// 	if($_POST['age'] == ''){
-	// 		$error['age'] = 'blank';
-	// 	}
-
-	// 	if($_POST['college_id'] == ''){
-	// 		$error['college_id'] = 'blank';
-	// 	}
-		
-	// 	if($_POST['pref_id'] == ''){
-	// 		$error['pref_id'] = 'blank';
-	// 	}
-
-	// 	if($_POST['city_id'] == ''){
-	// 		$error['city_id'] = 'blank';
-	// 	}
-
-	// 	if($_POST['major_id'] == ''){
-	// 		$error['major_id'] = 'blank';
-	// 	}
-
-	// 	if($_POST['address'] == ''){
-	// 		$error['address'] = 'blank';
-	// 	}
-
-	// 	if($_POST['pr'] == ''){
-	// 		$error['pr'] = 'blank';
-	// 	}
-	// 	$fileName = $_FILES['picture']['user_name'];
-	// 	if(!empty($fileName)){
-	// 		$ext = substr($fileName, -3);
-	// 		if($ext != 'jpg' && $ext != 'git' && $ext != 'png'){
-	// 			$error['picture'] = 'type';
-	// 		}
-	// 	}
-
-	// 	if($error['user_name']=='' && $error['hurigana']=='' && $error['age']=='' && $error['college_id']=='' && $error['pref_id']=='' && $error['city']=='' && $error['major_id']=='' && $error['address']=='' && $error['pr']=='' ){
-	// 		$user_name = ($_POST['user_name']);
-	// 		$hurigana = ($_POST['hurigana']);
-	// 		$age = ($_POST['age']);
-	// 		$college_id = ($_POST['college_id']);
-	// 		$pref_id = ($_POST['pref_id']);
-	// 		$city_id = ($_POST['city_id']);
-	// 		$major_id = ($_POST['major_id']);
-	// 		$address = ($_POST['address']);
-	// 		$pr = ($_POST['pr']);
-	// 		$picture = ($_POST['picture']);
-
-	// 		$image = date.time('YmdHis') . $FILES['picture']['user_name'];
-	// 		move_uploaded_file($_FILES,['picture']['tmp_name'], '../textbook_picture/' . $image);
-
-	// 		$_SESSION['join'] = $_POST;
-	// 		$_SESSION['join']['picture'] = $picture;
-	// 		header('Location: user_check.php'); //入力し終えたらuser_check.phpに進みます
-	// 		exit();
-	// 	}	
-	// }
-	// //書き直し
-	// if(isset($_REQEST['action'])){
-	// 	$action = $_REQUEST['action'];
-	// }
-	// if ($action == 'rewrite'){
-	// 	$_POST = $_SESSION['join'];
-	// 	$error['rewrite'] = true;
-	// }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -188,7 +184,7 @@
       	<div class="col-lg-4">
       		<p class="pull-right"><br><button type="button" class="btn btn-green">Start Your Project Now</button></p>
       	</div>
-      </div><!-- /row -->
+      </div>--><!-- /row -->
     <!-- </div> --><!-- /.container -->
     
     <!-- PROFILE SECTION -->
@@ -199,7 +195,8 @@
 				<ul class="grid effect-2" id="grid">
 
 						<dd class="avatar-upload-container clearfix">
-							<img class="avatar_left" width="250" height="250"  alt="写真を入力して下さい">
+
+							<img src ="assets/img/default.png" class="avatar_left" width="250" height="250"  alt="写真を入力して下さい">
 							<div class="avatar_upload">
 							<a class="btn button-change-profile-picture" href="#">
 								<!-- <label for="upload-profile-picture">
@@ -219,16 +216,13 @@
 								<div class="upload-state text-danger failed-request"> Something went really wrong and we can’t process that picture. </div>
 							</div> -->
 						</dd>
-					
+					<div style= "margin-left:310px"><input type="file" name="picture" size="35"  onClick="update()"/></div>
 					<div class="col-sm-4">
-
-
-						
 
 		                <h3 class="page-header">Profile</h3>
 		                <form role="form"　action ="" method ="post">
 		                    <div class="form-group float-label-control">
-		                        <label for="">名前（※必須）</label>
+		                        <label for="">名前</label>
 		                        <input type="text" name ="user_name" class="form-control" placeholder="Username" value ="<?php echo $rec['user_name']?>">
 		                    </div>
 		                    <!-- <div class="profile-edit-1">
@@ -255,8 +249,8 @@
 								<div class="row">
 							    	<button href="#"  class="btn btn-xlarge" /><i class="fa fa-chevron-right fa-5x" ></i></button>
 							    </div>
-							</div>
- -->
+							</div>-->
+
 		                    <div class="form-group float-label-control">
 		                        <label for="">年齢</label>
 		                        <input type="text" name ="age" class="form-control" placeholder="Username" value ="<?php echo $rec['age']?>">
@@ -285,9 +279,8 @@
 								<div class="row">
 							    	<button href="#"  class="btn btn-xlarge" /><i class="fa fa-chevron-right fa-5x" ></i></button>
 							    </div>
-							</div>
+							</div>-->
 
- -->
 		                    <div class="form-group float-label-control">
 		                        <label for="">市町村</label>
 		                        <input type="text" name ="city_id" class="form-control" placeholder="Username" value ="<?php echo $rec['city_id']?>">
@@ -318,10 +311,10 @@
 							    </div>
 							</div> -->
 
-		                    <!-- <div class="form-group float-label-control">
+		                    <div class="form-group float-label-control">
 		                        <label for="">電話番号</label>
-		                        <input type="text" class="form-control" placeholder="Username">
-		                    </div> -->
+		                        <input type="number" name ="tel" class="form-control" placeholder="Username" value ="<?php echo $rec['tel']?>">
+		                    </div>
 		                    <!-- <div class="profile-edit-9">
 								<div class="row">
 							    	<button href="#"  class="btn btn-xlarge" /><i class="fa fa-chevron-right fa-5x" ></i></button>
@@ -348,7 +341,7 @@
 		                        <input type="password" class="form-control" placeholder="Password">
 		                    </div> -->
 		                    <div class="form-group float-label-control">
-		                        <label for="">自己PR（※必須）</label>
+		                        <label for="">自己PR</label>
 		                        <textarea class="form-control"  name ="pr" placeholder="Textarea" rows="5"><?php echo $rec['pr']?></textarea>
 		                    </div>
 		                    <p class ="comform">
@@ -380,7 +373,7 @@
 		                    </div>
 		                </form>
 
-		            </div>
+		            </div>-->
 					<!-- <li><a href="singleproject.html"><img src="assets/img/portfolio/14.jpg"></a></li> -->
 				</ul>
 	    	</div><!-- row -->
