@@ -1,4 +1,5 @@
-<?date_default_timezone_set('Asia/Tokyo');
+<?php
+date_default_timezone_set('Asia/Tokyo');
 session_start();
 require('../dbconnect.php');
 
@@ -126,7 +127,7 @@ $(function(){
                     <!-- <a href="">Lorem</a> -->
                     <!-- 消えたnavタグ大事件... -->
                    
-                    <a href="">Logout</a>
+                    <a href="logout.php">Login</a>
                 </nav>
             </div>
         </header><!-- /header -->
@@ -321,8 +322,8 @@ $(function(){
 		<div class="container">
 			<div class="row destacados">
         <div class="col-lg-3">
-            <div>
-            	<i class="fa fa-repeat" alt="Texto Alternativo" class="img-circle img-thumbnail"></i>
+            <div class="circle">
+            	<i class="fa fa-repeat" alt="Texto Alternativo" ></i>
 
                 <!-- <img alt="Texto Alternativo" class="img-circle img-thumbnail"> -->
                 <h2>Mottainai</h2>
@@ -332,26 +333,26 @@ $(function(){
         </div>
         
 
-        <div class="col-lg-3">
-            <div>
-                <img src="http://lorempixel.com/200/200/abstract/2/" alt="Texto Alternativo" class="img-circle img-thumbnail">
+       <div class="col-lg-3">
+            <div class="circle">
+            	<i class="fa fa-repeat" alt="Texto Alternativo" ></i>
                 <h2>すぐに手に入る</h2>
                 <p>お互いの都合が合えば即日入手可能</p>
                
             </div>
         </div>
 
-        <div class="col-lg-3">
-            <div>
-                <img src="http://lorempixel.com/200/200/abstract/3/" alt="Texto Alternativo" class="img-circle img-thumbnail">
+       <div class="col-lg-3">
+            <div class="circle">
+            	<i class="fa fa-repeat" alt="Texto Alternativo" ></i>
                 <h2>3分でかんたん売買</h2>
                 <p>いらなくなった教科書を売ってお小遣い稼ぎをしよう。</p>
                
             </div>
         </div>
-        <div class="col-lg-3">
-            <div>
-                <img src="http://lorempixel.com/200/200/abstract/1/" alt="Texto Alternativo" class="img-circle img-thumbnail">
+       <div class="col-lg-3">
+            <div class="circle">
+            	<i class="fa fa-repeat" alt="Texto Alternativo" ></i>
                 <h2>無料で使える</h2>
                 <p>手数料含め購入費以外はお金はかかりません。</p>
                
@@ -360,6 +361,11 @@ $(function(){
      </div>
 		</div><!-- container -->
 	</div><!-- dg -->
+
+</br>
+</br>
+</br>
+</br>
 	 
 	
 	
@@ -368,9 +374,9 @@ $(function(){
 	
 	
 	<!-- CALL TO ACTION -->
-	<div id="call">
+	<!-- <div id="call">/ -->
 		<div class="container">
-			<div class="row">
+			<div class="row" style="text-align:center;">
 				<h3>さぁ教科書を探しにいこう</h3>
 				<div class="col-lg-8 col-lg-offset-2">
 					<p>ここにログイン画面に進む内容を記述</p>
@@ -378,7 +384,7 @@ $(function(){
 				</div>
 			</div><!-- row -->
 		</div><!-- container -->
-	</div><!-- Call to action -->
+	<!-- </div>Call to action -->
 
 
 	  <footer>
@@ -391,16 +397,18 @@ $(function(){
 
 
                 <div class="col-lg-3">
+                	<div style="vertical-align:middle;">
                     <ul>
-                        <h2>REBROについて</h2>
+                        <h3>REBROについて</h3>
                         <p>プライバシーポリシー</p>
                         <p>環境保護活動</p>
                     </ul>
+                	</div>
                 </div>
                
                <div class="col-lg-3">
                     <ul>
-                        <h2>REBROを使う</h2>
+                        <h3>REBROを使う</h3>
                         <p>都道府県検索</p>
                         <p>大学検索</p>
                         <p>出品一覧</p>
