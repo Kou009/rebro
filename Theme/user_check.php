@@ -23,11 +23,34 @@ if (!empty($_POST)) {
 	// var_dump($sql);
 
 	mysqli_query($db,$sql) or die(mysqli_error($db));
-	unset($_SESSION['join']);
-	//thanksページへの送信テスト
- 	// $_SESSION['join'] = $_POST;
-	header('Location: user_thanks.php');
-	exit();
+
+	$sql = sprintf('SELECT * FROM users WHERE email="%s" AND password="%s"',
+			mysqli_real_escape_string($db,$_SESSION['join']['email']),
+			mysqli_real_escape_string($db,sha1($_SESSION['join']['password']))
+			);
+		// echo '<br />';
+		// var_dump($sql);
+		// != で'~'の中が~じゃなかったらとなる(!==にしない)
+		$record = mysqli_query($db,$sql) or die(mysqli_error($db));
+
+		if ($table = mysqli_fetch_assoc($record)){
+			//ログイン成功
+			$_SESSION['id'] = $table['id'];
+			$_SESSION['time'] = time();
+
+
+			//ログイン情報を記録する(２週間)(単位[s])
+			setcookie('email',$_SESSION['join']['email'], time()+60*60*24*14);
+			setcookie('password',$_SESSION['join']['password'], time()+60*60*24*14);
+
+
+			unset($_SESSION['join']);
+			//thanksページへの送信テスト
+		 	// $_SESSION['join'] = $_POST;
+		 	$_POST['thanks']='';
+			header('Location: user_thanks.php');
+			exit();
+		}
 }
 ?>
 
@@ -129,7 +152,7 @@ if (!empty($_POST)) {
 						<?php echo htmlspecialchars($_SESSION['join']['password'],ENT_QUOTES,'UTF-8'); ?>
 						</dd>
 					</dl><br /><br />
-				<div><a href="index.php?action=rewrite">&laquo;&nbsp;書き直す</a> | <input type="submit" value="登録する" /></div>
+				<div><a href="user_touroku.php?action=rewrite" class="btn-reset btn-sm">&laquo;&nbsp;Reset</a>  <input type="submit" value="Register" class="btn-success btn-sm"/></div>
 			</form>
 
 		</div><!-- #check_space -->

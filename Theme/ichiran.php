@@ -1,4 +1,5 @@
-<?date_default_timezone_set('Asia/Tokyo');
+<?php
+date_default_timezone_set('Asia/Tokyo');
 session_start();
 require('../dbconnect.php');
 
@@ -17,16 +18,16 @@ $page = max($page, 1);
 $sql = 'SELECT COUNT(*) AS cnt FROM books WHERE delete_flag = 0 ';
 $recordSet = mysqli_query($db, $sql);
 $table = mysqli_fetch_assoc($recordSet);
-$maxPage = ceil($table['cnt'] / 4);
+$maxPage = ceil($table['cnt'] / 9);
 $page = min($page, $maxPage);
 
-$start = ($page - 1) * 4;
+$start = ($page - 1) * 9;
 $start = max(0, $start);
 
 // $sql = sprintf('SELECT * FROM  WHERE m.id=p.member_id AND delete_flag=0 ORDER BY p.created DESC LIMIT %d,5',
 //     $start
 //     );
-$sql =  sprintf('SELECT * FROM `books` WHERE 1 AND delete_flag=0 ORDER BY `created` DESC LIMIT %d,4',
+$sql =  sprintf('SELECT * FROM `books` WHERE 1 AND delete_flag=0 ORDER BY `created` DESC LIMIT %d,9',
     $start
     );
 // var_dump($sql);

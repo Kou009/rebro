@@ -53,11 +53,13 @@ if (!empty($_POST)) {
 
 		
 }
-//書き直し
-// if ($_REQEST['action'] == 'rewrite') {
-// 	$_POST = $_SESSION['join'];
-// 	$error['rewrite'] = true;
-// }
+// 書き直し
+if(isset($_REQEST['action'])){
+	if ($_REQEST['action'] == 'rewrite') {
+		$_POST = $_SESSION['join'];
+		$error['rewrite'] = true;
+	}
+}
 	
 
 
@@ -167,13 +169,12 @@ if (!empty($_POST)) {
 
 	    <div id="main">
 			<!-- MAIN IMAGE SECTION -->
-			<div id="aboutwrap">
+			<div id="aboutwrap_touroku">
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-8 col-lg-offset-2">
-							<h2>Live smart<br/>
-								さぁ、本を探しに行こう
-							</h2>
+							<h2>Register as your<br/><br/>
+								登録しよう
 						</div>
 					</div><!-- row -->
 				</div><!-- /container -->
@@ -195,7 +196,7 @@ if (!empty($_POST)) {
 			    	<form class="login" action="" method="post" enctype="multipart/form-data">
 			      		<div class="col-lg-8">
 			          		<p class="form-title">
-			                <font color="#000"> Sign In</font></p>
+			                <font color="#000"> Sign Out</font></p>
 			                <!-- <form class="login"> -->
 			                <?php
 			                $_POST['email'] = '';
@@ -224,7 +225,7 @@ if (!empty($_POST)) {
 								<?php endif; ?>
 
 				                <div>
-				                	<input type="submit" value="Sign In" class="btn btn-success btn-sm" />
+				                	<input type="submit" value="Check" class="btn btn-success btn-sm" />
 				                </div>
 				                <!-- <div class="remember-forgot"> -->
 				                    <!-- <div class="row"> -->

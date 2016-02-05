@@ -683,3 +683,12 @@ top: 0px;
 	display: inline-block;
 	overflow: hidden;
 }
+
+/**円index*/
+.circle {
+  border: solid 3px black;
+  border-color: #1abc9c;
+  border-radius: 50%;
+  height: 200px;
+  width: 200px;
+}
