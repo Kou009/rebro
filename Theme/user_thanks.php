@@ -1,3 +1,51 @@
+<?php
+// var_dump($_SESSION['join']);
+// var_dump($_POST);
+
+
+// if (!empty($_POST)) {
+// 	// var_dump('if文入ってる？');
+// 	// var_dump($_POST['email']);
+// 	// var_dump($_POST['password']);
+// 	//ログイン処理
+// 	if ($_POST['email'] != '' && $_POST['password'] !='') {
+// 		// var_dump($_POST['email']);
+// 		// var_dump($_POST['password']);
+// 		// var_dump('naka入ってる？');
+// 		//sprintf( フォーマット [, 引数１] [, 引数２]･・・):指定したフォーマットにしたがって整形した文字列を返す。
+// 		// mysqli_real_escape_string：PHPからMySQLにデータを登録するときに、MySQLで使用する特殊文字をエスケープする方法
+// 		$sql = sprintf('SELECT * FROM users WHERE email="%s" AND password="%s"',
+// 			mysqli_real_escape_string($db,$_POST['email']),
+// 			mysqli_real_escape_string($db,sha1($_POST['password']))
+// 			);
+// 		// var_dump($sql);
+// 		// != で'~'の中が~じゃなかったらとなる(!==にしない)
+// 		$record = mysqli_query($db,$sql) or die(mysqli_error($db));
+// 		if ($table = mysqli_fetch_assoc($record)){
+// 			//ログイン成功
+// 			$_SESSION['id'] = $table['id'];
+// 			$_SESSION['time'] = time();
+
+
+// 			//ログイン情報を記録する(２週間)(単位[s])
+// 			if ($_POST['save'] == 'on') {
+// 				setcookie('email',$_POST['email'], time()+60*60*24*14);
+// 				setcookie('password',$_POST['password'], time()+60*60*24*14);
+// 			}
+// 			// header('Location: user_profiles.html');
+// 			// ログイン、ログアウトテスト用
+// 			header('Location: test_user_profiles.php');
+// 			exit();
+// 		} else {
+// 			$error['login'] = 'failed';
+// 		}
+// 	} else {
+// 		$error['login'] = 'blank';
+// 	}
+// }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -18,13 +66,17 @@
 	    <link href="assets/css/custom.css" rel="stylesheet">
 	    <link href="assets/css/common.css" rel="stylesheet">
 
-	    <!--ヘッダーフッターファイルより-->
-	    <link rel="stylesheet" type="text/css" href="headfoot.css">
 
 	    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
 
 	    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
 	    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
+
+	    <!--ヘッダーフッターファイルより-->
+	    <link rel="stylesheet" type="text/css" href="headfoot.css">
+
+	    <!-- ログイン・登録画面ページ専用css -->
+    	<link href="assets/css/user_touroku.css" rel="stylesheet">
 
 	    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	    <!--[if lt IE 9]>
@@ -40,7 +92,7 @@
 	        function init() {
 	            window.addEventListener('scroll', function(e){
 	                var distanceY = window.pageYOffset || document.documentElement.scrollTop,
-	                    shrinkOn = 300,
+	                    shrinkOn = 0,
 	                    header = document.querySelector("header");
 	                if (distanceY > shrinkOn) {
 	                    classie.add(header,"smaller");
@@ -76,26 +128,34 @@
 
 
 		<div id="main">
-			<div id="aboutwrap">
+			<div id="aboutwrap_thanks">
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-8 col-lg-offset-2">
-							<h2>Live smart<br/>
-								さぁ、本を探しに行こう
+							<h2>Thank you!<br/><br/>
+								Live smart<br/>
+								さぁ、本を探しに行こう<br /><br />
+								<!-- <a href="user_profiles.html">Log IN</a> -->
+								<!-- ログイン、ログアウトテスト用 -->
+								
+				                	<!-- <input type="submit" value="Log IN" class="btn btn-success btn-sm" /> -->
+				               
+								<a href="test_user_profiles.php">Log IN</a>
 							</h2>
+							<br />
 						</div>
 					</div><!-- row -->
 				</div><!-- /container -->
 			</div><!-- /aboutwrap -->
 
-			<div id="head">
+			<!-- <div id="head">
 				<h1>会員登録</h1>
 			</div>
 
 			<div id="content">
 				<p>ユーザー登録が完了しました</p>
-				<p><a href="login.php">ログインする</a></p>
-			</div>
+				<p><a href="user_profiles.html">ログインする</a></p>
+			</div> -->
 
 		</div><!-- #main -->
 

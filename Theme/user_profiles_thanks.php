@@ -1,36 +1,3 @@
-<?php
-session_start();
-require('../dbconnect.php');
-
-// var_dump($_SESSION['join']);
-
-//session変数に何もデータがない場合、これ以上処理する意味がないので、入力画面に戻る。
-//URL入力で直接このページに飛んだ時など、データは何もない状態になる
-if (!isset($_SESSION['join'])) {
-	header('Location: login.php');
-	exit();
-}
-
-//ボタンが押されてPOST送信でデータが送られてきた時
-if (!empty($_POST)) {
-	//登録処理する
-	$sql = sprintf('INSERT INTO users SET email="%s",password="%s",created="%s"',
-		mysqli_real_escape_string($db,$_SESSION['join']['email']),		
-		mysqli_real_escape_string($db,sha1($_SESSION['join']['password'])),
-		//パスワード暗号化の　sha1　の　最後は数字の1、間違えないように
-		date('Y-m-d H:i:s')
-	);
-	// var_dump($sql);
-
-	mysqli_query($db,$sql) or die(mysqli_error($db));
-	unset($_SESSION['join']);
-	//thanksページへの送信テスト
- 	// $_SESSION['join'] = $_POST;
-	header('Location: user_thanks.php');
-	exit();
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -51,16 +18,13 @@ if (!empty($_POST)) {
 	    <link href="assets/css/custom.css" rel="stylesheet">
 	    <link href="assets/css/common.css" rel="stylesheet">
 
+	    <!--ヘッダーフッターファイルより-->
+	    <link rel="stylesheet" type="text/css" href="headfoot.css">
+
 	    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
 
 	    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
 	    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
-
-	    <!--ヘッダーフッターファイルより-->
-	    <link rel="stylesheet" type="text/css" href="headfoot.css">
-
-	    <!-- ログイン・登録画面ページ専用css -->
- 		<link href="assets/css/user_touroku.css" rel="stylesheet">
 
 	    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	    <!--[if lt IE 9]>
@@ -76,7 +40,7 @@ if (!empty($_POST)) {
 	        function init() {
 	            window.addEventListener('scroll', function(e){
 	                var distanceY = window.pageYOffset || document.documentElement.scrollTop,
-	                    shrinkOn = 0,
+	                    shrinkOn = 300,
 	                    header = document.querySelector("header");
 	                if (distanceY > shrinkOn) {
 	                    classie.add(header,"smaller");
@@ -109,30 +73,31 @@ if (!empty($_POST)) {
 	            </nav>
 	        </div>
 	    </header><!-- /header -->
-	
-		<!-- ヘッダー分のスペースを空ける用 -->
-	    <div id= "top_space"></div>
 
-		<div id="check_space">
-			<form action="" method="post">
-				<input type="hidden" name="action" value="submit" />
-					<dl>
-						<h2>以下の内容で登録</h2><br />
-						<dt>メールアドレス</dt>
-						<dd>
-						<?php echo htmlspecialchars($_SESSION['join']['email'],ENT_QUOTES,'UTF-8'); ?>
-						</dd>
-						<br />
-						<dt>パスワード</dt>
-						<dd>
-						<!-- 【表示されません】 -->
-						<?php echo htmlspecialchars($_SESSION['join']['password'],ENT_QUOTES,'UTF-8'); ?>
-						</dd>
-					</dl><br /><br />
-				<div><a href="index.php?action=rewrite">&laquo;&nbsp;書き直す</a> | <input type="submit" value="登録する" /></div>
-			</form>
 
-		</div><!-- #check_space -->
+		<div id="main">
+			<div id="aboutwrap">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-8 col-lg-offset-2">
+							<h2>Live smart<br/>
+								さぁ、本を探しに行こう
+							</h2>
+						</div>
+					</div><!-- row -->
+				</div><!-- /container -->
+			</div><!-- /aboutwrap -->
+
+			<div id="head">
+				<h1>会員登録</h1>
+			</div>
+
+			<div id="content">
+				<p>ユーザー登録が完了しました</p>
+				<p><a href="ichiran.php">商品一覧へ</a></p>
+			</div>
+
+		</div><!-- #main -->
 
 		<footer>
 	        <div id="info-bar">
@@ -178,4 +143,7 @@ if (!empty($_POST)) {
     <script src="assets/js/main.js"></script>
     <script src="assets/js/classie.js"></script>
   </body>
+</html>
+	
+	</body>
 </html>

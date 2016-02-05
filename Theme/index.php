@@ -16,7 +16,7 @@ $page = max($page, 1);
 
 
 
-$sql =  sprintf('SELECT * FROM `books` WHERE `picture` AND delete_flag=0 ORDER BY `created`');
+$sql =  sprintf('SELECT `title`,`picture`,`price` FROM `books` WHERE delete_flag=0 ORDER BY `created`');
 $posts = mysqli_query($db, $sql) or die(mysqli_error($db));
 
 ?>
@@ -253,24 +253,33 @@ $(function(){
 			<div id="loopslider">
 			<ul>
 
+				
 				<?php
 
 				   while(1)
                     {
                         // $rec = $stmt->fetch(PDO::FETCH_ASSOC);
                         $rec = mysqli_fetch_assoc($posts);
+                        
 
                         if($rec==false)
                         {
                             break;
                         }
 
- 						echo '<div style="float:left;">';
- 						echo '<a class="thumbnail fancybox" rel="ligthbox" >';
-                        echo '<li><img class="img-responsive" alt="" src="../textbook_picture/'.$rec['picture'].'"　
-                            style="width:200px;height:200px;"></li>';
-                        echo '</a></div>';
-
+ 						// echo '<div style="float:left;">';
+                        echo '<li><a class="thumbnail fancybox" rel="ligthbox" >
+                        	<img class="img-responsive" alt="" src="../textbook_picture/'.$rec['picture'].'"　
+                            style="width:200px;height:300px;"></a></li>';
+                        // echo '<div class="text-right">';
+                        // echo '<small class="text-muted">';
+                        // echo $rec['title'];
+                        // echo'</br>';
+                        // echo '¥';
+                        // echo $rec['price'];
+                        // echo '</small></div></a></div>';
+                        // echo '  ';
+                        // echo '</a></div>';
 
                     }
 
@@ -306,26 +315,46 @@ $(function(){
 
 
 	<!-- <!-- CLIENTS LOGOS -->
-	Libroの特徴を記述６つほど
+	<!-- Libroの特徴を記述６つほど? -->
 	<div id="lg">
 		<div class="container">
-			<div class="row centered">
-				<div class="col-lg-2 col-lg-offset-1">
-					<img src="assets/img/clients/c01.gif" alt="">
-				</div>
-				<div class="col-lg-2">
-					<img src="assets/img/clients/c02.gif" alt="">
-				</div>
-				<div class="col-lg-2">
-					<img src="assets/img/clients/c03.gif" alt="">
-				</div>
-				<div class="col-lg-2">
-					<img src="assets/img/clients/c04.gif" alt="">
-				</div>
-				<div class="col-lg-2">
-					<img src="assets/img/clients/c05.gif" alt="">
-				</div>
-			</div><!-- row -->
+			<div class="row destacados">
+        <div class="col-lg-3">
+            <div>
+                <img src="http://lorempixel.com/200/200/abstract/2/" alt="Texto Alternativo" class="img-circle img-thumbnail">
+                <h2>Mottainai</h2>
+                <p>リサイクルの輪</br>知識の輪</br>友達の輪</br>を広げよう </p>
+               
+            </div>
+        </div>
+        
+
+        <div class="col-lg-3">
+            <div>
+                <img src="http://lorempixel.com/200/200/abstract/2/" alt="Texto Alternativo" class="img-circle img-thumbnail">
+                <h2>すぐに手に入る</h2>
+                <p>お互いの都合が合えば即日入手可能</p>
+               
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+            <div>
+                <img src="http://lorempixel.com/200/200/abstract/3/" alt="Texto Alternativo" class="img-circle img-thumbnail">
+                <h2>3分でかんたん売買</h2>
+                <p>いらなくなった教科書を売ってお小遣い稼ぎをしよう。</p>
+               
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div>
+                <img src="http://lorempixel.com/200/200/abstract/1/" alt="Texto Alternativo" class="img-circle img-thumbnail">
+                <h2>無料で使える</h2>
+                <p>手数料含め購入費以外はお金はかかりません。</p>
+               
+            </div>
+        </div>
+     </div>
 		</div><!-- container -->
 	</div><!-- dg -->
 	 

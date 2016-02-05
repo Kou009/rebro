@@ -1,34 +1,63 @@
 <?php
+date_default_timezone_set('Asia/Tokyo');
 session_start();
 require('../dbconnect.php');
 
-// var_dump($_SESSION['join']);
+
+// var_dump($_SESSION);
+$check = $_SESSION['join'];
+// var_dump($check);
+if (!empty($_POST)){
+	//事後処理をする
+	//$check["user_name"]
+	//$sql = sprintf('UPDATE user_profiles SET `user_name`="%s"',
+	$sql = sprintf('UPDATE `user_profiles` SET `user_name`="%s", `hurigana`="%s", `age`=%d, `college_id`=%d, `pref_id`=%d, `city_id`=%d, `major_id`=%d, `tel`=%d, `address`="%s", `pr`="%s", modified=NOW() WHERE id =1',      
+		mysqli_real_escape_string($db, $check["user_name"]),
+		mysqli_real_escape_string($db, $check["hurigana"]),
+		mysqli_real_escape_string($db, $check["age"]),
+		mysqli_real_escape_string($db, $check["college_id"]),
+		mysqli_real_escape_string($db, $check["pref_id"]),
+		mysqli_real_escape_string($db, $check["city_id"]),
+		mysqli_real_escape_string($db, $check["major_id"]),
+		mysqli_real_escape_string($db, $check["tel"]),
+		mysqli_real_escape_string($db, $check["address"]),
+		mysqli_real_escape_string($db, $check["pr"])
+		);
+	mysqli_query($db, $sql) or die(mysqli_error($db));
+	unset($_SESSION['join']);
+
+	header('Location: user_profiles_thanks.php');
+	exit();
+}
 
 //session変数に何もデータがない場合、これ以上処理する意味がないので、入力画面に戻る。
 //URL入力で直接このページに飛んだ時など、データは何もない状態になる
-if (!isset($_SESSION['join'])) {
-	header('Location: login.php');
-	exit();
-}
+// if (!isset($_SESSION['join'])) {
+// 	header('Location: index.php');
+// 	exit();
+// }
 
 //ボタンが押されてPOST送信でデータが送られてきた時
-if (!empty($_POST)) {
-	//登録処理する
-	$sql = sprintf('INSERT INTO users SET email="%s",password="%s",created="%s"',
-		mysqli_real_escape_string($db,$_SESSION['join']['email']),		
-		mysqli_real_escape_string($db,sha1($_SESSION['join']['password'])),
-		//パスワード暗号化の　sha1　の　最後は数字の1、間違えないように
-		date('Y-m-d H:i:s')
-	);
-	// var_dump($sql);
+// if (!empty($_POST)) {
+// 	//登録処理する
+// 	$sql = sprintf('INSERT INTO users SET email="%s",password="%s",created="%s"',
+// 		mysqli_real_escape_string($db,$_SESSION['join']['email']),		
+// 		mysqli_real_escape_string($db,sha1($_SESSION['join']['password'])),
+// 		//パスワード暗号化の　sha1　の　最後は数字の1、間違えないように
+// 		date('Y-m-d H:i:s')
+// 	);
+// 	// var_dump($sql);
 
-	mysqli_query($db,$sql) or die(mysqli_error($db));
-	unset($_SESSION['join']);
-	//thanksページへの送信テスト
- 	// $_SESSION['join'] = $_POST;
-	header('Location: user_thanks.php');
-	exit();
-}
+// 	mysqli_query($db,$sql) or die(mysqli_error($db));
+// 	unset($_SESSION['join']);
+
+// 	header('Location: user_profiles_thanks.php');
+// 	exit();
+// // }
+// $name = $_POST['name'];
+// // SQL文の作成と実行
+// $sql ="INSERT INTO user_profiles VLUES('$name')"
+// $res =$db->query($sql);
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +70,7 @@ if (!empty($_POST)) {
 	    <meta name="author" content="">
 	    <link rel="shortcut icon" href="assets/ico/favicon.png">
 
-	    <title>Libro</title>
+	    <title>Lebro</title>
 
 	    <!-- Bootstrap core CSS -->
 	    <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -51,16 +80,13 @@ if (!empty($_POST)) {
 	    <link href="assets/css/custom.css" rel="stylesheet">
 	    <link href="assets/css/common.css" rel="stylesheet">
 
+	    <!--ヘッダーフッターファイルより-->
+	    <link rel="stylesheet" type="text/css" href="headfoot.css">
+
 	    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
 
 	    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
 	    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
-
-	    <!--ヘッダーフッターファイルより-->
-	    <link rel="stylesheet" type="text/css" href="headfoot.css">
-
-	    <!-- ログイン・登録画面ページ専用css -->
- 		<link href="assets/css/user_touroku.css" rel="stylesheet">
 
 	    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	    <!--[if lt IE 9]>
@@ -76,7 +102,7 @@ if (!empty($_POST)) {
 	        function init() {
 	            window.addEventListener('scroll', function(e){
 	                var distanceY = window.pageYOffset || document.documentElement.scrollTop,
-	                    shrinkOn = 0,
+	                    shrinkOn = 300,
 	                    header = document.querySelector("header");
 	                if (distanceY > shrinkOn) {
 	                    classie.add(header,"smaller");
@@ -104,35 +130,63 @@ if (!empty($_POST)) {
 	            <nav>
 	                <!-- <a href="">Lorem</a> -->
 	                <!-- 消えたnavタグ大事件... -->
-	                <a href="">ユーザー名</a> 
-	                <a href="logout.php">Log Out</a>
+	                <!-- <a href="">ユーザー名</a> 
+	                <a href="logout.php">Log Out</a> -->
 	            </nav>
 	        </div>
 	    </header><!-- /header -->
 	
-		<!-- ヘッダー分のスペースを空ける用 -->
-	    <div id= "top_space"></div>
 
-		<div id="check_space">
+		<div id="main">
 			<form action="" method="post">
 				<input type="hidden" name="action" value="submit" />
+					<img src="assets/img/default.png" class="avatar_left" width="250" height="250">
 					<dl>
-						<h2>以下の内容で登録</h2><br />
-						<dt>メールアドレス</dt>
+						<dt>名前</dt>
 						<dd>
-						<?php echo htmlspecialchars($_SESSION['join']['email'],ENT_QUOTES,'UTF-8'); ?>
+						<?php echo htmlspecialchars($check['user_name'],ENT_QUOTES,'UTF-8'); ?>
 						</dd>
-						<br />
-						<dt>パスワード</dt>
+						<dt>ふりがな</dt>
 						<dd>
-						<!-- 【表示されません】 -->
-						<?php echo htmlspecialchars($_SESSION['join']['password'],ENT_QUOTES,'UTF-8'); ?>
+						<?php echo htmlspecialchars($check['hurigana'],ENT_QUOTES,'UTF-8'); ?>
 						</dd>
-					</dl><br /><br />
-				<div><a href="index.php?action=rewrite">&laquo;&nbsp;書き直す</a> | <input type="submit" value="登録する" /></div>
+						<dt>年齢</dt>
+						<dd>
+						<?php echo htmlspecialchars($check['age'],ENT_QUOTES,'UTF-8'); ?><a>歳</a>
+						</dd>
+						<dt>都道府県</dt>
+						<dd>
+						<?php echo htmlspecialchars($check['pref_id'],ENT_QUOTES,'UTF-8'); ?>
+						</dd>
+						<dt>市町村</dt>
+						<dd>
+						<?php echo htmlspecialchars($check['city_id'],ENT_QUOTES,'UTF-8'); ?>
+						</dd>
+						<dt>大学</dt>
+						<dd>
+						<?php echo htmlspecialchars($check['college_id'],ENT_QUOTES,'UTF-8'); ?>
+						</dd>
+						<dt>学部</dt>
+						<dd>
+						<?php echo htmlspecialchars($check['major_id'],ENT_QUOTES,'UTF-8'); ?>
+						</dd>
+						<dt>住所</dt>
+						<dd>
+						<?php echo htmlspecialchars($check['address'],ENT_QUOTES,'UTF-8'); ?>
+						</dd>
+						<dt>電話番号</dt>
+						<dd>
+						<?php echo htmlspecialchars($check['tel'],ENT_QUOTES,'UTF-8'); ?>
+						</dd>
+						<dt>自己PR</dt>
+						<dd>
+						<?php echo htmlspecialchars($check['pr'],ENT_QUOTES,'UTF-8'); ?>
+						</dd>
+					</dl>
+				<div><a href="user_profiles_edit.php=rewrite">&laquo;&nbsp;書き直す</a> | <input type="submit" value="登録する" /></div>
 			</form>
 
-		</div><!-- #check_space -->
+		</div><!-- #main -->
 
 		<footer>
 	        <div id="info-bar">

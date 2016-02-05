@@ -111,7 +111,7 @@
 				<ul class="grid effect-2" id="grid">
 
 						<dd class="avatar-upload-container clearfix">
-							<img src="../textbook_picture/<?php $rec['picture'];?>"  class="avatar_left" width="250" height="250" alt="">
+							<img src="../user_picture/<?php echo $rec['picture'];?>"  class="avatar_left" width="250" height="250" alt="">
 							<!-- <div class="avatar_upload"> -->
 							<!-- <a class="btn button-change-profile-picture" href="#">
 								<label for="upload-profile-picture">
@@ -278,7 +278,7 @@
 		                    </div> -->
 		                    <div class="form-group float-label-control">
 		                        <label for="">自己PR</label>
-		                        <textarea class="form-control"  name ="pr" placeholder="Textarea" rows="5"><?php echo $rec['pr']; ?></textarea>
+		                        <textarea class="form-control"  name ="pr" placeholder="Textarea" rows="5" readonly><?php echo $rec['pr']; ?></textarea>
 		                    </div>
 		                    <a href ="http://localhost/text/Theme/user_profiles_edit.php?">
 		                    	<p class ="comform">
