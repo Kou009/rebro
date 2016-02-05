@@ -1,6 +1,6 @@
 <?php
 session_start();
-	require('C:\xampp\htdocs\teamLibro/dbconnect.php');
+	require('../dbconnect.php');
 	
 	$_SESSION['id']=1;
 	$_SESSION['book_id']=1;  //session変数に本のID入れてもらって、一覧ページから飛ばしてもらう
@@ -48,6 +48,31 @@ session_start();
 		$record5=mysqli_query($db,$sql) or die(mysqli_error($db));
 		$major_name=mysqli_fetch_assoc($record5);
 
+		//チャットメッセージを記録
+		if(!empty($_POST)){
+			//出品者かどうか判別　出品者だった場合、レシーバーフラグ立てます
+	if($_SESSION['id'] == $books['users_id']) {
+		$sql=sprintf('INSERT INTO chat SET sender_id=%d,reciever_id=1,book_id=%d,message="%s",created=NOW()',
+				mysqli_real_escape_string($db,$member['id']),
+				mysqli_real_escape_string($db,$_SESSION['book_id']),
+				mysqli_real_escape_string($db,$_POST['message']));
+				mysqli_query($db,$sql) or die(mysqli_error($db));
+			
+			header('Location: chat.php');
+			exit();
+			}//出品者じゃなかった場合
+			elseif($_POST['message']!=''){
+				$sql=sprintf('INSERT INTO chat SET sender_id=%d,book_id=%d,message="%s",created=NOW()',
+				mysqli_real_escape_string($db,$member['id']),
+				mysqli_real_escape_string($db,$_SESSION['book_id']),
+				mysqli_real_escape_string($db,$_POST['message']));
+				mysqli_query($db,$sql) or die(mysqli_error($db));
+			
+			header('Location: chat.php');
+			exit();
+			}
+
+		}
 
 
 ?>
@@ -62,8 +87,8 @@ session_start();
         <link href="assets/css/font-awesome.min.css" rel="stylesheet">
         <link href="assets/css/common.css" rel="stylesheet">
         <link href="assets/css/custom.css" rel="stylesheet">
-        <script type="text/javascript" src="headfoot.js">
-        </script>
+        <script src="assets/js/modernizr.custom.js"></script>
+    	<script src="assets/js/login.js"></script>
     
         <script>
             function init() {
@@ -151,87 +176,74 @@ session_start();
 		                   
 		                </div>
 
-		                <?php 
-		               		$sql=sprintf('SELECT chat.*,up.user_name FROM chat,user_profiles up
-		               			WHERE book_id=%d AND sender_id=%d || reciever_id=%d',
+		                <?php   //チャットのコメントと名前をもってくる
+		               		$sql=sprintf('SELECT chat.*,up.user_name FROM chat,user_profiles up 
+		               			WHERE chat.book_id=%d AND up.user_id=chat.sender_id
+		               			ORDER BY chat.created DESC',
 							mysqli_real_escape_string($db,$_SESSION['book_id']),
-							mysqli_real_escape_string($db,$_SESSION['id']),
 							mysqli_real_escape_string($db,$_SESSION['id'])
 							);
 							$record6=mysqli_query($db,$sql) or die(mysqli_error($db));
 							
-
-							while ($chat_comment=mysqli_fetch_assoc($record6)) {
-								echo $chat_comment['user_name'];
-								//echo $chat_comment['reciever_id'];
-								echo $chat_comment['message'];
-							}
 		                ?>
 
 
 		                <div class="panel-body">
 		                    <ul class="chat">
+
+		                	<?php
+		                    	while ($chat_comment=mysqli_fetch_assoc($record6)): 
+								
+							?>
+		                   		<?php if($chat_comment['reciever_id'] == 0 ){ ?>
 		                        <li class="left clearfix"><span class="chat-img pull-left">
 		                            <img src="http://placehold.it/50/55C1E7/fff&text=Q" alt="User Avatar" class="img-circle" />
 		                        </span>
 		                            <div class="chat-body clearfix">
 		                                <div class="header">
-		                                    <strong class="primary-font">Jack Sparrow</strong> <small class="pull-right text-muted">
-		                                        <span class="glyphicon glyphicon-time"></span>12 mins ago</small>
+		                                    <strong class="primary-font"><?php echo $chat_comment['user_name']; ?></strong><small class="pull-right text-muted">
+		                                        <span class="glyphicon glyphicon-time"></span><?php echo $chat_comment['created']; ?></small>
 		                                </div>
 		                                <p>
-		                                    サバンナ
+		                                    <?php echo $chat_comment['message']; ?>
 		                                </p>
 		                            </div>
 		                        </li>
+		                        	<?php } ?>
+
+		                        <?php if($chat_comment['reciever_id'] == 1){ ?>
 		                        <li class="right clearfix"><span class="chat-img pull-right">
 		                            <img src="http://placehold.it/50/FA6F57/fff&text=A" alt="User Avatar" class="img-circle" />
 		                        </span>
 		                            <div class="chat-body clearfix">
 		                                <div class="header">
-		                                    <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>13 mins ago</small>
-		                                    <strong class="pull-right primary-font">Bhaumik Patel</strong>
+		                                    <small class=" text-muted"><span class="glyphicon glyphicon-time"></span><?php echo $chat_comment['created']; ?></small>
+		                                    <strong class="pull-right primary-font"><?php echo $chat_comment['user_name']; ?></strong>
 		                                </div>
 		                                <p>
-		                                    アマゾン
+		                                    <?php echo $chat_comment['message']; ?>
 		                                </p>
 		                            </div>
 		                        </li>
-		                        <li class="left clearfix"><span class="chat-img pull-left">
-		                            <img src="http://placehold.it/50/55C1E7/fff&text=Q" alt="User Avatar" class="img-circle" />
-		                        </span>
-		                            <div class="chat-body clearfix">
-		                                <div class="header">
-		                                    <strong class="primary-font">Jack Sparrow</strong> <small class="pull-right text-muted">
-		                                        <span class="glyphicon glyphicon-time"></span>14 mins ago</small>
-		                                </div>
-		                                <p>
-		                                    かいます
-		                                </p>
-		                            </div>
-		                        </li>
-		                        <li class="right clearfix"><span class="chat-img pull-right">
-		                            <img src="http://placehold.it/50/FA6F57/fff&text=A" alt="User Avatar" class="img-circle" />
-		                        </span>
-		                            <div class="chat-body clearfix">
-		                                <div class="header">
-		                                    <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>15 mins ago</small>
-		                                    <strong class="pull-right primary-font">Bhaumik Patel</strong>
-		                                </div>
-		                                <p>
-		                                    うります
-		                                </p>
-		                            </div>
-		                        </li>
+		                        <?php } ?>
+		                    
+		                         <?php  
+		                    endwhile;
+		                    ?>
 		                    </ul>
 		                </div>
+
+
 			                <div class="panel-footer">
 			                    <div class="input-group">
-			                        <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
-			                        <span class="input-group-btn">
-			                            <button class="btn btn-warning btn-sm" id="btn-chat">
-			                                Send</button>
-			                        </span>
+			                    	<form method="post" action="">
+				                        <textarea id="btn-input" name="message" cols="100" rows="7" class="form-control input-sm" placeholder="Type your message here...">
+				                        </textarea>
+				                        <span class="input-group-btn">
+				                            <button class="btn btn-warning btn-sm" id="btn-chat">
+				                                Send</button>
+				                        </span>
+			                    	</form>
 			                    </div>
 			                </div>
 			            </div>
