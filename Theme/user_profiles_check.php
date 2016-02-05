@@ -3,19 +3,32 @@ date_default_timezone_set('Asia/Tokyo');
 session_start();
 require('../dbconnect.php');
 
-echo $_SESSION['user_name'];
 
-// if (!empty($_POST)){
-// 	//事後処理をする
-// 	$sql = sprintf(INSERT user_profiles SET 
-// 		mysqli_real_escape_string($db, $_SESSION['join']['user_name']),
-// 		);
-// 	mysqli_query($db, $sql) or die(mysqli_error($db));
-// 	unset($_SESSION['join']);
+// var_dump($_SESSION);
+$check = $_SESSION['join'];
+// var_dump($check);
+if (!empty($_POST)){
+	//事後処理をする
+	//$check["user_name"]
+	//$sql = sprintf('UPDATE user_profiles SET `user_name`="%s"',
+	$sql = sprintf('UPDATE `user_profiles` SET `user_name`="%s", `hurigana`="%s", `age`=%d, `college_id`=%d, `pref_id`=%d, `city_id`=%d, `major_id`=%d, `tel`=%d, `address`="%s", `pr`="%s", modified=NOW() WHERE id =1',      
+		mysqli_real_escape_string($db, $check["user_name"]),
+		mysqli_real_escape_string($db, $check["hurigana"]),
+		mysqli_real_escape_string($db, $check["age"]),
+		mysqli_real_escape_string($db, $check["college_id"]),
+		mysqli_real_escape_string($db, $check["pref_id"]),
+		mysqli_real_escape_string($db, $check["city_id"]),
+		mysqli_real_escape_string($db, $check["major_id"]),
+		mysqli_real_escape_string($db, $check["tel"]),
+		mysqli_real_escape_string($db, $check["address"]),
+		mysqli_real_escape_string($db, $check["pr"])
+		);
+	mysqli_query($db, $sql) or die(mysqli_error($db));
+	unset($_SESSION['join']);
 
-// 	header('Location: user_profiles_thanks.php');
-// 	exit();
-// }
+	header('Location: user_profiles_thanks.php');
+	exit();
+}
 
 //session変数に何もデータがない場合、これ以上処理する意味がないので、入力画面に戻る。
 //URL入力で直接このページに飛んだ時など、データは何もない状態になる
@@ -117,8 +130,8 @@ echo $_SESSION['user_name'];
 	            <nav>
 	                <!-- <a href="">Lorem</a> -->
 	                <!-- 消えたnavタグ大事件... -->
-	                <a href="">ユーザー名</a> 
-	                <a href="logout.php">Log Out</a>
+	                <!-- <a href="">ユーザー名</a> 
+	                <a href="logout.php">Log Out</a> -->
 	            </nav>
 	        </div>
 	    </header><!-- /header -->
@@ -127,18 +140,47 @@ echo $_SESSION['user_name'];
 		<div id="main">
 			<form action="" method="post">
 				<input type="hidden" name="action" value="submit" />
+					<img src="assets/img/default.png" class="avatar_left" width="250" height="250">
 					<dl>
-						<dt>写真</dt>
-						<dd>
-						<?php echo htmlspecialchars($_SESSION['picture'],ENT_QUOTES,'UTF-8'); ?>
-						</dd>
 						<dt>名前</dt>
 						<dd>
-						<?php echo htmlspecialchars($_SESSION['user_name'],ENT_QUOTES,'UTF-8'); ?>
+						<?php echo htmlspecialchars($check['user_name'],ENT_QUOTES,'UTF-8'); ?>
+						</dd>
+						<dt>ふりがな</dt>
+						<dd>
+						<?php echo htmlspecialchars($check['hurigana'],ENT_QUOTES,'UTF-8'); ?>
+						</dd>
+						<dt>年齢</dt>
+						<dd>
+						<?php echo htmlspecialchars($check['age'],ENT_QUOTES,'UTF-8'); ?><a>歳</a>
+						</dd>
+						<dt>都道府県</dt>
+						<dd>
+						<?php echo htmlspecialchars($check['pref_id'],ENT_QUOTES,'UTF-8'); ?>
+						</dd>
+						<dt>市町村</dt>
+						<dd>
+						<?php echo htmlspecialchars($check['city_id'],ENT_QUOTES,'UTF-8'); ?>
+						</dd>
+						<dt>大学</dt>
+						<dd>
+						<?php echo htmlspecialchars($check['college_id'],ENT_QUOTES,'UTF-8'); ?>
+						</dd>
+						<dt>学部</dt>
+						<dd>
+						<?php echo htmlspecialchars($check['major_id'],ENT_QUOTES,'UTF-8'); ?>
+						</dd>
+						<dt>住所</dt>
+						<dd>
+						<?php echo htmlspecialchars($check['address'],ENT_QUOTES,'UTF-8'); ?>
+						</dd>
+						<dt>電話番号</dt>
+						<dd>
+						<?php echo htmlspecialchars($check['tel'],ENT_QUOTES,'UTF-8'); ?>
 						</dd>
 						<dt>自己PR</dt>
 						<dd>
-						<?php echo htmlspecialchars($_SESSION['pr'],ENT_QUOTES,'UTF-8'); ?>
+						<?php echo htmlspecialchars($check['pr'],ENT_QUOTES,'UTF-8'); ?>
 						</dd>
 					</dl>
 				<div><a href="user_profiles_edit.php=rewrite">&laquo;&nbsp;書き直す</a> | <input type="submit" value="登録する" /></div>
