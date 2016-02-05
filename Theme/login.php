@@ -2,33 +2,28 @@
 require('../dbconnect.php');
 session_start();
 
-// $_POST['email'] = '';
-// $_POST['password'] ='';
-
-
-// if ($_COOKIE['email'] !='') {
-// 	$_POST['email'] = $_COOKIE['email'];
-// 	$_POST['password'] = $_COOKIE['password'];
-// 	$_POST['save'] = 'on';
-// }
+//クッキーの存在確認
+if(isset($_COOKIE['email'])){
+	//クッキーが空でない場合に次のコードと合わせてichiranページに飛ぶ
+	if ($_COOKIE['email'] !='') {
+		$_POST['email'] = $_COOKIE['email'];
+		$_POST['password'] = $_COOKIE['password'];
+		$_POST['save'] = 'on';
+	}
+}
 //$_COOKIEが空じゃなかったら
 
 if (!empty($_POST)) {
-	// var_dump('if文入ってる？');
-	// var_dump($_POST['email']);
-	// var_dump($_POST['password']);
 	//ログイン処理
 	if ($_POST['email'] != '' && $_POST['password'] !='') {
-		// var_dump($_POST['email']);
-		// var_dump($_POST['password']);
-		// var_dump('naka入ってる？');
+
 		//sprintf( フォーマット [, 引数１] [, 引数２]･・・):指定したフォーマットにしたがって整形した文字列を返す。
 		// mysqli_real_escape_string：PHPからMySQLにデータを登録するときに、MySQLで使用する特殊文字をエスケープする方法
 		$sql = sprintf('SELECT * FROM users WHERE email="%s" AND password="%s"',
 			mysqli_real_escape_string($db,$_POST['email']),
 			mysqli_real_escape_string($db,sha1($_POST['password']))
 			);
-		// var_dump($sql);
+		
 		// != で'~'の中が~じゃなかったらとなる(!==にしない)
 		$record = mysqli_query($db,$sql) or die(mysqli_error($db));
 		if ($table = mysqli_fetch_assoc($record)){
@@ -36,7 +31,7 @@ if (!empty($_POST)) {
 			$_SESSION['id'] = $table['id'];
 			$_SESSION['time'] = time();
 
-
+			// var_dump($_POST['save']);
 			//ログイン情報を記録する(２週間)(単位[s])
 			if ($_POST['save'] == 'on') {
 				setcookie('email',$_POST['email'], time()+60*60*24*14);
@@ -46,7 +41,7 @@ if (!empty($_POST)) {
 			// ログイン、ログアウトテスト用
 			// header('Location: test_user_profiles.php');
 			// 本番移行先
-			header('Location: user_profiles_edit.php');
+			header('Location: ichiran.php');
 			exit();
 		} else {
 			$error['login'] = 'failed';
@@ -175,7 +170,7 @@ $error = array('login'=> '' );
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-8 col-lg-offset-2">
-							<h2>Live smart<br/>
+							<h2>Live smart<br/><br/>
 								さぁ、本を探しに行こう
 							</h2>
 						</div>
@@ -186,18 +181,18 @@ $error = array('login'=> '' );
 			<!-- CHART IMAGE SECTION -->
 		    <div id="chartwrap">
 			    <div class="container">
-			    	<div class="col-lg-4"> 
-			      	 	<div class="another_login"> 
-			      	 		<h3>Please Log In, or <a href="user_touroku.php">Sign Up</a></h3>
-							<div class="row"> 
-								<a href="#" class="btn btn-lg btn-primary btn-block">Facebook</a> 
-								<a href="#" class="btn btn-lg btn-info btn-block">Google</a>
-							</div><!-- row -->   	 
-			      	 	</div><!-- another_login -->
-			    	</div><!-- col-lg-4 -->
-
+			      	<div class="another_account">
+			      		<div class="row"> 
+			      			<h3>Sign In by another account? </h3><br/>
+							<a href="#" class="btn btn-lg btn-primary btn-block">Facebook</a> 
+							<a href="#" class="btn btn-lg btn-info btn-block">Google</a>
+						</div><!-- row -->
+			    	</div><!-- another_account -->
+					<div class="sign_up"> 
+			      	 	<h3>Please Sign In, or <a href="user_touroku.php">Sign Up</a></h3>	 
+			      	</div><!-- sign_up -->
 			    	<form class="login" action="" method="post" enctype="multipart/form-data">
-			      		<div class="col-lg-8">
+			      		<div class="sign_in">
 			          		<p class="form-title">
 			                <font color="#000"> Sign In</font></p>
 			                <!-- <form class="login"> -->
@@ -227,7 +222,7 @@ $error = array('login'=> '' );
 				                    </div><!--  row --> 
 				                </div><!-- remember-forgot -->
 			           		<!-- </form> --><!-- login -->
-			            </div><!-- col-lg-8 -->
+			            </div><!-- sign_in -->
 			        </form><!-- ここを消すと表示が変わる-cssチェック-class=login -->
 		    	</div><!-- container -->
 			</div><!-- chartwrap -->
