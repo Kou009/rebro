@@ -16,7 +16,7 @@ $page = max($page, 1);
 
 
 
-$sql =  sprintf('SELECT `title`,`picture`,`price` FROM `books` WHERE delete_flag=0 ORDER BY `created`');
+$sql =  sprintf('SELECT `title`,`picture`,`price` FROM `books` WHERE delete_flag=0 ORDER BY `created` DESC');
 $posts = mysqli_query($db, $sql) or die(mysqli_error($db));
 
 ?>
@@ -173,10 +173,10 @@ $(function(){
 	        <p>Rebroには、文系教科書から理系教科書に至るまで大学生活で必要な教科書がたくさん。
 	        	<br/>賢く教科書を手にいれて大学生活をEnjoyしよう。</p>
       	</div>
-      	<div class="col-lg-4">
+      <!-- 	<div class="col-lg-4">
 
       		<p class="pull-right"><br><button type="button" class="btn btn-green"><a href="login.html">すぐに教科書を探す</a></button></p>
-      	</div>
+      	</div> -->
       </div><!-- /row -->
 	</div>
 
@@ -270,13 +270,14 @@ $(function(){
  						// echo '<div style="float:left;">';
                         echo '<li><a class="thumbnail fancybox" rel="ligthbox" >
                         	<img class="img-responsive" alt="" src="../textbook_picture/'.$rec['picture'].'"　
-                            style="width:200px;height:300px;"></a></li>';
+                            style="width:200px;height:300px;">';
                         // echo '<div class="text-right">';
                         // echo '<small class="text-muted">';
-                        // echo $rec['title'];
-                        // echo'</br>';
-                        // echo '¥';
-                        // echo $rec['price'];
+                        echo $rec['title'];
+                        echo'</br>';
+                        echo '¥';
+                        echo $rec['price'];
+                         echo '</a></li>';
                         // echo '</small></div></a></div>';
                         // echo '  ';
                         // echo '</a></div>';
@@ -321,7 +322,9 @@ $(function(){
 			<div class="row destacados">
         <div class="col-lg-3">
             <div>
-                <img src="http://lorempixel.com/200/200/abstract/2/" alt="Texto Alternativo" class="img-circle img-thumbnail">
+            	<i class="fa fa-repeat" alt="Texto Alternativo" class="img-circle img-thumbnail"></i>
+
+                <!-- <img alt="Texto Alternativo" class="img-circle img-thumbnail"> -->
                 <h2>Mottainai</h2>
                 <p>リサイクルの輪</br>知識の輪</br>友達の輪</br>を広げよう </p>
                
