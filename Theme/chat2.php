@@ -2,10 +2,10 @@
 session_start();
 	require('../dbconnect.php');
 	
-	$_SESSION['id']=1;
-	$_SESSION['book_id']='';  //session変数に本のID入れてもらって、一覧ページから飛ばしてもらう すみません！これが本のIDです！！
+	$_SESSION['id']=3;
+	$_SESSION['book_id']=1;  //session変数に本のID入れてもらって、一覧ページから飛ばしてもらう
 	//$_SESSION['time']=time();
-	var_dump($_SESSION['book_id']);
+
 
 	if(isset($_SESSION['id'])){
 		$sql=sprintf('SELECT * FROM users WHERE id=%d',
@@ -23,9 +23,9 @@ session_start();
 		$books=mysqli_fetch_assoc($record2);
 	}
 
-	//出品者かどうか判別 出品者だった場合、出品者用ページに移動します
+	//出品者かどうか判別
 	if ($_SESSION['id'] == $books['users_id']) {
-		header('Location:chat2.php');
+		
 	}
 	
 		//出品者情報を取得
@@ -85,7 +85,7 @@ session_start();
 		<meta charset='UTF-8'>
 		<link rel="stylesheet" type="text/css" href="assets/css/chat.css">
 		<link rel="stylesheet" type="text/css" href="assets/css/common.css">
-		<title>個別チャット</title>
+		<title>出品者さまのページ</title>
         <link href="assets/css/font-awesome.min.css" rel="stylesheet">
         <link href="assets/css/common.css" rel="stylesheet">
         <link href="assets/css/custom.css" rel="stylesheet">
@@ -179,29 +179,45 @@ session_start();
 		                   
 		                </div>
 
-		                <?php   //チャットのコメントと名前をもってくる
-		               		$sql=sprintf('SELECT chat.*,up.user_name FROM chat,user_profiles up 
-		               			WHERE chat.book_id=%d AND chat.sender_id=%d AND chat.reciever_id=%d 
-		               			AND up.user_id=chat.sender_id 
-		               			ORDER BY chat.created DESC',
-							mysqli_real_escape_string($db,$_SESSION['book_id']),
-							mysqli_real_escape_string($db,$_SESSION['id']),
-							mysqli_real_escape_string($db,$books['users_id'])
-							);
-							$chatall=mysqli_query($db,$sql) or die(mysqli_error($db));
-						
-
-		                ?>
-
-
+		              
 		                <div class="panel-body">
-		                    <ul class="chat">
+		                	<div class="panel-button">
+		                		<?php
+		                			$sql=sprintf('SELECT id,user_name FROM user_profiles WHERE id!=%s',
+		                				mysqli_real_escape_string($db,$_SESSION['id'])
+		                				);
+		                			$record7=mysqli_query($db,$sql) or die(mysqli_error($db));
 
-		                	<?php
-		                    	while ($chat_comment=mysqli_fetch_assoc($chatall)): 
-								
-							?>
-		                   		<?php if($chat_comment['sell_flag'] == 0 ){ ?>
+		                			while($sender_name=mysqli_fetch_assoc($record7)):
+		                		?>
+		                		<form style="display:inline;" method="post" action="" >
+		                			<input type="submit" value="<?php  echo $sender_name['user_name']; ?>"
+		                		 	type="hidden"  id="<?php echo $sender_name['id']; ?>"/>	
+		                		</form>
+		                	<?php 
+		                	endwhile;?>
+		                	</div>
+
+		                	 <?php 
+		                	 if (isset($_POST['id'])) {
+		                	 	
+		                	 	var_dump($_POST['id']);
+		                	 }
+		                	
+		                	$sql=sprintf('SELECT chat.* ,up.user_name FROM chat , user_profiles up 
+		                				WHERE book_id=%d AND up.id=chat.sender_id AND chat.sender_id=%d',
+		                	mysqli_real_escape_string($db,$_SESSION['book_id']),
+		                	mysqli_real_escape_string($db,$_POST['id'])
+		                	);
+
+		               		 $record6=mysqli_query($db,$sql) or die(mysqli_error($db));
+		                	?>
+		                
+		        
+		                    <ul class="chat">
+		                    	<?php while($chat_comment=mysqli_fetch_assoc($record6)): 
+		                    		if ($chat_comment['sell_flag']==0) {
+		                    		?>
 		                        <li class="left clearfix"><span class="chat-img pull-left">
 		                            <img src="http://placehold.it/50/55C1E7/fff&text=Q" alt="User Avatar" class="img-circle" />
 		                        </span>
@@ -233,9 +249,10 @@ session_start();
 		                        </li>
 		                        <?php } ?>
 		                    
-		                         <?php  
-		                    endwhile;
-		                    ?>
+		                         <?php 
+		                    		endwhile;
+		                    	
+		                    		?>
 		                    </ul>
 		                </div>
 
