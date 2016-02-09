@@ -102,12 +102,12 @@
 		<footer>
 	        <div id="info-bar">
 	            <div class="container clearfix">
-	                <div class="col-md-3">
+	                <div class="col-lg-3">
 	                    <span class="all-tutorials"><a href="">← TOP</a></span>
 	                </div>
 
 
-	                <div class="col-md-3">
+	                <div class="col-lg-3">
 	                    <ul>
 	                        <h2>REBROについて</h2>
 	                        <p>プライバシーポリシー</p>
@@ -115,7 +115,7 @@
 	                    </ul>
 	                </div>
 	               
-	               <div class="col-md-3">
+	               <div class="col-lg-3">
 	                    <ul>
 	                        <h2>REBROを使う</h2>
 	                        <p>都道府県検索</p>
@@ -124,7 +124,7 @@
 	                    </ul>
 	                </div>
 
-	                <div class="col-md-3">
+	                <div class="col-lg-3">
 	                    <span class="footer-logo"><a href="">Created by <i class="fa fa-heart"></i> Team REBRO</a></span>
 	                </div>
 	            </div>

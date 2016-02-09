@@ -59,14 +59,14 @@
   	<header>
             <div class="container clearfix">
                 <h1 id="logo">
-                    Rebro
+                   <span style="font-family: 'Rock Salt', cursive;">Rebro</span>
                 </h1>
                 <i class="fa fa-book fa-4x"></i>     
                 <nav>
                     <!-- <a href="">Lorem</a> -->
                     <!-- 消えたnavタグ大事件... -->
                    
-                    <a href="">Logout</a>
+                     <span style="font-family: 'Rock Salt', cursive;"><a href="login.php">Logout</a></span>
                 </nav>
             </div>
         </header><!-- /header -->

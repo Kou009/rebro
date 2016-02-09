@@ -67,8 +67,9 @@ body {
   line-height: 1.8; }
 
 /* Headings */
-h1, h2, h3, h4, h5, h6 {
+ h2,  h4, h5, h6 {
   line-height: 1;
+  margin-top: 60px;
   font-weight: 300; }
 
 a {
@@ -175,7 +176,7 @@ header {
       line-height: 150px;
       /*margin-top: 4%; /*js効かなくなります*/
       font-family: "FontAwesome";
-      color: white;
+      color: black;
       opacity: 0.9;
       -webkit-transition: all 0.3s;
       -moz-transition: all 0.3s;

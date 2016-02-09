@@ -134,14 +134,14 @@ if (!empty($_POST))	{ //中身があった場合！は逆の意味になる→�
   	<header>
             <div class="container clearfix">
                 <h1 id="logo">
-                    Rebro
+                    <span style="font-family: 'Rock Salt', cursive;">Rebro</span>
                 </h1>
                 <i class="fa fa-book fa-4x"></i>     
                 <nav>
                     <!-- <a href="">Lorem</a> -->
                     <!-- 消えたnavタグ大事件... -->
                    
-                    <a href="">Logout</a>
+                    <span style="font-family: 'Rock Salt', cursive;"><a href="">Logout</a></span>
                 </nav>
             </div>
         </header><!-- /header -->
@@ -236,8 +236,24 @@ if (!empty($_POST))	{ //中身があった場合！は逆の意味になる→�
    		</div>
    	</div>
 
-        <button type="button"><a href="ichiran.php">商品一覧に戻る</a></button>
+        <!-- <button type="button"><a href="ichiran.php">商品一覧に戻る</a></button> -->
 </div>
+
+
+<div class="row">
+     <!-- <h2>Stylish button list</h2> -->
+    <ul class="ds-btn">
+     <li>
+             <a class="btn btn-lg " href="ichiran.php">
+          <i class="glyphicon glyphicon-link pull-left"></i><span>商品一覧に戻る<br></span></a> 
+            
+        </li>
+       
+    </ul>
+    
+    </div>
+
+
    
 	  <footer>
         <div id="info-bar">

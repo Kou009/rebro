@@ -54,6 +54,25 @@
     <![endif]-->
     
     <script src="assets/js/modernizr.custom.js"></script>
+
+    <script type="text/javascript" src="headfoot.js"></script>
+	    <script>
+	        function init() {
+	            window.addEventListener('scroll', function(e){
+	                var distanceY = window.pageYOffset || document.documentElement.scrollTop,
+	                    shrinkOn = 300,
+	                    header = document.querySelector("header");
+	                if (distanceY > shrinkOn) {
+	                    classie.add(header,"smaller");
+	                } else {
+	                    if (classie.has(header,"smaller")) {
+	                        classie.remove(header,"smaller");
+	                    }
+	                }
+	            });
+	        }
+	        window.onload = init();
+	</script>
     
   </head>
 
@@ -80,6 +99,21 @@
 	</nav> -->
 	
 	<!-- MAIN IMAGE SECTION -->
+	<header>
+	        <div class="container clearfix">
+	            <h1 id="logo">
+	                REBRO
+	            </h1>
+	            <i class="fa fa-book fa-4x"></i>     
+	            <nav>
+	                <!-- <a href="">Lorem</a> -->
+	                <!-- 消えたnavタグ大事件... -->
+	                <a href="">ユーザー名</a> 
+	                <a href="logout.php">Log Out</a>
+	            </nav>
+	        </div>
+	 </header><!-- /header -->
+
 	<div id="portwrap">
 		<div class="container">
 			<div class="row">
