@@ -1,4 +1,5 @@
-<?date_default_timezone_set('Asia/Tokyo');
+<?php
+date_default_timezone_set('Asia/Tokyo');
 session_start();
 require('../dbconnect.php');
 
@@ -335,7 +336,7 @@ $posts = mysqli_query($db, $sql) or die(mysqli_error($db));
                         // //echo '<img src="../textbook_picture/'.$rec['picture'].'">';    
                     
                         echo '<div style="float:left;">';
-                        echo '<a class="thumbnail fancybox" rel="ligthbox" >';
+                        echo '<a class="thumbnail fancybox" rel="ligthbox" href="show.php?page='.$rec['id'].'">';
                         echo '<img class="img-responsive" alt="" src="../textbook_picture/'.$rec['picture'].'"　
                             style="width:200px;height:200px;">';
                         echo '<div class="text-right">';
