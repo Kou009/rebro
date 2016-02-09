@@ -20,10 +20,22 @@ if (!empty($_POST)) {
 		//パスワード暗号化の　sha1　の　最後は数字の1、間違えないように
 		date('Y-m-d H:i:s')
 	);
-	// var_dump($sql);
 
 	mysqli_query($db,$sql) or die(mysqli_error($db));
 
+	//直近で実行された Insert 文を対象にAUTO_INCREMENT値を返す（user_id）
+	// printf ("New Record ID=%d\n", mysqli_insert_id($db));
+	$user_id = mysqli_insert_id($db);
+	// var_dump($user_id);
+	//返されたuser_idをuser_profilesテーブルに登録
+	$sql = sprintf('INSERT INTO user_profiles SET user_id='."$user_id".'',
+		mysqli_real_escape_string($db,$user_id)
+	);
+	mysqli_query($db,$sql) or die(mysqli_error($db));
+
+	$user_profile_id = mysqli_insert_id($db);
+
+	//ログイン処理(登録完了後にログイン状態にする)
 	$sql = sprintf('SELECT * FROM users WHERE email="%s" AND password="%s"',
 			mysqli_real_escape_string($db,$_SESSION['join']['email']),
 			mysqli_real_escape_string($db,sha1($_SESSION['join']['password']))
@@ -38,16 +50,14 @@ if (!empty($_POST)) {
 			$_SESSION['id'] = $table['id'];
 			$_SESSION['time'] = time();
 
-
 			//ログイン情報を記録する(２週間)(単位[s])
 			setcookie('email',$_SESSION['join']['email'], time()+60*60*24*14);
 			setcookie('password',$_SESSION['join']['password'], time()+60*60*24*14);
 
-
 			unset($_SESSION['join']);
 			//thanksページへの送信テスト
 		 	// $_SESSION['join'] = $_POST;
-		 	$_POST['thanks']='';
+		 	// $_POST['thanks']='';
 			header('Location: user_thanks.php');
 			exit();
 		}

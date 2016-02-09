@@ -197,12 +197,6 @@ $error = array('login'=> '' );
 			                <font color="#000"> Sign In</font></p>
 			                <!-- <form class="login"> -->
 				                <input type="email" name="email" placeholder="Email" value="<?php echo htmlspecialchars($_POST['email']); ?>"/>
-				                
-
-								<?php
-								// var_dump($email,$password);
-								?>
-
 				                <input type="password" name="password" placeholder="Password" value="<?php echo htmlspecialchars($_POST['password']); ?>" />
 				                <?php if($error['login'] == 'blank'): ?>
 								<p class="error">*  メールアドレスとパスワードをご記入ください</p>
@@ -234,60 +228,7 @@ $error = array('login'=> '' );
 			<div id="services">
 				<div class="container">
 					<div class="row mt">
-						<!-- Srvice 1 -->
-						<!-- <div class="col-lg-1 centered">
-							<i class="fa fa-certificate"></i>
-						</div>
-						<div class="col-lg-3">
-							<h3>Quality Design</h3>
-							<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-						</div> -->
-
-						<!-- Srvice 2 -->
-						<!-- <div class="col-lg-1 centered">
-							<i class="fa fa-question-circle"></i>
-						</div>
-						<div class="col-lg-3">
-							<h3>Awesome Support</h3>
-							<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-						</div> -->
-
-						<!-- Srvice 3 -->
-						<!-- <div class="col-lg-1 centered">
-							<i class="fa fa-globe"></i>
-						</div>
-						<div class="col-lg-3">
-							<h3>Global Services</h3>
-							<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-						</div> -->
 						
-						<!-- Srvice 4 -->
-						<!-- <div class="col-lg-1 centered">
-							<i class="fa fa-desktop"></i>
-						</div>
-						<div class="col-lg-3">
-							<h3>Responsive Design</h3>
-							<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-						</div>
-		 -->
-						<!-- Srvice 5 -->
-						<!-- <div class="col-lg-1 centered">
-							<i class="fa fa-cog"></i>
-						</div>
-						<div class="col-lg-3">
-							<h3>Easy Configuration</h3>
-							<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-						</div> -->
-					
-						<!-- Srvice 6 -->
-					<!-- 	<div class="col-lg-1 centered">
-							<i class="fa fa-heart"></i>
-						</div>
-						<div class="col-lg-3">
-							<h3>Crafted With Love</h3>
-							<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-						</div> -->
-
 					</div><!-- row -->
 				</div><!-- container -->
 			</div><!-- services section -->

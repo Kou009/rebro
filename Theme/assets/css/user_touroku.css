@@ -3,6 +3,12 @@
 
 }
 
+/*login.php用*/
+.sign_in h3{
+
+
+}
+
 
 /*user_check.php用*/
 /*user_check.phpのヘッダー分のスペース空け用*/
@@ -201,7 +207,7 @@
     content:"";
     display: block;
     width: 100%;
-    height: 62.5%; /*トップ画像カバー部分*/
+    height: 77.0%; /*トップ画像カバー部分*/
     background: -moz-linear-gradient(
         270deg,
         #1abc9c 100%,
@@ -256,6 +262,10 @@
 
 /*custom.cssより変更部 357*/
 /*入力部の変更*/
+.sign_in {
+    padding: 0em 0em 0em 2em;
+}
+
 form.login input[type="text"],form.login input[type="email"], form.login input[type="password"]
 {
     width: 25em;/*100%から35emに*/
@@ -276,7 +286,8 @@ form.login input[type="text"],form.login input[type="email"], form.login input[t
 
 form.login input[type="submit"]
 {
-	float: right;/*ボタン位置変更*/
+	float: left;/*ボタン位置変更*/
+    position: relative; left:15em;
     width: 30%; /*100から30に変更*/
     font-size: 14px;
     text-transform: uppercase;

@@ -4,6 +4,8 @@ if (!isset($_COOKIE['email'])) {
 	header('Location: login.php');
 	exit();
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -99,7 +101,8 @@ if (!isset($_COOKIE['email'])) {
 								
 				                	<!-- <input type="submit" value="Log IN" class="btn btn-success btn-sm" /> -->
 				               
-								<a href="user_profiles_edit.php">Log IN</a>
+				            	<a href="user_profiles_edit.php">Log IN</a>
+								<!-- <a href="user_profiles_edit.php?id=<?php echo htmlspecialchars($_SESSION['id'],ENT_QUOTES, 'UTF-8'); ?>">Log IN</a> -->
 							</h2>
 							<br />
 						</div>
