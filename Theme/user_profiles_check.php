@@ -6,7 +6,7 @@ require('../dbconnect.php');
 
 // var_dump($_SESSION);
 $check = $_SESSION['join'];
-// var_dump($check);
+var_dump($check);
 if (!empty($_POST)){
 	//事後処理をする
 	//$check["user_name"]
@@ -130,11 +130,11 @@ if (!empty($_POST)){
 	            <nav>
 	                <!-- <a href="">Lorem</a> -->
 	                <!-- 消えたnavタグ大事件... -->
-	                <!-- <a href="">ユーザー名</a> 
-	                <a href="logout.php">Log Out</a> -->
+	                <a href="">ユーザー名</a> 
+	                <a href="logout.php">Log Out</a>
 	            </nav>
 	        </div>
-	    </header><!-- /header -->
+		</header><!-- /header -->
 	
 
 		<div id="main">
