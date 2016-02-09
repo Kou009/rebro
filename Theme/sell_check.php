@@ -89,14 +89,14 @@ if (!empty($_POST)){
   	<header>
             <div class="container clearfix">
                 <h1 id="logo">
-                    Rebro
+                 <span style="font-family: 'Rock Salt', cursive;">Rebro</span>
                 </h1>
                 <i class="fa fa-book fa-4x"></i>     
                 <nav>
                     <!-- <a href="">Lorem</a> -->
                     <!-- 消えたnavタグ大事件... -->
                    
-                    <a href="">Logout</a>
+                     <span style="font-family: 'Rock Salt', cursive;"><a href="login.php">Logout</a></span>
                 </nav>
             </div>
         </header><!-- /header -->
@@ -123,29 +123,54 @@ if (!empty($_POST)){
 
 
 <div id="content">
-<p>記入した内容を確認して、「出品する」ボタンをクリックしてください</p>
+<span style="text-align:center;"><p>記入した内容を確認して、「出品する」ボタンをクリックしてください</p></span></br></br>
 <form action="sell_check.php" method="post">
 	<input type="hidden" name="action" value="submit" />
+    <div class="low">
+ <div class="col-lg-6">
 	<dl>
-		<dt>タイトル</dt>
+       
+		<span style="text-align:right;"><dt>タイトル</dt></br>
 		<dd>
 			<?php echo htmlspecialchars($_SESSION['join']['name'],ENT_QUOTES, 'UTF-8');?>
-		</dd>
-		<dt>価格</dt>
-		<dd>
+		</dd></span></br></br></div>
+
+        <div class="col-lg-6">
+		<span style="text-align:right;">
+        <dt>価格</dt>
+		<dd></br>
 			<?php echo htmlspecialchars($_SESSION['join']['price'],ENT_QUOTES, 'UTF-8');?>
-		</dd>
+		</dd></span></br></br></div>
+    </div>
+
+    <div class="low">
+        <div class="col-lg-6">
+        <span style="text-align:right;">
 		<dt>詳細</dt>
-		<dd>
+		<dd></br>
 			<?php echo htmlspecialchars($_SESSION['join']['description'],ENT_QUOTES, 'UTF-8');?>
-		</dd>
-		<dt>写真など</dt>
-		<dd>
+		</dd></span></br></br></div>
+
+        <div class="col-lg-6">
+        <span style="text-align:right;">
+		<dt>投稿画像</dt>
+		<dd></br>
 		<img src="../textbook_picture/<?php echo htmlspecialchars($_SESSION['join']['image'], ENT_QUOTES, 'UTF-8'); ?>"
 		 width="100" height="100" alt="" />
-		</dd>
-		</dl>
-		<div><a href="sell_index.php?action=rewrite">&laquo;&nbsp;書き直す</a> | <a href="sell_thanks.php"><input type="submit" value="出品する" /></div>
+		</dd></span></div>
+	</dl>
+         <li>
+             <a class="btn btn-lg btn-primary" href="sell_thanks.php"　type="submit">
+          <i class="glyphicon glyphicon-user pull-left"></i><span>出品する<br></span></a> 
+            
+        </li>
+        <li>
+             <a class="btn btn-lg btn-primary" href="sell_index.php?action=rewrite"　type="submit">
+          <i class="glyphicon glyphicon-link pull-left"></i><span>書き直す<br></span></a> 
+            
+        </li>
+
+	</div>	<!-- <div><a href="sell_index.php?action=rewrite">&laquo;&nbsp;書き直す</a>  -->
 </form>
 </div>
  <footer>

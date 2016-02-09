@@ -36,6 +36,8 @@ $posts = mysqli_query($db, $sql) or die(mysqli_error($db));
 
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
+
 
     <!-- Custom styles for this template -->
     <link href="assets/css/main.css" rel="stylesheet">
@@ -120,14 +122,14 @@ $(function(){
   	 	<header>
             <div class="container clearfix">
                 <h1 id="logo">
-                    Rebro
+                   <span style="font-family: 'Rock Salt', cursive;">Rebro</span>
                 </h1>
                 <!-- <i class="fa fa-book fa-4x"></i>      -->
                 <nav>
                     <!-- <a href="">Lorem</a> -->
                     <!-- 消えたnavタグ大事件... -->
                    
-                    <a href="logout.php">Login</a>
+                   <span style="font-family: 'Rock Salt', cursive;"> <a href="logout.php">Login</a></span>
                 </nav>
             </div>
         </header><!-- /header -->
@@ -169,8 +171,8 @@ $(function(){
 	<!-- WELCOME SECTION -->
 	<div class="container">
       <div class="row mt">
-      	<div class="col-lg-8">
-	        <h1>Rebroは簡単に教科書が売り買いできるフリマサイトです</h1>
+      	<div class="col-lg-12">
+	        <h1>Rebroは簡単に教科書が売り買いできる</br>フリマサイトです</h1>
 	        <p>Rebroには、文系教科書から理系教科書に至るまで大学生活で必要な教科書がたくさん。
 	        	<br/>賢く教科書を手にいれて大学生活をEnjoyしよう。</p>
       	</div>
@@ -189,7 +191,7 @@ $(function(){
 		<div class="container">
 			<div class="row mt">
 				<div class="col-lg-1 centered">
-					<i class="fa fa-certificate"></i>
+					<!-- <i class="fa fa-certificate"></i> -->
 				</div>
 				<div class="col-lg-3">
 					<h3>①簡単に検索できる</h3>
@@ -197,7 +199,7 @@ $(function(){
 				</div>
 
 				<div class="col-lg-1 centered">
-					<i class="fa fa-question-circle"></i>
+					<!-- <i class="fa fa-question-circle"></i> -->
 				</div>
 				<div class="col-lg-3">
 					<h3>②すぐに購入できる</h3>
@@ -207,7 +209,7 @@ $(function(){
 			
 			
 				<div class="col-lg-1 centered">
-					<i class="fa fa-globe"></i>
+					<!-- <i class="fa fa-globe"></i> -->
 				</div>
 				<div class="col-lg-3">
 					<h3>③すぐに出品できる</h3>
@@ -377,17 +379,21 @@ $(function(){
 	<!-- <div id="call">/ -->
 		<div class="container">
 			<div class="row" style="text-align:center;">
+				<div style="margin-bottom:70px;">
 				<h3>さぁ教科書を探しにいこう</h3>
 				<div class="col-lg-8 col-lg-offset-2">
-					<p>ここにログイン画面に進む内容を記述</p>
-					<p><button type="button" class="btn btn-green btn-lg">Call To ログイン Button</button></p>
+					<p>かんたん登録</p>
+					<p><button type="button" class="btn btn-green btn-lg"><span style="font-family: 'Rock Salt', cursive;">Sign Up</span></button></p>
 				</div>
+			</div>
 			</div><!-- row -->
 		</div><!-- container -->
 	<!-- </div>Call to action -->
 
 
 	  <footer>
+				<div style="margin-top:70px;">
+
         <div id="info-bar">
             <div class="container">
             	<div class="row">
@@ -422,6 +428,7 @@ $(function(){
             </div>
         </div><!-- /#top-bar -->
      </footer><!-- /footer -->
+ </div>
 
 	<!--これ以下は消さないこと!
 
