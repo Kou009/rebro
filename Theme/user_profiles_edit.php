@@ -185,19 +185,19 @@
 	
 	<!-- MAIN IMAGE SECTION -->
 	<header>
-	        <div class="container clearfix">
-	            <h1 id="logo">
-	                REBRO
-	            </h1>
-	            <i class="fa fa-book fa-4x"></i>     
-	            <nav>
-	                <!-- <a href="">Lorem</a> -->
-	                <!-- 消えたnavタグ大事件... -->
-	                <a href="">ユーザー名</a> 
-	                <a href="logout.php">Log Out</a>
-	            </nav>
-	        </div>
-	</header><!-- /header -->
+            <div class="container clearfix">
+                <h1 id="logo">
+                     <span style="font-family: 'Rock Salt', cursive;">Rebro</span>
+                </h1>
+                <!-- <i class="fa fa-book fa-4x"></i>      -->
+                <nav>
+                    <!-- <a href="">Lorem</a> -->
+                    <!-- 消えたnavタグ大事件... -->
+                   
+                     <span style="font-family: 'Rock Salt', cursive;"><a href="login.php">Logout</a></span>
+                </nav>
+            </div>
+     </header><!-- /header -->
 	<div id="portwrap">
 		<div class="container">
 			<div class="row">
@@ -469,27 +469,60 @@
 	
 	
 	<!-- CALL TO ACTION -->
-	<div id="call">
+	<!-- <div id="call">
 		<div class="container">
-			<div class="row">
+			<div class="row"> -->
 				<!-- <h3>THIS IS A CALL TO ACTION AREA</h3>
 				<div class="col-lg-8 col-lg-offset-2">
 					<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
 					<p><button type="button" class="btn btn-green btn-lg">Call To Action Button</button></p>
 				</div> -->
-			</div><!-- row -->
-		</div><!-- container -->
-	</div><!-- Call to action -->
+			<!-- </div> --><!-- row -->
+		<!-- </div> --><!-- container -->
+	<!-- </div> --><!-- Call to action -->
 	
-	<div class="container">
+	<!-- <div class="container">
 		<div class="row mt">
 			<div class="col-lg-12">
 				<h1>Stay Connected</h1>
 				<p>Join us on our social networks for all the latest updates, product/service announcements and more.</p>
 				<br>
-			</div><!-- col-lg-12 -->
-		</div><!-- row -->
-	</div><!-- container -->
+			</div><!col-lg-12 -->
+		<!-- </div> --><!-- row -->
+	<!-- </div> --><!-- container --> 
+	<footer>
+        <div id="info-bar">
+            <div class="container">
+                <div class="row">
+                <div class="col-lg-3">
+                    <span class="all-tutorials"><a href="">← TOP</a></span>
+                </div>
+
+
+                <div class="col-lg-3">
+                    <ul>
+                        <h2>REBROについて</h2>
+                        <p>プライバシーポリシー</p>
+                        <p>環境保護活動</p>
+                    </ul>
+                </div>
+               
+               <div class="col-lg-3">
+                    <ul>
+                        <h2>REBROを使う</h2>
+                        <p>都道府県検索</p>
+                        <p>大学検索</p>
+                        <p>出品一覧</p>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3">
+                    <span class="footer-logo"><a href="">Created by <i class="fa fa-heart"></i> Team REBRO</a></span>
+                </div>
+                </div>
+            </div>
+        </div><!-- /#top-bar -->
+     </footer><!-- /footer -->
 	
 	
 

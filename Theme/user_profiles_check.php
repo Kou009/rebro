@@ -122,19 +122,19 @@ if (!empty($_POST)){
 	<div id="wrapper">
 
 	    <header>
-	        <div class="container clearfix">
-	            <h1 id="logo">
-	                REBRO
-	            </h1>
-	            <i class="fa fa-book fa-4x"></i>     
-	            <nav>
-	                <!-- <a href="">Lorem</a> -->
-	                <!-- 消えたnavタグ大事件... -->
-	                <a href="">ユーザー名</a> 
-	                <a href="logout.php">Log Out</a>
-	            </nav>
-	        </div>
-		</header><!-- /header -->
+            <div class="container clearfix">
+                <h1 id="logo">
+                     <span style="font-family: 'Rock Salt', cursive;">Rebro</span>
+                </h1>
+                <!-- <i class="fa fa-book fa-4x"></i>      -->
+                <nav>
+                    <!-- <a href="">Lorem</a> -->
+                    <!-- 消えたnavタグ大事件... -->
+                   
+                     <span style="font-family: 'Rock Salt', cursive;"><a href="login.php">Logout</a></span>
+                </nav>
+            </div>
+    </header><!-- /header -->
 	
 
 		<div id="main">
