@@ -338,7 +338,7 @@ $(function(){
        <div class="col-lg-3">
             <div class="circle">
             	<i class="fa fa-repeat" alt="Texto Alternativo" ></i>
-                <h2>すぐに手に入る</h2>
+                <h2>すぐに</br>手に入る</h2>
                 <p>お互いの都合が合えば即日入手可能</p>
                
             </div>
@@ -347,7 +347,7 @@ $(function(){
        <div class="col-lg-3">
             <div class="circle">
             	<i class="fa fa-repeat" alt="Texto Alternativo" ></i>
-                <h2>3分でかんたん売買</h2>
+                <h2>3分で</br>かんたん売買</h2>
                 <p>いらなくなった教科書を売ってお小遣い稼ぎをしよう。</p>
                
             </div>

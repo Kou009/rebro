@@ -134,14 +134,14 @@ if (!empty($_POST))	{ //中身があった場合！は逆の意味になる→�
   	<header>
             <div class="container clearfix">
                 <h1 id="logo">
-                    <span style="font-family: 'Rock Salt', cursive;">Rebro</span>
+                    <span style="font-family: 'Rock Salt', cursive;"><a href="index.php">Rebro</a></span>
                 </h1>
                 <i class="fa fa-book fa-4x"></i>     
                 <nav>
                     <!-- <a href="">Lorem</a> -->
                     <!-- 消えたnavタグ大事件... -->
                    
-                    <span style="font-family: 'Rock Salt', cursive;"><a href="">Logout</a></span>
+                    <span style="font-family: 'Rock Salt', cursive;"><a href="login.php">Logout</a></span>
                 </nav>
             </div>
         </header><!-- /header -->
@@ -153,7 +153,7 @@ if (!empty($_POST))	{ //中身があった場合！は逆の意味になる→�
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 col-lg-offset-2">
-					<h2>Live smart<br/>
+					<span style="font-family: 'Rock Salt', cursive;"><h2>Live smart<br/></span>
 						出品してみよう
 					</h2>
 				</div>

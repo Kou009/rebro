@@ -127,20 +127,24 @@ if (!empty($_POST)){
 <form action="sell_check.php" method="post">
 	<input type="hidden" name="action" value="submit" />
     <div class="low">
- <div class="col-lg-6">
 	<dl>
+    <div class="col-lg-6">
        
 		<span style="text-align:right;"><dt>タイトル</dt></br>
 		<dd>
 			<?php echo htmlspecialchars($_SESSION['join']['name'],ENT_QUOTES, 'UTF-8');?>
-		</dd></span></br></br></div>
+		</dd></span></br></br>
 
-        <div class="col-lg-6">
+    </div>
+
+    <div class="col-lg-6">
+
 		<span style="text-align:right;">
         <dt>価格</dt>
 		<dd></br>
 			<?php echo htmlspecialchars($_SESSION['join']['price'],ENT_QUOTES, 'UTF-8');?>
-		</dd></span></br></br></div>
+		</dd></span></br></br>
+    </div>
     </div>
 
     <div class="low">
@@ -149,7 +153,8 @@ if (!empty($_POST)){
 		<dt>詳細</dt>
 		<dd></br>
 			<?php echo htmlspecialchars($_SESSION['join']['description'],ENT_QUOTES, 'UTF-8');?>
-		</dd></span></br></br></div>
+		</dd></span></br></br>
+        </div>
 
         <div class="col-lg-6">
         <span style="text-align:right;">
@@ -157,7 +162,8 @@ if (!empty($_POST)){
 		<dd></br>
 		<img src="../textbook_picture/<?php echo htmlspecialchars($_SESSION['join']['image'], ENT_QUOTES, 'UTF-8'); ?>"
 		 width="100" height="100" alt="" />
-		</dd></span></div>
+		</dd></span>
+        </div>
 	</dl>
          <li>
              <a class="btn btn-lg btn-primary" href="sell_thanks.php"　type="submit">
