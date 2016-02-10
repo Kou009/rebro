@@ -127,7 +127,7 @@ if (!empty($_POST)){
 <form action="sell_check.php" method="post">
 	<input type="hidden" name="action" value="submit" />
     <div class="low">
-	<dl>
+	
     <div class="col-lg-6">
        
 		<span style="text-align:right;"><dt>タイトル</dt></br>
@@ -164,7 +164,7 @@ if (!empty($_POST)){
 		 width="100" height="100" alt="" />
 		</dd></span>
         </div>
-	</dl>
+	
          <li>
              <a class="btn btn-lg btn-primary" href="sell_thanks.php"　type="submit">
           <i class="glyphicon glyphicon-user pull-left"></i><span>出品する<br></span></a> 
