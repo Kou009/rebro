@@ -1,9 +1,14 @@
 <?php
 	session_start();
-	require('C:\xampp\htdocs\teamLibro/dbconnect.php');
+	require('../dbconnect.php');
 	
-	$_SESSION['id']=1;
-	$_SESSION['book_id']=1;  //session変数に本のID入れてもらって、一覧ページから飛ばしてもらう
+	$_SESSION['id']=3;
+	$_GET['id']='';  //session変数に本のID入れてもらって、一覧ページから飛ばしてもらう !本のIDはゲット送信で送りました
+
+	if (isset($_GET['id'])) {
+		$_SESSION['book_id']=$_GET['id'];   //本のIDをセッションにいれる
+	}
+	var_dump($_SESSION['book_id']);
 
 	if(isset($_SESSION['id'])){
 		$sql=sprintf('SELECT * FROM users WHERE id=%d',
@@ -82,14 +87,15 @@
 <html>
 	<head>
 		<meta charset='UTF-8'>
-		<link rel="stylesheet" type="text/css" href="show.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/show.css">
 		<link rel="stylesheet" type="text/css" href="assets/css/common.css">
 		<title>商品詳細ページ</title>
         <link href="assets/css/font-awesome.min.css" rel="stylesheet">
         <link href="assets/css/common.css" rel="stylesheet">
         <link href="assets/css/custom.css" rel="stylesheet">
-        <script type="text/javascript" src="headfoot.js">
-        </script>
+        <script src="assets/js/modernizr.custom.js"></script>
+    	<script src="assets/js/login.js"></script>
+    
     
         <script>
             function init() {
@@ -169,8 +175,7 @@
 
 <!--- -ここからパブリックコメント-->
 			<?php 
-		        $sql=sprintf('SELECT c.*,up.user_name FROM comments c,user_profiles up WHERE c.sender_id=up.user_id AND book_id=%d
-		       
+		        $sql=sprintf('SELECT c.*,up.user_name FROM comments c,user_profiles up WHERE c.sender_id=up.user_id AND book_id=%d		       
 		        	ORDER BY c.created DESC',
 		        	mysqli_real_escape_string($db,$_SESSION['book_id']));
 				$record=mysqli_query($db,$sql) or die(mysqli_error($db));
@@ -192,10 +197,10 @@
 								                <div class="media-body">
 								                        <small class="pull-right time"> <?php echo $table['created'] ?></small>
 								                        <h5 class="media-heading"><?php echo $table['user_name']; ?></h5>
+									                        <?php if($table['reciever_id'] == 1) { ?>
+									                        	<span class="media-heading">出品者より</span>
+									                        <?php } ?>
 								                        <small class="col-lg-10"><?php echo $table['message'];?></small>
-								                        <?php if($table['reciever_id'] == 1) { ?>
-								                        	<h5 class="media-heading">出品者より</h5>
-								                        <?php }?>
 								                    </div>
 								                </div> <!-- while文用の閉じタグ -->
 							                   

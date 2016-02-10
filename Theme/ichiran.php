@@ -110,7 +110,7 @@ $posts = mysqli_query($db, $sql) or die(mysqli_error($db));
                      <span style="font-family: 'Rock Salt', cursive;"><a href="login.php">Logout</a></span>
                 </nav>
             </div>
-        </header><!-- /header -->
+    </header><!-- /header -->
 
 
     
