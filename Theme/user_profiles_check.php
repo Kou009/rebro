@@ -11,7 +11,7 @@ if (!empty($_POST)){
 	//事後処理をする
 	//$check["user_name"]
 	//$sql = sprintf('UPDATE user_profiles SET `user_name`="%s"',
-	$sql = sprintf('UPDATE `user_profiles` SET `user_name`="%s", `hurigana`="%s", `age`=%d, `college_id`=%d, `pref_id`=%d, `city_id`=%d, `major_id`=%d, `tel`=%d, `address`="%s", `pr`="%s", modified=NOW() WHERE id =1',      
+	$sql = sprintf('UPDATE `user_profiles` SET `user_name`="%s", `hurigana`="%s", `age`=%d, `college_id`=%d, `pref_id`=%d, `city_id`=%d, `major_id`=%d, `tel`=%d, `address`="%s", `pr`="%s",`picture`="%s", modified=NOW() WHERE user_id =%d',      
 		mysqli_real_escape_string($db, $check["user_name"]),
 		mysqli_real_escape_string($db, $check["hurigana"]),
 		mysqli_real_escape_string($db, $check["age"]),
@@ -21,7 +21,9 @@ if (!empty($_POST)){
 		mysqli_real_escape_string($db, $check["major_id"]),
 		mysqli_real_escape_string($db, $check["tel"]),
 		mysqli_real_escape_string($db, $check["address"]),
-		mysqli_real_escape_string($db, $check["pr"])
+		mysqli_real_escape_string($db, $check["pr"]),
+		mysqli_real_escape_string($db, $check["picture"]),
+		mysqli_real_escape_string($db, $_SESSION['id'])
 		);
 	mysqli_query($db, $sql) or die(mysqli_error($db));
 	unset($_SESSION['join']);
@@ -140,7 +142,14 @@ if (!empty($_POST)){
 		<div id="main">
 			<form action="" method="post">
 				<input type="hidden" name="action" value="submit" />
-					<img src="assets/img/default.png" class="avatar_left" width="250" height="250">
+					<?php if (isset($_SESSION['join']['picture'])){ ?>
+						<img src="../user_picture/<?php echo $_SESSION['join']['picture']; ?>" class="avatar_left" width="250" height="250">
+					<?}else{ ?>
+
+						<img src="assets/img/default.png" class="avatar_left" width="250" height="250">
+
+					<?php } ?>
+
 					<dl>
 						<dt>名前</dt>
 						<dd>

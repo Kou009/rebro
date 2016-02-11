@@ -2,12 +2,40 @@
 	date_default_timezone_set('Asia/Tokyo');
 	session_start();
 	require('../dbconnect.php');
+
+
+	if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
+        //ログインしている
+        $_SESSION['time'] = time();
+
+        $sql = sprintf('SELECT * FROM users WHERE id=%d',
+            mysqli_real_escape_string($db, $_SESSION['id'])
+            );
+        $record = mysqli_query($db, $sql) or die(mysqli_error($db));
+        $member = mysqli_fetch_assoc($record);
+    } else {
+        //ログインしていない
+        header('Location: login.php');
+        exit();
+    }
   // echo htmlspecialchars($_POST["users_name"]);
-	$sql = 'SELECT * FROM `user_profiles` WHERE user_id = 1';
+	// $sql = 'SELECT * FROM `user_profiles` WHERE user_id = $id';
+    $sql = sprintf('SELECT * FROM `user_profiles` WHERE user_id = %d',
+            mysqli_real_escape_string($db, $_SESSION['id'])
+            );
 
 	$result = mysqli_query($db, $sql) or die(mysqli_error($db));
 
 	$rec = mysqli_fetch_assoc($result);
+
+	if(isset($_SESSION['id'])){
+		var_dump($_SESSION['id']);	
+	}else{
+		echo '出ません';
+	}
+	
+
+
 
 
 	//POST送信されたら、check画面に移動
@@ -75,10 +103,11 @@
 		if($_POST['pr'] == ''){
 			$error['pr'] = 'blank';
 		}
-		$fileName = $_FILES['picture']['user_name'];
+		$fileName = $_FILES['picture']['name'];
+		$ext = substr($fileName, -3);
 		if(!empty($fileName)){
-			$ext = substr($fileName, -3);
-			if($ext != 'jpg' && $ext != 'git' && $ext != 'png'){
+//			$ext = substr($fileName, -3);
+			if($ext != 'jpg' && $ext != 'gif' && $ext != 'png'){
 				$error['picture'] = 'type';
 			}
 		}
@@ -96,11 +125,11 @@
 			$pr = ($_POST['pr']);
 			$picture = ($_POST['picture']);
 
-			$image = date.time('YmdHis') . $FILES['picture']['user_name'];
-			move_uploaded_file($_FILES,['picture']['tmp_name'], '../textbook_picture/' . $picture);
+			$image = date.time('YmdHis') . $FILES['picture']['name'];
+			move_uploaded_file($_FILES['picture']['tmp_name'], '../user_picture/'.$image.'.'.$ext);
 
 			$_SESSION['join'] = $_POST;
-			$_SESSION['join']['picture'] = $picture;
+			$_SESSION['join']['picture'] = $image.'.'.$ext;
 			header('Location: user_profiles_check.php'); //入力し終えたらuser_check.phpに進みます
 			exit();
 		}	
@@ -225,6 +254,7 @@
 			</div><!-- row -->
 		</div><!-- /container -->
 	</div><!-- /portrwrap -->
+	<!-- <div style= ""><input type="file" name="picture" /></div>更に一番下に動かします -->
 
 	<!-- WELCOME SECTION -->
     <!-- <div class="container">
@@ -246,17 +276,18 @@
 	    	<div class="row pro">
 				<ul class="grid effect-2" id="grid">
 
-						<dd class="avatar-upload-container clearfix">
+						<!-- <dd class="avatar-upload-container clearfix"> -->
 
 						<form role="form" action ="" method ="post" enctype="multipart/form-data">
-							<img src ="assets/img/default.png" class="avatar_left" width="250" height="250"  alt="写真を入力して下さい">
+							<!-- <img src ="assets/img/default.png" class="avatar_left" width="250" height="250"  alt="写真を入力して下さい">
 							<div class="avatar_upload">
 							<a class="btn button-change-profile-picture" href="#">
+								これも下に置き直します -->
 								<!-- <label for="upload-profile-picture">
 								Upload new picture
 								<input id="upload-profile-picture" class="manual-file-chooser js-manual-file-chooser js-avatar-field" type="file">
 								</label> -->
-							</a>
+							<!-- </a> -->
 							<!-- <div class="upload-state default">
 							<p>You can also drag and drop a picture from your computer.</p>
 							</div> -->
@@ -268,8 +299,9 @@
 								<div class="upload-state text-danger bad-browser"> This browser doesn’t support uploading pictures. </div>
 								<div class="upload-state text-danger failed-request"> Something went really wrong and we can’t process that picture. </div>
 							</div> -->
-							</dd>
-							<div style= ""><input type="file" name="picture" /></div>
+						<!-- </dd> -->
+							<!-- <div style= ""><input type="file" name="picture" /></div> -->
+							<!-- 原因のinputボタンの箇所、上に動かしてみます -->
 							<div class="col-sm-4">
 						<!-- </form> -->
 
@@ -411,14 +443,21 @@
 		                        <label for="">自己PR</label>
 		                        <textarea class="form-control"  name ="pr" placeholder="Textarea" rows="5"><?php echo $rec['pr']?></textarea>
 		                    </div>
-		                    <p class ="comform">
+		                    <!-- <p class ="comform">下に動かします
 		                    	<a　href ="user_profiles_check.php"><input type ="submit" value ="確認画面へ進む"></a>
-		                    </p> 
+		                    </p>  -->
 		                    <!-- <div class="profile-edit-11">
 								<div class="row">
 							    	<button href="#"  class="btn btn-xlarge" /><i class="fa fa-chevron-right fa-5x" ></i></button>
 							    </div>
 							</div> -->
+							<img src ="assets/img/default.png" class="avatar_left" width="250" height="250"  alt="写真を入力して下さい">
+							<div class="avatar_upload">
+							<a class="btn button-change-profile-picture" href="#">
+							<div style= ""><input type="file" name="picture" /></div>
+							<p class ="comform">
+		                    	<a　href ="user_profiles_check.php"><input type ="submit" value ="確認画面へ進む"></a>
+		                    </p> 
 						</form>
 		                
 
