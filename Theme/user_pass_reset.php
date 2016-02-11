@@ -2,67 +2,7 @@
 require('../dbconnect.php');
 session_start();
 
-//クッキーの存在確認
-if(isset($_COOKIE['email'])){
-	//クッキーが空でない場合に次のコードと合わせてichiranページに飛ぶ
-	if ($_COOKIE['email'] !='') {
-		$_POST['email'] = $_COOKIE['email'];
-		$_POST['password'] = $_COOKIE['password'];
-		$_POST['save'] = 'on';
-	}
-}
-//$_COOKIEが空じゃなかったら
-
-if (!empty($_POST)) {
-	//ログイン処理
-	if ($_POST['email'] != '' && $_POST['password'] !='') {
-
-		//sprintf( フォーマット [, 引数１] [, 引数２]･・・):指定したフォーマットにしたがって整形した文字列を返す。
-		// mysqli_real_escape_string：PHPからMySQLにデータを登録するときに、MySQLで使用する特殊文字をエスケープする方法
-		$sql = sprintf('SELECT * FROM users WHERE email="%s" AND password="%s"',
-			mysqli_real_escape_string($db,$_POST['email']),
-			mysqli_real_escape_string($db,sha1($_POST['password']))
-			);
-		
-		// != で'~'の中が~じゃなかったらとなる(!==にしない)
-		$record = mysqli_query($db,$sql) or die(mysqli_error($db));
-		if ($table = mysqli_fetch_assoc($record)){
-			//ログイン成功
-			$_SESSION['id'] = $table['id'];
-			$_SESSION['time'] = time();
-
-			// var_dump($_POST['save']);
-			//ログイン情報を記録する(２週間)(単位[s])
-			if ($_POST['save'] == 'on') {
-				setcookie('email',$_POST['email'], time()+60*60*24*14);
-				setcookie('password',$_POST['password'], time()+60*60*24*14);
-			}
-			// header('Location: user_profiles.html');
-			// ログイン、ログアウトテスト用
-			// header('Location: test_user_profiles.php');
-			// 本番移行先
-			header('Location: ichiran.php');
-			exit();
-		} else {
-			$error['login'] = 'failed';
-		}
-	} else {
-		$error['login'] = 'blank';
-	}
-}
-else{
-//最初に入力欄に何かしらの文字が入っていた場合に、中を空にする。(brankではない。)
-//最初に入力欄にエラー構文が入る問題の解消のため
-$_POST['email'] = '';
-$_POST['password'] ='';
-// 初期値として、エラーの中身を空にする
-$error = array('login'=> '' );
-}
-
-
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -84,16 +24,16 @@ $error = array('login'=> '' );
     <link href="assets/css/custom.css" rel="stylesheet">
     <link href="assets/css/common.css" rel="stylesheet">
 
-    <!--ヘッダーフッターファイルより-->
-    <link rel="stylesheet" type="text/css" href="headfoot.css">
-
-    <!-- ログイン・登録画面ページ専用css -->
-    <link href="assets/css/user_touroku.css" rel="stylesheet">
-
     <link href="assets/css/font-awesome.min.css" rel="stylesheet">
 
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
+
+    <!--ヘッダーフッターファイルより-->
+    <link rel="stylesheet" type="text/css" href="headfoot.css">
+
+    <!-- ログイン・登録画面ページ専用css -->
+	<link href="assets/css/user_touroku.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -109,7 +49,7 @@ $error = array('login'=> '' );
         function init() {
             window.addEventListener('scroll', function(e){
                 var distanceY = window.pageYOffset || document.documentElement.scrollTop,
-                    shrinkOn = 300,
+                    shrinkOn = 0,
                     header = document.querySelector("header");
                 if (distanceY > shrinkOn) {
                     classie.add(header,"smaller");
@@ -165,68 +105,40 @@ $error = array('login'=> '' );
 	        </div>
 	    </header><!-- /header -->
 
+	    <!-- ヘッダー分のスペースを空ける用 -->
+	    <!-- <div id= "top_space"></div> -->
 
 	    <div id="main">
-			<!-- MAIN IMAGE SECTION -->
-			<div id="aboutwrap">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-8 col-lg-offset-2">
-							<h2>Live smart<br/><br/>
-								さぁ、本を探しに行こう
-							</h2>
-						</div>
-					</div><!-- row -->
-				</div><!-- /container -->
-			</div><!-- /aboutwrap -->
-
 			<!-- CHART IMAGE SECTION -->
 		    <div id="chartwrap">
 			    <div class="container">
-			      	<div class="another_account">
-			      		<div class="row"> 
-			      			<h3>Sign In by another account? </h3><br/>
-							<a href="#" class="btn btn-lg btn-primary btn-block">Facebook</a> 
-							<a href="#" class="btn btn-lg btn-info btn-block">Google</a>
-						</div><!-- row -->
-			    	</div><!-- another_account -->
-
 			    	<form class="login" action="" method="post" enctype="multipart/form-data">
-			      		<div class="sign_in">
-			          		<h3>Please Sign In, or <a class href="user_touroku.php">Sign Up</a></h3>
-			                <p class="form-title">　　　　Sign In</font></p>
+			      		<div class="sign_up">
+			          		<br />登録したいパスワードを入力して下さい。<br />
 			                <!-- <form class="login"> -->
-				                <input type="email" name="email" placeholder="Email" value="<?php echo htmlspecialchars($_POST['email']); ?>"/>
-				                <input type="password" name="password" placeholder="Password" value="<?php echo htmlspecialchars($_POST['password']); ?>" />
-				                <?php if($error['login'] == 'blank'): ?>
-								<p class="error">*  メールアドレスとパスワードをご記入ください</p>
-								<?php endif; ?>
-				                <?php if($error['login'] == 'failed'): ?>
-								<p class="error">*  ログインに失敗しました。正しくご記入ください。</p>
-								<?php endif; ?>
+			                <?php
+			                $_POST['email'] = '';
+							?>
 
+								<input type="password" name="password" placeholder="Password" value="<?php echo htmlspecialchars($_POST['password'], ENT_QUOTES,'UTF-8'); ?>" />
+				                
+				                <?php if($error['password'] == 'blank'): ?>
+								<p class="error">* パスワードを入力してください</p>
+								<?php endif; ?>
+								<?php if ($error['password'] == 'length'): ?>
+								<p class="error">* パスワードは4文字以上で入力してください</p>
+								<?php endif; ?>
 				                <div>
-				                	<input type="submit" value="Sign In" class="btn btn-success btn-sm" />
+				                	<input type="submit" value="Send" class="btn btn-success btn-sm" />
 				                </div>
-				                <div class="remember-forgot">
-				                    <div class="row">
-										<div class="checkbox">
-											<input id="save" type="checkbox" name="save" value="on"/><label for="save">Remember Me</label>
-										</div><!-- checkbox -->
-				                    </div><!--  row -->
-				                </div><!-- remember-forgot -->
-				                <div class="password_reset">
-				                	<a class href="user_pass_reset.php">Can't remember pass ?</a>
-				                </div><!-- password_reset -->
 			           		<!-- </form> --><!-- login -->
-			            </div><!-- sign_in -->
+			            </div><!-- col-lg-8 -->
 			        </form><!-- ここを消すと表示が変わる-cssチェック-class=login -->
 		    	</div><!-- container -->
 			</div><!-- chartwrap -->
-		 
 
 		<footer>
-				<div style="margin-top:70px;">
+				<div style="margin-top:0px;">
 
 			<div id="info-bar">
 			    <div class="container">
