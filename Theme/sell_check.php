@@ -93,7 +93,7 @@ if (!empty($_POST)){
                 <h1 id="logo">
                  <span style="font-family: 'Rock Salt', cursive;">Rebro</span>
                 </h1>
-                <i class="fa fa-book"></i>     
+                <!-- <i class="fa fa-book"></i>      -->
                 <nav>
                     <!-- <a href="">Lorem</a> -->
                     <!-- 消えたnavタグ大事件... -->
@@ -124,63 +124,69 @@ if (!empty($_POST)){
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/js/bootstrapValidator.min.js"></script>
 
 
-<div id="content">
+<div class="container">
 <span style="text-align:center;"><p>記入した内容を確認して、「出品する」ボタンをクリックしてください</p></span></br></br>
 <form action="sell_check.php" method="post">
 	<input type="hidden" name="action" value="submit" />
     <div class="low">
-	
-    <div class="col-lg-6">
-       
-		<span style="text-align:right;"><dt>タイトル</dt></br>
-		<dd>
-			<?php echo htmlspecialchars($_SESSION['join']['name'],ENT_QUOTES, 'UTF-8');?>
-		</dd></span></br></br>
+        <div class="col-lg-6">
+           
+    		<span style="text-align:right;"><dt>タイトル</dt></br>
+    		<dd>
+    			<?php echo htmlspecialchars($_SESSION['join']['name'],ENT_QUOTES, 'UTF-8');?>
+    		</dd></span></br></br>
 
-    </div>
+        </div>
 
-    <div class="col-lg-6">
+        <div class="col-lg-6">
 
-		<span style="text-align:right;">
-        <dt>価格</dt>
-		<dd></br>
-			<?php echo htmlspecialchars($_SESSION['join']['price'],ENT_QUOTES, 'UTF-8');?>
-		</dd></span></br></br>
-    </div>
+    		<span style="text-align:right;">
+            <dt>価格</dt>
+    		<dd></br>
+    			<?php echo htmlspecialchars($_SESSION['join']['price'],ENT_QUOTES, 'UTF-8');?>
+    		</dd></span></br></br>
+        </div>
     </div>
 
     <div class="low">
         <div class="col-lg-6">
-        <span style="text-align:right;">
-		<dt>詳細</dt>
-		<dd></br>
-			<?php echo htmlspecialchars($_SESSION['join']['description'],ENT_QUOTES, 'UTF-8');?>
-		</dd></span></br></br>
+            <span style="text-align:right;">
+    		<dt>詳細</dt>
+    		<dd></br>
+    			<?php echo htmlspecialchars($_SESSION['join']['description'],ENT_QUOTES, 'UTF-8');?>
+    		</dd></span></br></br>
         </div>
 
         <div class="col-lg-6">
-        <span style="text-align:right;">
-		<dt>投稿画像</dt>
-		<dd></br>
-		<img src="../textbook_picture/<?php echo htmlspecialchars($_SESSION['join']['image'], ENT_QUOTES, 'UTF-8'); ?>"
-		 width="100" height="100" alt="" />
-		</dd></span>
+            <span style="text-align:right;">
+    		<dt>投稿画像</dt>
+    		<dd></br>
+    		<img src="../textbook_picture/<?php echo htmlspecialchars($_SESSION['join']['image'], ENT_QUOTES, 'UTF-8'); ?>"
+    		 width="100" height="100" alt="" />
+    		</dd></span>
         </div>
-	
-         <li>
-             <a class="btn btn-lg btn-primary" href="sell_thanks.php"　type="submit">
-          <i class="glyphicon glyphicon-user pull-left"></i><span>出品する<br></span></a> 
-            
-        </li>
-        <li>
-             <a class="btn btn-lg btn-primary" href="sell_index.php?action=rewrite"　type="submit">
-          <i class="glyphicon glyphicon-link pull-left"></i><span>書き直す<br></span></a> 
-            
-        </li>
+    </div>
 
-	</div>	<!-- <div><a href="sell_index.php?action=rewrite">&laquo;&nbsp;書き直す</a>  -->
+    <div class="low">
+        <div class="col-lg-6">
+        <li>
+             <!-- <a class="btn btn-lg btn-primary" href="sell_thanks.php"　type="submit" value="登録する"> -->
+            <input type="submit" value="出品する" />
+          <!-- <i class="glyphicon glyphicon-user pull-left"></i><br></a>  -->
+        </li>
+        </div>
+
+        <div class="col-lg-6">    
+        <li>
+             <a href="sell_index.php?action=rewrite">&laquo;&nbsp;書き直す</a>        
+        </li>
+        </div>
+     </div>   
+
+	<!-- </div>	<div><a href="sell_index.php?action=rewrite">&laquo;&nbsp;書き直す</a>  -->
 </form>
 </div>
+
  <footer>
         <div id="info-bar">
             <div class="container">
