@@ -172,7 +172,11 @@
 
 
 						
-
+						<a href ="http://localhost/text/Theme/user_profiles_edit.php?">
+		                    	<p class ="comform">
+		                    	<button type ="submit" class ="btn-type1">Profileを編集する<a href ="user_profiles_edit.php"></a></button>
+		                    	</p>
+		               	</a>
 		                <h3 class="page-header">Profile</h3>
 		                <form role="form" action　="user_profiles_edit.php" method="post" enctype="multipart/form-data">
 		                    <div class="form-group float-label-control">
@@ -315,11 +319,11 @@
 		                        <label for="">自己PR</label>
 		                        <textarea class="form-control"  name ="pr" placeholder="Textarea" rows="5" readonly><?php echo $rec['pr']; ?></textarea>
 		                    </div>
-		                    <a href ="http://localhost/text/Theme/user_profiles_edit.php?">
+		                    <!-- <a href ="http://localhost/text/Theme/user_profiles_edit.php?">
 		                    	<p class ="comform">
 		                    	<button type ="submit" class ="btn-type1">Profileを編集する<a href ="user_profiles_edit.php"></a></button>
 		                    	</p>
-		                    </a>
+		                    </a> -->
 		                    <!-- <div class="profile-edit-11">
 								<div class="row">
 							    	<button href="#"  class="btn btn-xlarge" /><i class="fa fa-chevron-right fa-5x" ></i></button>
