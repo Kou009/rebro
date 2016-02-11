@@ -22,6 +22,7 @@ if (!isset($_COOKIE['email'])) {
 
 	    <!-- Bootstrap core CSS -->
 	    <link href="assets/css/bootstrap.css" rel="stylesheet">
+	    <link href='https://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
 
 	    <!-- Custom styles for this template -->
 	    <link href="assets/css/main.css" rel="stylesheet">
@@ -54,7 +55,7 @@ if (!isset($_COOKIE['email'])) {
 	        function init() {
 	            window.addEventListener('scroll', function(e){
 	                var distanceY = window.pageYOffset || document.documentElement.scrollTop,
-	                    shrinkOn = 100,
+	                    shrinkOn = 0,
 	                    header = document.querySelector("header");
 	                if (distanceY > shrinkOn) {
 	                    classie.add(header,"smaller");
@@ -77,7 +78,7 @@ if (!isset($_COOKIE['email'])) {
 	        <div class="container clearfix">
 	            <h1 id="logo">
                      <span style="font-family: 'Rock Salt', cursive;">Rebro</span>
-                	<i class="fa fa-book fa-1x"></i>
+                	<!-- <i class="fa fa-book fa-1x"></i> -->
                 </h1>
 	            <!-- <i class="fa fa-book fa-1x"></i>      -->
 	            <nav>
@@ -106,24 +107,14 @@ if (!isset($_COOKIE['email'])) {
 				            	<a href="user_profiles_edit.php">Log IN</a>
 								<!-- <a href="user_profiles_edit.php?id=<?php echo htmlspecialchars($_SESSION['id'],ENT_QUOTES, 'UTF-8'); ?>">Log IN</a> -->
 							</h2>
-							<br />
 						</div>
 					</div><!-- row -->
 				</div><!-- /container -->
 			</div><!-- /aboutwrap -->
-			<!-- <div id="head">
-				<h1>会員登録</h1>
-			</div>
-
-			<div id="content">
-				<p>ユーザー登録が完了しました</p>
-				<p><a href="user_profiles.html">ログインする</a></p>
-			</div> -->
-
 		</div><!-- #main -->
 
 		<footer>
-				<div style="margin-top:70px;">
+				<!-- <div style="margin-top:0px;"> -->
 
 			<div id="info-bar">
 			    <div class="container">
@@ -172,7 +163,4 @@ if (!isset($_COOKIE['email'])) {
     <script src="assets/js/main.js"></script>
     <script src="assets/js/classie.js"></script>
   </body>
-</html>
-	
-	</body>
 </html>
