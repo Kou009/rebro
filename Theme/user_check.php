@@ -78,6 +78,7 @@ if (!empty($_POST)) {
 
 	    <!-- Bootstrap core CSS -->
 	    <link href="assets/css/bootstrap.css" rel="stylesheet">
+	    <link href='https://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
 
 	    <!-- Custom styles for this template -->
 	    <link href="assets/css/main.css" rel="stylesheet">
@@ -132,7 +133,7 @@ if (!empty($_POST)) {
 	        <div class="container clearfix">
 	            <h1 id="logo">
                      <span style="font-family: 'Rock Salt', cursive;">Rebro</span>
-                	<i class="fa fa-book fa-1x"></i>
+                	<!-- <i class="fa fa-book fa-1x"></i> -->
                 </h1>
 	            <!-- <i class="fa fa-book fa-1x"></i>      -->
 	            <nav>
@@ -170,38 +171,42 @@ if (!empty($_POST)) {
 		</div><!-- #check_space -->
 
 		<footer>
-	        <div id="info-bar">
-	            <div class="container">
-	                <div class="row">
-	                <div class="col-lg-3">
-	                    <span class="all-tutorials"><a href="">← TOP</a></span>
-	                </div>
+				<div style="margin-top:70px;">
+
+			<div id="info-bar">
+			    <div class="container">
+			    	<div class="row">
+			        <div class="col-lg-3">
+			            <span class="all-tutorials"><a href="">← TOP</a></span>
+			        </div>
 
 
-	                <div class="col-lg-3">
-	                    <ul>
-	                        <h2>REBROについて</h2>
-	                        <p>プライバシーポリシー</p>
-	                        <p>環境保護活動</p>
-	                    </ul>
-	                </div>
-	               
-	               <div class="col-lg-3">
-	                    <ul>
-	                        <h2>REBROを使う</h2>
-	                        <p>都道府県検索</p>
-	                        <p>大学検索</p>
-	                        <p>出品一覧</p>
-	                    </ul>
-	                </div>
+			        <div class="col-lg-3">
+			        	<div style="vertical-align:middle;">
+			            <ul>
+			                <h3>REBROについて</h3>
+			                <p>プライバシーポリシー</p>
+			                <p>環境保護活動</p>
+			            </ul>
+			        	</div>
+			        </div>
+			       
+			       <div class="col-lg-3">
+			            <ul>
+			                <h3>REBROを使う</h3>
+			                <p>都道府県検索</p>
+			                <p>大学検索</p>
+			                <p>出品一覧</p>
+			            </ul>
+			        </div>
 
-	                <div class="col-lg-3">
-	                    <span class="footer-logo"><a href="">Created by <i class="fa fa-heart"></i> Team REBRO</a></span>
-	                </div>
-	                </div>
-	            </div>
-	        </div><!-- /#top-bar -->
-    	</footer><!-- /footer -->
+			        <div class="col-lg-3">
+			            <span class="footer-logo"><a href="">Created by <i class="fa fa-heart"></i> Team REBRO</a></span>
+			        </div>
+			        </div>
+			    </div>
+			</div><!-- /#top-bar -->
+		</footer><!-- /footer -->
 	</div><!--wrapper-->
 
 	

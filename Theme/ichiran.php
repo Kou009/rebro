@@ -2,6 +2,7 @@
 date_default_timezone_set('Asia/Tokyo');
 session_start();
 require('../dbconnect.php');
+//$_SESSION['id']=5; //開発用
 
 // 投稿を取得する
 $page='';

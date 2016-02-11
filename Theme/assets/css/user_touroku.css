@@ -128,7 +128,7 @@ p.form-title {
     text-align: center;
     background-attachment: relative;
     background-position: center center;
-    min-height: 500px;
+    min-height: 400px;
     width: 100%;
     -webkit-background-size: 100%;
     -moz-background-size: 100%;
@@ -147,7 +147,7 @@ p.form-title {
     text-align: center;
     background-attachment: relative;
     background-position: center center;
-    min-height: 500px;
+    min-height: 400px;
     width: 100%;
     -webkit-background-size: 100%;
     -moz-background-size: 100%;
@@ -162,11 +162,11 @@ p.form-title {
 #aboutwrap_thanks {
     background: url(../img/about-bg1.jpg) no-repeat center top;
     margin-top: 0px; /*143から0へ*/
-    padding-top: 20px;
+    /*padding-top: 20px;*/
     text-align: center;
     background-attachment: relative;
     background-position: center center;
-    min-height: 500px;
+    min-height: 400px;
     width: 100%;
     -webkit-background-size: 100%;
     -moz-background-size: 100%;
@@ -183,7 +183,7 @@ p.form-title {
     font-size: 50px;
     font-weight: 400;
     letter-spacing: 2px;
-    margin-top: 130px;
+    margin-top: 80px;
 }
 /*tourokuページ用のcss*/
 #aboutwrap_touroku h2 {
@@ -191,7 +191,7 @@ p.form-title {
     font-size: 50px;
     font-weight: 400;
     letter-spacing: 2px;
-    margin-top: 130px;
+    margin-top: 80px;
 }
 /*thanksページ用のcss*/
 #aboutwrap_thanks h2 {
@@ -199,7 +199,7 @@ p.form-title {
     font-size: 50px;
     font-weight: 400;
     letter-spacing: 2px;
-    margin-top: 100px;
+    margin-top: 60px;
 }
 
 /*custom.cssより変更部 32*/
@@ -208,7 +208,7 @@ p.form-title {
 	content:"";
 	display: block;
 	width: 100%;
-	height: 77%; /*トップ画像カバー部分*/
+	min-height: 400px; /*トップ画像カバー部分*/
 	background: -moz-linear-gradient(
 		270deg,
 		#1abc9c 100%,
@@ -236,7 +236,7 @@ p.form-title {
     content:"";
     display: block;
     width: 100%;
-    height: 77.0%; /*トップ画像カバー部分*/
+    min-height: 400px; /*トップ画像カバー部分*/
     background: -moz-linear-gradient(
         270deg,
         #1abc9c 100%,
@@ -264,7 +264,7 @@ p.form-title {
     content:"";
     display: block;
     width: 100%;
-    height: 77%; /*トップ画像カバー部分*/
+    min-height: 400px; /*トップ画像カバー部分*/
     background: -moz-linear-gradient(
         270deg,
         #1abc9c 100%,

@@ -78,6 +78,8 @@ $error = array('login'=> '' );
 
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
+
 
     <!-- Custom styles for this template -->
     <link href="assets/css/main.css" rel="stylesheet">
@@ -109,7 +111,7 @@ $error = array('login'=> '' );
         function init() {
             window.addEventListener('scroll', function(e){
                 var distanceY = window.pageYOffset || document.documentElement.scrollTop,
-                    shrinkOn = 300,
+                    shrinkOn = 0,
                     header = document.querySelector("header");
                 if (distanceY > shrinkOn) {
                     classie.add(header,"smaller");
@@ -152,7 +154,7 @@ $error = array('login'=> '' );
 	        <div class="container clearfix">
 	            <h1 id="logo">
                      <span style="font-family: 'Rock Salt', cursive;">Rebro</span>
-                	<i class="fa fa-book fa-1x"></i>
+                	<!-- <i class="fa fa-book fa-1x"></i> -->
                 </h1>
 	            <!-- <i class="fa fa-book fa-1x"></i>      -->
 	            <nav>
