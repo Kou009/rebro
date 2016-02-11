@@ -1,0 +1,348 @@
+
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+a img {
+  border: none; }
+
+/* =Scss Variables
+-------------------------------------------------------------- */
+/* =Global  全体に対する装飾の指定
+-------------------------------------------------------------- */
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+body {
+  /*background-color: #3cb5f9;*/
+  color: #505050;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.8; }
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+  font-weight: 300; }
+
+a {
+  text-decoration: none;
+  color: #3cb5f9; }
+
+a:hover {
+  color: #0793e2; }
+
+/* =Template
+-------------------------------------------------------------- */
+#wrapper {
+  width: 100%;
+  margin: 0 auto; }
+
+#main {
+  background-color: #fff;
+  padding-top: 150px; }
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 0 30px; }
+
+
+
+/* =Info Bar  フッタの指定
+-------------------------------------------------------------- */
+#info-bar {   /*フッタの色指定*/
+  background-color: #1abc9c;
+  background-color:rgba(26,188,156,0.7); }
+  #info-bar a,ul {
+    color: white;
+    font-size: 14px;
+    text-transform: uppercase;
+    display: inline-block;
+    margin: 0;
+    padding: 10px; }
+    #info-bar a:hover {
+      background-color: #0793e2; }
+  #info-bar span.all-tutorials,
+  #info-bar span.footer-logo {
+    display: inline;
+    width: 50%; }
+
+    .col-lg-3{
+      float: left;
+      margin-left: 10%;
+    }
+  /*#info-bar span.all-tutorials {
+    float: left;
+    text-align: left; }
+  #info-bar span.footer-logo {
+    float: right;
+    text-align: right; }*/
+
+
+/* =Header
+-------------------------------------------------------------- 
+
+/*body
+-----------------------------------------------------------*/
+ #main{
+ 	position: static;
+ 	top: 60%;
+ }
+
+ .sidebar{
+	float: left;
+  top: 30%;
+  width: 25%;
+  margin-top: 1%;
+	margin-left: 1%;
+  margin-right: 4%;
+  color: #000;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  background: #f0f8ff;
+  text-align: center;
+}
+dt{
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+
+img.sell-user{
+  /*width: 150px;*/
+  border-radius: 300px;
+  -webkit-border-radius: 300px;
+  -moz-border-radius: 300px;
+}
+
+.contents{
+	display: block;
+  margin-top: 1%;
+  margin-right: 1%;
+  left: 30%;
+  top: 30%; 
+  color: #000;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  background: #f0f8ff;
+  position: relative;
+  width: 69%;
+}
+
+img.book{
+  position: absolute;
+  right: 70%;
+  top: 10%; 
+  margin-right: 4%;
+}
+.description{
+  position: absolute;
+  right: 28%;
+  top: 10%;
+}
+
+/*=パブリックコメント部分
+-------------------------------------------------------------- */
+    .chat-container{
+      margin-left: 2%;
+      left: 30%;
+      overflow-y: scroll;
+      height: 370px;
+      word-wrap: break-word;
+    }
+
+    .conversation
+    {
+        padding:5px;
+        border-bottom:1px solid #ddd;
+        margin:0;
+
+    }
+
+    .message-wrap
+    {
+        box-shadow: 0 0 3px #ddd;
+        padding:0;
+
+    }
+    .msg
+    {
+        padding:5px;
+        padding-bottom: 1px;
+        /*border-bottom:1px solid #ddd;*/
+        margin:0;
+    }
+    .msg-wrap
+    {
+        padding:10px;
+        max-height: 400px;
+        /*overflow: scroll;*/
+
+    }
+
+    .time
+    {
+        color:#bfbfbf;
+    }
+
+    .media-object{
+      border-radius: 390px;
+      -moz-border-radius: 390px;
+      -webkit-border-radius: 390px;
+    }
+
+    .send-wrap
+    {
+        border-top: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+        padding:10px;
+        /*background: #f8f8f8;*/
+    }
+
+    .send-message
+    {
+        resize: none;
+    }
+
+    .highlight
+    {
+        background-color: #f7f7f9;
+        border: 1px solid #e1e1e8;
+    }
+
+    .send-message-btn
+    {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 0;
+
+        border-bottom-right-radius: 0;
+    }
+    .btn-panel
+    {
+        background: #f7f7f9;
+    }
+
+    .btn-panel .btn
+    {
+        color:#b8b8b8;
+
+        transition: 0.2s all ease-in-out;
+    }
+
+    .btn-panel .btn:hover
+    {
+        color:#666;
+        background: #f8f8f8;
+    }
+    .btn-panel .btn:active
+    {
+        background: #f8f8f8;
+        box-shadow: 0 0 1px #ddd;
+    }
+
+    .btn-panel-conversation .btn,.btn-panel-msg .btn
+    {
+
+        background: #f8f8f8;
+    }
+    .btn-panel-conversation .btn:first-child
+    {
+        border-right: 1px solid #ddd;
+    }
+
+    .msg-wrap .media-heading
+    {
+        color:#003bb3;
+        font-weight: 700;
+    }
+
+
+    .msg-date
+    {
+        background: none;
+        text-align: center;
+        color:#aaa;
+        border:none;
+        box-shadow: none;
+        border-bottom: 1px solid #ddd;
+    }
+
+ 
+/* =Footer
+-------------------------------------------------------------- */
+Footer{
+  clear: left;
+  clear: right;
+  position: static;
+  bottom: 20%;
+}
+
+/* =Extras
+-------------------------------------------------------------- */
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  content: "";
+  clear: both;
+  height: 0; }
+
+/* =Media Queries
+-------------------------------------------------------------- */
+@media all and (max-width: 660px) {
+  /* =Header
+  -------------------------------------------------------------- */
+  header h1#logo {
+    display: block;
+    float: none;
+    margin: 0 auto;
+    height: 100px;
+    line-height: 100px;
+    text-align: center; }
+  header nav {
+    display: block;
+    float: none;
+    height: 50px;
+    text-align: center;
+    margin: 0 auto; }
+    header nav a {
+      line-height: 50px;
+      margin: 0 10px; }
+  header.smaller {
+    height: 75px; }
+    header.smaller h1#logo {
+      height: 40px;
+      line-height: 40px;
+      font-size: 30px; }
+    header.smaller nav {
+      height: 35px; }
+      header.smaller nav a {
+        line-height: 35px; } }
+@media all and (max-width: 600px) {
+  .container {
+    width: 100%; }
+
+  #info-bar a {
+    display: block; }
+  #info-bar span.all-tutorials,
+  #info-bar span.back-to-tutorial {
+    width: 100%; }
+  #info-bar span.all-tutorials,
+  #info-bar span.back-to-tutorial {
+    float: none;
+    text-align: center; }
+  #info-bar span.all-tutorials {
+    border-bottom: solid 1px #0793e2; } }
+
+
+
