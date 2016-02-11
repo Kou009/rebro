@@ -60,17 +60,7 @@ session_start();
 				mysqli_real_escape_string($db,$_POST['message']));
 				mysqli_query($db,$sql) or die(mysqli_error($db));
 			
-			header('Location: chat.php');
-			exit();
-			}//出品者じゃなかった場合
-			elseif($_POST['message']!=''){
-				$sql=sprintf('INSERT INTO chat SET sender_id=%d,book_id=%d,message="%s",created=NOW()',
-				mysqli_real_escape_string($db,$member['id']),
-				mysqli_real_escape_string($db,$_SESSION['book_id']),
-				mysqli_real_escape_string($db,$_POST['message']));
-				mysqli_query($db,$sql) or die(mysqli_error($db));
-			
-			header('Location: chat.php');
+			header('Location: chat2.php');
 			exit();
 			}
 
@@ -179,38 +169,52 @@ session_start();
 		                   
 		                </div>
 
-		              
-		                <div class="panel-body">
-		                	<div class="panel-button">
-		                		<?php
+		              <?php 
 		                			$sql=sprintf('SELECT id,user_name FROM user_profiles WHERE id!=%s',
 		                				mysqli_real_escape_string($db,$_SESSION['id'])
 		                				);
+
 		                			$record7=mysqli_query($db,$sql) or die(mysqli_error($db));
 
 		                			while($sender_name=mysqli_fetch_assoc($record7)):
+		                				//$user_id=$sender_name['id'];
 		                		?>
-		                		<form style="display:inline;" method="post" action="" >
-		                			<input type="submit" value="<?php  echo $sender_name['user_name']; ?>"
-		                		 	type="hidden"  id="<?php echo $sender_name['id']; ?>"/>	
+
+		                		<form style="display:inline;" method="get" action="">
+		                			
+		                			<!-- $u_id=$sender_name['id']; -->
+		                		 	<input name="id" type="hidden" href="chat2.php?id=<?php echo $sender_name['id']; ?>/>
+		                		 
+		                		 	<input type="submit" value="<?php  echo $sender_name['user_name']; ?>"/>
+		                		 	
 		                		</form>
 		                	<?php 
-		                	endwhile;?>
+		                		endwhile;
+		                	?>
 		                	</div>
 
 		                	 <?php 
-		                	 if (isset($_POST['id'])) {
-		                	 	
-		                	 	var_dump($_POST['id']);
-		                	 }
+		                	 var_dump($_GET);
+		                	if(isset($_GET['id'])) {
+		                	 	var_dump($_GET['id']);
+		                	}else{
+		                		echo 'ERROR';
+		                	}
+		                	?>
 		                	
+		                <div class="panel-body">
+		                	<div class="panel-button">
+		                		
+		                	
+		                	<?php 
 		                	$sql=sprintf('SELECT chat.* ,up.user_name FROM chat , user_profiles up 
 		                				WHERE book_id=%d AND up.id=chat.sender_id AND chat.sender_id=%d',
 		                	mysqli_real_escape_string($db,$_SESSION['book_id']),
 		                	mysqli_real_escape_string($db,$_POST['id'])
 		                	);
 
-		               		 $record6=mysqli_query($db,$sql) or die(mysqli_error($db));
+		               		$record6=mysqli_query($db,$sql) or die(mysqli_error($db));
+		               		
 		                	?>
 		                
 		        
@@ -251,7 +255,6 @@ session_start();
 		                    
 		                         <?php 
 		                    		endwhile;
-		                    	
 		                    		?>
 		                    </ul>
 		                </div>
