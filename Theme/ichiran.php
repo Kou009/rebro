@@ -110,7 +110,7 @@ $posts = mysqli_query($db, $sql) or die(mysqli_error($db));
                     <!-- <a href="">Lorem</a> -->
                     <!-- 消えたnavタグ大事件... -->
                    
-                     <span style="font-family: 'Rock Salt', cursive;"><a href="login.php">Logout</a></span>
+                     <span style="font-family: 'Rock Salt', cursive;"><a href="logout.php">Logout</a></span>
                 </nav>
             </div>
     </header><!-- /header -->

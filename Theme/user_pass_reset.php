@@ -18,6 +18,7 @@ session_start();
 
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
 
     <!-- Custom styles for this template -->
     <link href="assets/css/main.css" rel="stylesheet">
@@ -92,7 +93,7 @@ session_start();
 	        <div class="container clearfix">
 	            <h1 id="logo">
                      <span style="font-family: 'Rock Salt', cursive;">Rebro</span>
-                	<i class="fa fa-book fa-1x"></i>
+                	<!-- <i class="fa fa-book fa-1x"></i> -->
                 </h1>
 	            <!-- <i class="fa fa-book fa-1x"></i>      -->
 	            <nav>
