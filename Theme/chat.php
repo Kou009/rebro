@@ -2,10 +2,10 @@
 session_start();
 	require('../dbconnect.php');
 	
-	$_SESSION['id']=1;
-	$_SESSION['book_id']='';  //session変数に本のID入れてもらって、一覧ページから飛ばしてもらう すみません！これが本のIDです！！
+	$_SESSION['id']=1;  //本番に挙げるとき、これは消す！いつでも空文字が代入されちゃうから
+	//$_SESSION['book_id']='';  //session変数に本のID入れてもらって、一覧ページから飛ばしてもらう すみません！これが本のIDです！！
 	//$_SESSION['time']=time();
-	var_dump($_SESSION['book_id']);
+	//var_dump($_SESSION['book_id']);
 
 	if(isset($_SESSION['id'])){
 		$sql=sprintf('SELECT * FROM users WHERE id=%d',

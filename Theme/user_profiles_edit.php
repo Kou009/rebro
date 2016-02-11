@@ -105,6 +105,24 @@
 			exit();
 		}	
 	}
+
+
+ 	$sql = 'SELECT * FROM `prefs`';
+ 	$result = mysqli_query($db, $sql) or die(mysqli_error($db));
+
+ 	$prefectures =array();
+ 	while(1) {
+    	$rec = mysqli_fetch_assoc($result);
+    
+    	if($rec == false){
+    		break;
+    	}
+
+    	$prefectures[]=$rec;	
+
+    }
+    // var_dump($prefectures);
+ 			
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -309,56 +327,20 @@
 
 		                    <div class="form-group float-label-control">
 		                        <label for="">都道府県</label>
-		                        <input type="text" name ="pref_id" class="form-control" placeholder="Username" value ="<?php echo $rec['pref_id']?>">
-		                        <select name="area_id">
-								<option value="1">北海道</option>
-								<option value="2">青森県</option>
-								<option value="3">岩手県</option>
-								<option value="4">宮城県</option>
-								<option value="5">秋田県</option>
-								<option value="6">山形県</option>
-								<option value="7">福島県</option>
-								<option value="8">茨城県</option>
-								<option value="9">栃木県</option>
-								<option value="10">群馬県</option>
-								<option value="11">埼玉県</option>
-								<option value="12">千葉県</option>
-								<option value="13">東京都</option>
-								<option value="14">神奈川県</option>
-								<option value="15">新潟県</option>
-								<option value="16">富山県</option>
-								<option value="17">石川県</option>
-								<option value="18">福井県</option>
-								<option value="19">山梨県</option>
-								<option value="20">長野県</option>
-								<option value="21">岐阜県</option>
-								<option value="22">静岡県</option>
-								<option value="23">愛知県</option>
-								<option value="24">三重県</option>
-								<option value="25">滋賀県</option>
-								<option value="26">京都府</option>
-								<option value="27">大阪府</option>
-								<option value="28">兵庫県</option>
-								<option value="29">奈良県</option>
-								<option value="30">和歌山県</option>
-								<option value="31">鳥取県</option>
-								<option value="32">島根県</option>
-								<option value="33">岡山県</option>
-								<option value="34">広島県</option>
-								<option value="35">山口県</option>
-								<option value="36">徳島県</option>
-								<option value="37">香川県</option>
-								<option value="38">愛媛県</option>
-								<option value="39">高知県</option>
-								<option value="40">福岡県</option>
-								<option value="41">SAGA県</option>
-								<option value="42">長崎県</option>
-								<option value="43">熊本県</option>
-								<option value="44">大分県</option>
-								<option value="45">宮崎県</option>
-								<option value="46">鹿児島県</option>
-								<option value="47">沖縄県</option>
-								</select>
+		                        <input type="text" name ="pref_name" class="form-control" placeholder="Username" value ="<?php echo $rec['pref_id']?>">
+		                        <select name="pref_id">
+		                        <?php 
+		                        foreach($prefectures as $value){
+									// echo $value['id'];
+									// echo $value['pref_name'];
+									
+		                        		//echo $value['id'];
+		                        	echo "<option value=\"{$value['id']}\">{$value['pref_name']}</option>";
+		                        	}
+		                        ?>
+		                        <!-- <option value="echo $value['id'];">echo $value['pref_name'];</option> -->
+		                        </select>
+							
 		                    </div>
 		                  <!--   <div class="profile-edit-6">
 								<div class="row">
@@ -430,7 +412,7 @@
 		                        <textarea class="form-control"  name ="pr" placeholder="Textarea" rows="5"><?php echo $rec['pr']?></textarea>
 		                    </div>
 		                    <p class ="comform">
-		                    	<a><input type ="submit" value ="確認画面へ進む"></a>
+		                    	<a　href ="user_profiles_check.php"><input type ="submit" value ="確認画面へ進む"></a>
 		                    </p> 
 		                    <!-- <div class="profile-edit-11">
 								<div class="row">

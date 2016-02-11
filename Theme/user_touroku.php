@@ -10,6 +10,12 @@ $error = array('email'=>'','password'=>'');
 
 $action = '';
 
+if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
+        //ログインしている時ichiranページに飛ばす
+        header('Location: ichiran.php');
+        exit();
+    }
+
 if (!empty($_POST)) {
  // エラー項目の確認 !をつけることで逆の意味になり、正常に入力された時にデータが渡されるようにしている。
 
@@ -75,7 +81,7 @@ if(isset($_REQEST['action'])){
     <meta name="author" content="">
     <link rel="shortcut icon" href="assets/ico/favicon.png">
 
-    <title>Libro</title>
+    <title>Rebro</title>
 
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -152,14 +158,16 @@ if(isset($_REQEST['action'])){
 	    <header>
 	        <div class="container clearfix">
 	            <h1 id="logo">
-	                REBRO
-	            </h1>
-	            <i class="fa fa-book fa-4x"></i>     
+                     <span style="font-family: 'Rock Salt', cursive;">Rebro</span>
+                	<i class="fa fa-book fa-1x"></i>
+                </h1>
+	            <!-- <i class="fa fa-book fa-1x"></i>      -->
 	            <nav>
 	                <!-- <a href="">Lorem</a> -->
 	                <!-- 消えたnavタグ大事件... -->
-	                <a href="">ユーザー名</a> 
-	                <a href="logout.php">Log Out</a>
+	                <!-- <a href="">ユーザー名</a> 
+	                <a href="logout.php">Log In</a> -->
+	                <!-- <span style="font-family: 'Rock Salt', cursive;"><a href="login.php">Logout</a></span> -->
 	            </nav>
 	        </div>
 	    </header><!-- /header -->
@@ -183,20 +191,17 @@ if(isset($_REQEST['action'])){
 			<!-- CHART IMAGE SECTION -->
 		    <div id="chartwrap">
 			    <div class="container">
-			    	<div class="col-lg-4"> 
-			      	 	<div class="main"> 
-			      	 		<!-- <h3>Please Log In, or <a href="#">Sign Up</a></h3> -->
-							<div class="row"> 
-								<a href="#" class="btn btn-lg btn-primary btn-block">Facebook</a> 
-								<a href="#" class="btn btn-lg btn-info btn-block">Google</a>
-							</div><!-- row -->   	 
-			      	 	</div><!-- main -->
-			    	</div><!-- col-lg-4 -->
+			    	<div class="another_account">
+			      		<div class="row"> 
+			      			<h3>Sign In by another account? </h3><br/>
+							<a href="#" class="btn btn-lg btn-primary btn-block">Facebook</a> 
+							<a href="#" class="btn btn-lg btn-info btn-block">Google</a>
+						</div><!-- row -->
+			    	</div><!-- another_account -->
 
 			    	<form class="login" action="" method="post" enctype="multipart/form-data">
-			      		<div class="col-lg-8">
-			          		<p class="form-title">
-			                <font color="#000"> Sign Out</font></p>
+			      		<div class="sign_up">
+			          		<p class="form-title">　　　　Sign Up</font></p>
 			                <!-- <form class="login"> -->
 			                <?php
 			                $_POST['email'] = '';
@@ -247,35 +252,41 @@ if(isset($_REQEST['action'])){
 		
 		ここいかはふったーにかわります
 		<footer>
-	        <div id="info-bar">
-	            <div class="container clearfix">
-	                <div class="col-md-3">
-	                    <span class="all-tutorials"><a href="">← TOP</a></span>
-	                </div>
+				<div style="margin-top:70px;">
+
+			<div id="info-bar">
+			    <div class="container">
+			    	<div class="row">
+			        <div class="col-lg-3">
+			            <span class="all-tutorials"><a href="">← TOP</a></span>
+			        </div>
 
 
-	                <div class="col-md-3">
-	                    <ul>
-	                        <h2>REBROについて</h2>
-	                        <p>プライバシーポリシー</p>
-	                        <p>環境保護活動</p>
-	                    </ul>
-	                </div>
-	               
-	               <div class="col-md-3">
-	                    <ul>
-	                        <h2>REBROを使う</h2>
-	                        <p>都道府県検索</p>
-	                        <p>大学検索</p>
-	                        <p>出品一覧</p>
-	                    </ul>
-	                </div>
+			        <div class="col-lg-3">
+			        	<div style="vertical-align:middle;">
+			            <ul>
+			                <h3>REBROについて</h3>
+			                <p>プライバシーポリシー</p>
+			                <p>環境保護活動</p>
+			            </ul>
+			        	</div>
+			        </div>
+			       
+			       <div class="col-lg-3">
+			            <ul>
+			                <h3>REBROを使う</h3>
+			                <p>都道府県検索</p>
+			                <p>大学検索</p>
+			                <p>出品一覧</p>
+			            </ul>
+			        </div>
 
-	                <div class="col-md-3">
-	                    <span class="footer-logo"><a href="">Created by <i class="fa fa-heart"></i> Team REBRO</a></span>
-	                </div>
-	            </div>
-	        </div><!-- /#top-bar -->
+			        <div class="col-lg-3">
+			            <span class="footer-logo"><a href="">Created by <i class="fa fa-heart"></i> Team REBRO</a></span>
+			        </div>
+			        </div>
+			    </div>
+			</div><!-- /#top-bar -->
 		</footer><!-- /footer -->
 	</div><!--wrapper-->
 
