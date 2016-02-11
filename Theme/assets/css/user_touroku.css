@@ -1,14 +1,41 @@
 .another_account{
-    position: relative; top:9em; left:25em; 
+    float:right;
+    position: relative; top:1em; right:13em; 
 
 }
 
 /*login.php用*/
-.sign_in h3{
+.sign_in {
+    float:left;
+    position: relative; top:1em; right:0em ; 
 
+}
+/*.sign_in h3{
+    float:left;
+    left:2em;
+
+}*/
+
+.sign_up {
+    float:left;
+    position: relative; top:0em; right:0em ; 
 
 }
 
+p.form-title {
+    font-family: 'Open Sans' , sans-serif;
+    font-size: 22px;
+    font-weight:600;
+    text-align: left;
+    color: #888888;
+    margin-top: 5%;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+.password_reset{
+    position: relative; top:0.5em; 
+}
 
 /*user_check.php用*/
 /*user_check.phpのヘッダー分のスペース空け用*/
@@ -23,9 +50,9 @@
 /*user_check.phpのmain部分枠*/
 #check_space {
 
-	padding: 50px 0px 30px 30px;
+	padding: 5ex 0ex 3ex 8ex;
 	/*background: url(images/bg_content.png) left bottom no-repeat #ecf7fc;*/
-	background: #AFEEEE;
+	background: #B0E0E6;
         /*透明度変更（各ブラウザ対応）*/
         /*filter:alpha(opacity=50);
         -moz-opacity: 0.5;
@@ -34,8 +61,8 @@
 	min-height: 400px;
 	margin: 0 auto;
 	margin-bottom: 30px;
-	font-size: 120%;
-    font-weight: 800;
+	font-size: 140%;
+    font-weight: 600;
     color:#EEEEEE;
 
     text-shadow:0 0px 1px #111111;
@@ -48,7 +75,7 @@
 #check_space h2{
     /*font-size: 120%;*/
     color:#ffffff;
-    font-weight: 700;
+    font-weight: 600;
     text-shadow:0 0px 1px #111111;
 }
 
@@ -57,13 +84,14 @@
 /*ログイン・登録画面共通　変更部css*/
 /*bootstrap.cssより変更部*/
 .row {
-    margin-right: -15px;
-    margin-left: 40px;
+    margin-right: 0px;
+    margin-left: 0px;
 }
 
 .radio,
 .checkbox {
   float: right;/*チェックボックスの位置変更*/
+  position: relative; top:0em; right:4em; 
   display: block;
   min-height: 20px;
   padding-left: 20px;
@@ -75,6 +103,7 @@
 .btn-block {
     display: block;
     width: 200px;
+    margin-left: 2em; 
     padding-right: 0;
     padding-left: 0;
 }
@@ -179,7 +208,7 @@
 	content:"";
 	display: block;
 	width: 100%;
-	height: 62.5%; /*トップ画像カバー部分*/
+	height: 77%; /*トップ画像カバー部分*/
 	background: -moz-linear-gradient(
 		270deg,
 		#1abc9c 100%,
@@ -235,7 +264,7 @@
     content:"";
     display: block;
     width: 100%;
-    height: 62.5%; /*トップ画像カバー部分*/
+    height: 77%; /*トップ画像カバー部分*/
     background: -moz-linear-gradient(
         270deg,
         #1abc9c 100%,
@@ -265,10 +294,13 @@
 .sign_in {
     padding: 0em 0em 0em 2em;
 }
+.sign_up {
+    padding: 0em 0em 5em 2em;
+}
 
 form.login input[type="text"],form.login input[type="email"], form.login input[type="password"]
 {
-    width: 25em;/*100%から35emに*/
+    width: 30em;/*100%から30emに*/
     margin: 0;
     padding: 5px 10px 5px 10px;
     background: 0;
@@ -286,8 +318,8 @@ form.login input[type="text"],form.login input[type="email"], form.login input[t
 
 form.login input[type="submit"]
 {
-	float: left;/*ボタン位置変更*/
-    position: relative; left:15em;
+	float: right;/*ボタン位置変更*/
+    position: relative; right:4em;
     width: 30%; /*100から30に変更*/
     font-size: 14px;
     text-transform: uppercase;
@@ -298,7 +330,14 @@ form.login input[type="submit"]
     letter-spacing: 1px;
 }
 
-form.login label, form.login a {
+form.login a {
+    vertical-align:top;
+    font-size: 1em;
+    font-weight: 400;
+    color: #3cb5f9;
+}
+
+form.login label{
     vertical-align:top;
     font-size: 12px;
     font-weight: 400;

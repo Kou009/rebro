@@ -49,6 +49,8 @@ $posts = mysqli_query($db, $sql) or die(mysqli_error($db));
 
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
+    
 
     <!-- Custom styles for this template -->
     <link href="assets/css/main.css" rel="stylesheet">

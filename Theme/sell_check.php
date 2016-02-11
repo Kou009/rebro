@@ -44,6 +44,8 @@ if (!empty($_POST)){
 
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
+
 
     <!-- Custom styles for this template -->
     <link href="assets/css/main.css" rel="stylesheet">
@@ -91,7 +93,7 @@ if (!empty($_POST)){
                 <h1 id="logo">
                  <span style="font-family: 'Rock Salt', cursive;">Rebro</span>
                 </h1>
-                <i class="fa fa-book fa-4x"></i>     
+                <i class="fa fa-book"></i>     
                 <nav>
                     <!-- <a href="">Lorem</a> -->
                     <!-- 消えたnavタグ大事件... -->
@@ -127,7 +129,7 @@ if (!empty($_POST)){
 <form action="sell_check.php" method="post">
 	<input type="hidden" name="action" value="submit" />
     <div class="low">
-	<dl>
+	
     <div class="col-lg-6">
        
 		<span style="text-align:right;"><dt>タイトル</dt></br>
@@ -164,7 +166,7 @@ if (!empty($_POST)){
 		 width="100" height="100" alt="" />
 		</dd></span>
         </div>
-	</dl>
+	
          <li>
              <a class="btn btn-lg btn-primary" href="sell_thanks.php"　type="submit">
           <i class="glyphicon glyphicon-user pull-left"></i><span>出品する<br></span></a> 

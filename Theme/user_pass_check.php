@@ -1,9 +1,6 @@
 <?php
-//ログインしてなくて直接アクセスした場合に、ログインページに飛ぶ(現状、ログイン状態だと入れる状態)
-if (!isset($_COOKIE['email'])) {
-	header('Location: login.php');
-	exit();
-}
+session_start();
+require('../dbconnect.php');
 
 
 ?>
@@ -28,7 +25,6 @@ if (!isset($_COOKIE['email'])) {
 	    <link href="assets/css/custom.css" rel="stylesheet">
 	    <link href="assets/css/common.css" rel="stylesheet">
 
-
 	    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
 
 	    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
@@ -38,7 +34,7 @@ if (!isset($_COOKIE['email'])) {
 	    <link rel="stylesheet" type="text/css" href="headfoot.css">
 
 	    <!-- ログイン・登録画面ページ専用css -->
-    	<link href="assets/css/user_touroku.css" rel="stylesheet">
+ 		<link href="assets/css/user_touroku.css" rel="stylesheet">
 
 	    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	    <!--[if lt IE 9]>
@@ -54,7 +50,7 @@ if (!isset($_COOKIE['email'])) {
 	        function init() {
 	            window.addEventListener('scroll', function(e){
 	                var distanceY = window.pageYOffset || document.documentElement.scrollTop,
-	                    shrinkOn = 100,
+	                    shrinkOn = 0,
 	                    header = document.querySelector("header");
 	                if (distanceY > shrinkOn) {
 	                    classie.add(header,"smaller");
@@ -89,38 +85,25 @@ if (!isset($_COOKIE['email'])) {
 	            </nav>
 	        </div>
 	    </header><!-- /header -->
+	
+		<!-- ヘッダー分のスペースを空ける用 -->
+	    <div id= "top_space"></div>
 
+		<div id="check_space">
+			以下のアドレスにパスワード再設定用ページのリンクを送りました。<br />
+			<form action="" method="post">
+				<input type="hidden" name="action" value="submit" />
+					
+					<dl>	
+						<dd>
+						<?php echo htmlspecialchars($_SESSION['join']['email'],ENT_QUOTES,'UTF-8'); ?>
+						</dd>
+						<br />
+					</dl><br />
+				<div><input type="submit" value="Back" class="btn-success btn-sm"/></div>
+			</form>
 
-		<div id="main">
-			<div id="aboutwrap_thanks">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-8 col-lg-offset-2">
-							<h2>Thank you!<br/><br/>
-								さぁ、本を探しに行こう<br /><br />
-								<!-- <a href="user_profiles.html">Log IN</a> -->
-								<!-- ログイン、ログアウトテスト用 -->
-								
-				                	<!-- <input type="submit" value="Log IN" class="btn btn-success btn-sm" /> -->
-				               
-				            	<a href="user_profiles_edit.php">Log IN</a>
-								<!-- <a href="user_profiles_edit.php?id=<?php echo htmlspecialchars($_SESSION['id'],ENT_QUOTES, 'UTF-8'); ?>">Log IN</a> -->
-							</h2>
-							<br />
-						</div>
-					</div><!-- row -->
-				</div><!-- /container -->
-			</div><!-- /aboutwrap -->
-			<!-- <div id="head">
-				<h1>会員登録</h1>
-			</div>
-
-			<div id="content">
-				<p>ユーザー登録が完了しました</p>
-				<p><a href="user_profiles.html">ログインする</a></p>
-			</div> -->
-
-		</div><!-- #main -->
+		</div><!-- #check_space -->
 
 		<footer>
 				<div style="margin-top:70px;">
@@ -172,7 +155,4 @@ if (!isset($_COOKIE['email'])) {
     <script src="assets/js/main.js"></script>
     <script src="assets/js/classie.js"></script>
   </body>
-</html>
-	
-	</body>
 </html>

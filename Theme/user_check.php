@@ -74,7 +74,7 @@ if (!empty($_POST)) {
 	    <meta name="author" content="">
 	    <link rel="shortcut icon" href="assets/ico/favicon.png">
 
-	    <title>Libro</title>
+	    <title>Rebro</title>
 
 	    <!-- Bootstrap core CSS -->
 	    <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -131,14 +131,16 @@ if (!empty($_POST)) {
 	    <header>
 	        <div class="container clearfix">
 	            <h1 id="logo">
-	                REBRO
-	            </h1>
-	            <i class="fa fa-book fa-4x"></i>     
+                     <span style="font-family: 'Rock Salt', cursive;">Rebro</span>
+                	<i class="fa fa-book fa-1x"></i>
+                </h1>
+	            <!-- <i class="fa fa-book fa-1x"></i>      -->
 	            <nav>
 	                <!-- <a href="">Lorem</a> -->
 	                <!-- 消えたnavタグ大事件... -->
-	                <a href="">ユーザー名</a> 
-	                <a href="logout.php">Log Out</a>
+	                <!-- <a href="">ユーザー名</a> 
+	                <a href="logout.php">Log In</a> -->
+	                <!-- <span style="font-family: 'Rock Salt', cursive;"><a href="login.php">Logout</a></span> -->
 	            </nav>
 	        </div>
 	    </header><!-- /header -->
@@ -161,7 +163,7 @@ if (!empty($_POST)) {
 						<!-- 【表示されません】 -->
 						<?php echo htmlspecialchars($_SESSION['join']['password'],ENT_QUOTES,'UTF-8'); ?>
 						</dd>
-					</dl><br /><br />
+					</dl><br />
 				<div><a href="user_touroku.php?action=rewrite" class="btn-reset btn-sm">&laquo;&nbsp;Reset</a>  <input type="submit" value="Register" class="btn-success btn-sm"/></div>
 			</form>
 
@@ -169,13 +171,14 @@ if (!empty($_POST)) {
 
 		<footer>
 	        <div id="info-bar">
-	            <div class="container clearfix">
-	                <div class="col-md-3">
+	            <div class="container">
+	                <div class="row">
+	                <div class="col-lg-3">
 	                    <span class="all-tutorials"><a href="">← TOP</a></span>
 	                </div>
 
 
-	                <div class="col-md-3">
+	                <div class="col-lg-3">
 	                    <ul>
 	                        <h2>REBROについて</h2>
 	                        <p>プライバシーポリシー</p>
@@ -183,7 +186,7 @@ if (!empty($_POST)) {
 	                    </ul>
 	                </div>
 	               
-	               <div class="col-md-3">
+	               <div class="col-lg-3">
 	                    <ul>
 	                        <h2>REBROを使う</h2>
 	                        <p>都道府県検索</p>
@@ -192,12 +195,13 @@ if (!empty($_POST)) {
 	                    </ul>
 	                </div>
 
-	                <div class="col-md-3">
+	                <div class="col-lg-3">
 	                    <span class="footer-logo"><a href="">Created by <i class="fa fa-heart"></i> Team REBRO</a></span>
+	                </div>
 	                </div>
 	            </div>
 	        </div><!-- /#top-bar -->
-		</footer><!-- /footer -->
+    	</footer><!-- /footer -->
 	</div><!--wrapper-->
 
 	

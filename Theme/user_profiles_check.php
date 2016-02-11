@@ -152,7 +152,7 @@ if (!empty($_POST)){
 						</dd>
 						<dt>年齢</dt>
 						<dd>
-						<?php echo htmlspecialchars($check['age'],ENT_QUOTES,'UTF-8'); ?><a>歳</a>
+						<?php echo htmlspecialchars($check['age'],ENT_QUOTES,'UTF-8'); ?>
 						</dd>
 						<dt>都道府県</dt>
 						<dd>
