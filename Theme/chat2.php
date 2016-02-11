@@ -2,8 +2,8 @@
 session_start();
 	require('../dbconnect.php');
 	
-	$_SESSION['id']=3;
-	$_SESSION['book_id']=1;  //session変数に本のID入れてもらって、一覧ページから飛ばしてもらう
+	//$_SESSION['id']=3;
+	//$_SESSION['book_id']=1;  //session変数に本のID入れてもらって、一覧ページから飛ばしてもらう
 	//$_SESSION['time']=time();
 
 
@@ -54,13 +54,15 @@ session_start();
 		if(!empty($_POST)){
 			//出品者かどうか判別　出品者だった場合、レシーバーフラグ立てます
 	if($_SESSION['id'] == $books['users_id']) {
-		$sql=sprintf('INSERT INTO chat SET sender_id=%d,reciever_id=1,book_id=%d,message="%s",created=NOW()',
+		$sql=sprintf('INSERT INTO chat SET reciever_id=%d,sender_id=%d,sell_flag=1,book_id=%d,message="%s",created=NOW()',
 				mysqli_real_escape_string($db,$member['id']),
+				mysqli_real_escape_string($db,$_GET['id']),
 				mysqli_real_escape_string($db,$_SESSION['book_id']),
 				mysqli_real_escape_string($db,$_POST['message']));
 				mysqli_query($db,$sql) or die(mysqli_error($db));
 			
-			header('Location: chat2.php');
+			$id=$_GET['id'];
+			header('Location:chat2.php?id='."$id");
 			exit();
 			}
 
@@ -180,37 +182,28 @@ session_start();
 		                				//$user_id=$sender_name['id'];
 		                		?>
 
-		                		<form style="display:inline;" method="get" action="">
-		                			
-		                			<!-- $u_id=$sender_name['id']; -->
-		                		 	<input name="id" type="hidden" href="chat2.php?id=<?php echo $sender_name['id']; ?>/>
-		                		 
-		                		 	<input type="submit" value="<?php  echo $sender_name['user_name']; ?>"/>
-		                		 	
-		                		</form>
+		                		 	<a name="id" type="hidden" href="chat2.php?id=<?php echo $sender_name['id']; ?>">
+		                		 		<?php  echo $sender_name['user_name']; ?>
+		                		 	</a>
+               		 	
 		                	<?php 
 		                		endwhile;
+		                		if(empty($_GET['id'])){
+		                			echo 'ボタンを選択してください';
+		                		}
 		                	?>
 		                	</div>
 
-		                	 <?php 
-		                	 var_dump($_GET);
-		                	if(isset($_GET['id'])) {
-		                	 	var_dump($_GET['id']);
-		                	}else{
-		                		echo 'ERROR';
-		                	}
-		                	?>
-		                	
 		                <div class="panel-body">
 		                	<div class="panel-button">
 		                		
 		                	
 		                	<?php 
 		                	$sql=sprintf('SELECT chat.* ,up.user_name FROM chat , user_profiles up 
-		                				WHERE book_id=%d AND up.id=chat.sender_id AND chat.sender_id=%d',
+		                				WHERE book_id=%d AND up.id=chat.sender_id AND chat.sender_id=%d 
+		                				ORDER BY chat.created DESC',
 		                	mysqli_real_escape_string($db,$_SESSION['book_id']),
-		                	mysqli_real_escape_string($db,$_POST['id'])
+		                	mysqli_real_escape_string($db,$_GET['id'])
 		                	);
 
 		               		$record6=mysqli_query($db,$sql) or die(mysqli_error($db));
@@ -258,6 +251,7 @@ session_start();
 		                    		?>
 		                    </ul>
 		                </div>
+		            </div>
 
 
 			                <div class="panel-footer">
@@ -276,7 +270,7 @@ session_start();
 			        </div>
 			    </div>
 					   
-			</div>
+			
 		
 
 		

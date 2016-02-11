@@ -2,7 +2,7 @@
 session_start();
 	require('../dbconnect.php');
 	
-	$_SESSION['id']=1;  //本番に挙げるとき、これは消す！いつでも空文字が代入されちゃうから
+	//$_SESSION['id']=1;  //本番に挙げるとき、これは消す！いつでも空文字が代入されちゃうから
 	//$_SESSION['book_id']='';  //session変数に本のID入れてもらって、一覧ページから飛ばしてもらう すみません！これが本のIDです！！
 	//$_SESSION['time']=time();
 	//var_dump($_SESSION['book_id']);
@@ -54,8 +54,9 @@ session_start();
 		if(!empty($_POST)){
 			//出品者かどうか判別　出品者だった場合、レシーバーフラグ立てます
 	if($_SESSION['id'] == $books['users_id']) {
-		$sql=sprintf('INSERT INTO chat SET sender_id=%d,reciever_id=1,book_id=%d,message="%s",created=NOW()',
+		$sql=sprintf('INSERT INTO chat SET sender_id=%d,reciever_id=%d,sell_flag=1,book_id=%d,message="%s",created=NOW()',
 				mysqli_real_escape_string($db,$member['id']),
+				mysqli_real_escape_string($db,$sell_user['users_id']),
 				mysqli_real_escape_string($db,$_SESSION['book_id']),
 				mysqli_real_escape_string($db,$_POST['message']));
 				mysqli_query($db,$sql) or die(mysqli_error($db));
@@ -64,8 +65,9 @@ session_start();
 			exit();
 			}//出品者じゃなかった場合
 			elseif($_POST['message']!=''){
-				$sql=sprintf('INSERT INTO chat SET sender_id=%d,book_id=%d,message="%s",created=NOW()',
+				$sql=sprintf('INSERT INTO chat SET sender_id=%d,reciever_id=%d,book_id=%d,message="%s",created=NOW()',
 				mysqli_real_escape_string($db,$member['id']),
+				mysqli_real_escape_string($db,$books['users_id']),
 				mysqli_real_escape_string($db,$_SESSION['book_id']),
 				mysqli_real_escape_string($db,$_POST['message']));
 				mysqli_query($db,$sql) or die(mysqli_error($db));

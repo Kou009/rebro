@@ -2,13 +2,13 @@
 	session_start();
 	require('../dbconnect.php');
 	
-	$_SESSION['id']=3;
-	$_GET['id']='';  //session変数に本のID入れてもらって、一覧ページから飛ばしてもらう !本のIDはゲット送信で送りました
+	//$_SESSION['id']=1;  開発用
+	//$_GET['bid']='';  //session変数に本のID入れてもらって、一覧ページから飛ばしてもらう !本のIDはゲット送信で送りました
 
-	if (isset($_GET['id'])) {
-		$_SESSION['book_id']=$_GET['id'];   //本のIDをセッションにいれる
-	}
-	var_dump($_SESSION['book_id']);
+	if (isset($_GET['bid'])) {
+		$_SESSION['book_id']=$_GET['bid'];   //本のIDをセッションにいれる
+	}else{echo error;}
+	//var_dump($_SESSION['book_id']);
 
 	if(isset($_SESSION['id'])){
 		$sql=sprintf('SELECT * FROM users WHERE id=%d',
