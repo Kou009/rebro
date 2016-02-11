@@ -94,6 +94,8 @@ if (!empty($_POST))	{ //中身があった場合！は逆の意味になる→�
     <link href="assets/css/main.css" rel="stylesheet">
     <link href="assets/css/custom.css" rel="stylesheet">
     <link href="assets/css/common.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
+
 
     <link href="assets/css/font-awesome.min.css" rel="stylesheet">
 
@@ -134,7 +136,7 @@ if (!empty($_POST))	{ //中身があった場合！は逆の意味になる→�
   	<header>
             <div class="container clearfix">
                 <h1 id="logo">
-                    <span style="font-family: 'Rock Salt', cursive;"><a href="index.php">Rebro</a></span>
+                    <span style="font-family: 'Rock Salt', cursive;">Rebro</span>
                 </h1>
                 <i class="fa fa-book fa-4x"></i>     
                 <nav>

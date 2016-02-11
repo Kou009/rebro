@@ -122,7 +122,7 @@ $(function(){
   	 	<header>
             <div class="container clearfix">
                 <h1 id="logo">
-                  <a href= "index.php"><span style="font-family: 'Rock Salt', cursive;">Rebro</span></a>
+                  <span style="font-family: 'Rock Salt', cursive;" style="font-color:white;">Rebro</span>
                 </h1>
                 <!-- <i class="fa fa-book fa-4x"></i>      -->
                 <nav>
