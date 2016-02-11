@@ -122,7 +122,7 @@ $(function(){
   	 	<header>
             <div class="container clearfix">
                 <h1 id="logo">
-                   <span style="font-family: 'Rock Salt', cursive;">Rebro</span>
+                  <span style="font-family: 'Rock Salt', cursive;" style="font-color:white;">Rebro</span>
                 </h1>
                 <!-- <i class="fa fa-book fa-4x"></i>      -->
                 <nav>
@@ -276,11 +276,13 @@ $(function(){
                             style="width:200px;height:300px;">';
                         // echo '<div class="text-right">';
                         // echo '<small class="text-muted">';
+                        echo '<span style="text-align:right;">';
+
                         echo $rec['title'];
                         echo'</br>';
                         echo '¥';
                         echo $rec['price'];
-                         echo '</a></li>';
+                         echo '</a></li></span>';
                         // echo '</small></div></a></div>';
                         // echo '  ';
                         // echo '</a></div>';
@@ -325,11 +327,14 @@ $(function(){
 			<div class="row destacados">
         <div class="col-lg-3">
             <div class="circle">
-            	<i class="fa fa-repeat" alt="Texto Alternativo" ></i>
-
+            	<!-- <i class="fa fa-repeat " alt="Texto Alternativo" ></i> -->
+            	<div class="circle2">
+            	<img src="recycling01.jpg">
+            	</div>
                 <!-- <img alt="Texto Alternativo" class="img-circle img-thumbnail"> -->
+                <!-- <span style="margin-top:-20px;"> -->
                 <h2>Mottainai</h2>
-                <p>リサイクルの輪</br>知識の輪</br>友達の輪</br>を広げよう </p>
+                <p>リサイクルの輪</br>知識の輪</br>友達の輪</br>を広げよう </p></span>
                
             </div>
         </div>
@@ -337,7 +342,10 @@ $(function(){
 
        <div class="col-lg-3">
             <div class="circle">
-            	<i class="fa fa-repeat" alt="Texto Alternativo" ></i>
+            	<div class="circle2">
+            	<img src="hand.png" style="filter:gray;">
+            	</div>
+
                 <h2>すぐに</br>手に入る</h2>
                 <p>お互いの都合が合えば即日入手可能</p>
                
@@ -346,7 +354,9 @@ $(function(){
 
        <div class="col-lg-3">
             <div class="circle">
-            	<i class="fa fa-repeat" alt="Texto Alternativo" ></i>
+            	<div class="circle2">
+            	<img src="watch.png" style="filter:gray;">
+            	</div>
                 <h2>3分で</br>かんたん売買</h2>
                 <p>いらなくなった教科書を売ってお小遣い稼ぎをしよう。</p>
                
@@ -354,7 +364,9 @@ $(function(){
         </div>
        <div class="col-lg-3">
             <div class="circle">
-            	<i class="fa fa-repeat" alt="Texto Alternativo" ></i>
+            	<div class="circle2">
+            	<img src="money.png" style="filter:gray;">
+            	</div>
                 <h2>無料で使える</h2>
                 <p>手数料含め購入費以外はお金はかかりません。</p>
                
@@ -383,7 +395,7 @@ $(function(){
 				<h3>さぁ教科書を探しにいこう</h3>
 				<div class="col-lg-8 col-lg-offset-2">
 					<p>かんたん登録</p>
-					<p><button type="button" class="btn btn-green btn-lg"><span style="font-family: 'Rock Salt', cursive;">Sign Up</span></button></p>
+					<p><button type="button" class="btn btn-green btn-lg"><span style="font-family: 'Rock Salt', cursive;"><a href="login.php">Sign Up</a></span></button></p>
 				</div>
 			</div>
 			</div><!-- row -->
